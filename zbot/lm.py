@@ -131,9 +131,20 @@ def available() -> list[str]:
 
 
 def fingerprint(lang: str = "en") -> str:
-    """Hash of the model file: results are only comparable under the same model."""
+    """Identity of a model: hash of its source texts and build settings.
+
+    Results are only comparable under the same model. Hashing the inputs rather than
+    the built file keeps the identity stable across machines and numpy versions, so
+    results computed here and on GitHub Actions count as the same experiment.
+    """
     if lang not in _fp:
-        _fp[lang] = hashlib.sha256(lm_path(lang).read_bytes()).hexdigest()[:12]
+        h = hashlib.sha256(f"order={ORDER};beta={BETA};holdout={HOLDOUT_FRAC};"
+                           f"weights={sorted(CORPORA[lang].items())};norm=nfd-v1".encode())
+        for name in sorted(CORPORA[lang]):
+            h.update(hashlib.sha256((CORPUS_DIR / f"{name}.txt").read_bytes()).digest())
+        if not lm_path(lang).exists():
+            raise FileNotFoundError(f"{lm_path(lang)} missing: run `python -m zbot build-lm --lang {lang}`")
+        _fp[lang] = h.hexdigest()[:12]
     return _fp[lang]
 
 

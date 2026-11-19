@@ -1,14 +1,16 @@
-# Runs the bot unattended every night and keeps its ledger on the `zbot-results` branch.
+# Runs the bot unattended and keeps its ledger on the `zbot-results` branch.
+# Each run resumes from the ledger: on the first run, from results/ on the default
+# branch; after that, from the zbot-results branch.
 # Scheduled workflows only fire from the repository's default branch.
 name: zbot
 
 on:
   schedule:
-    - cron: "17 7 * * *"   # daily, 07:17 UTC
+    - cron: "17 7,19 * * *"   # twice a day, 07:17 and 19:17 UTC
   workflow_dispatch:
     inputs:
       hours:
-        description: "Hours to run"
+        description: "Hours to run (max ~5.3; GitHub stops jobs at 6h)"
         default: "5"
 
 permissions:
@@ -21,7 +23,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,27 +34,33 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: sudo apt-get install -y -q libarchive-tools   # bsdtar, for the Vietnamese corpus
-      - name: Cache language model
+      - name: Cache corpora and language models
         uses: actions/cache@v4
         with:
           path: |
             data/corpus
             data/lm
-          key: lm-v2-${{ hashFiles('scripts/fetch_corpus.py', 'zbot/lm.py') }}
-      - name: Build language model
+          key: lm-v3-${{ hashFiles('scripts/fetch_corpus.py', 'zbot/lm.py') }}
+      - name: Build language models
         run: test -f data/lm/lm5_vi.npz || python -m zbot setup
       - name: Restore previous results
         run: |
           if git fetch origin zbot-results 2>/dev/null; then
             git checkout FETCH_HEAD -- results/ || true
           fi
+          wc -l results/ledger.jsonl || true
       - run: python -m pytest -q tests
       - name: Run bot
+        # A hypothesis still running at the limit is lost, but everything finished
+        # before it is published by the next step.
+        timeout-minutes: 320
         run: python -m zbot run --hours "${{ github.event.inputs.hours || '5' }}"
       - name: Publish results
+        if: always()
         run: |
+          python -m zbot report
           git config user.name "zbot"
           git config user.email "zbot@users.noreply.github.com"
           git add results/
-          git commit -m "zbot results $(date -u +%F)" || exit 0
+          git commit -m "zbot results $(date -u +%FT%H:%M)" || exit 0
           git push --force origin HEAD:zbot-results

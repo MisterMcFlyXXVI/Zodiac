@@ -72,11 +72,24 @@ The results go to:
 
 ## Running unattended
 
-`.github/workflows/zbot.yml` runs the bot every night for 5 hours on GitHub Actions. It
-restores the ledger from the `zbot-results` branch, carries on from where it stopped, and
-pushes the updated results back to that branch. Scheduled workflows only run from the
-default branch, so merge this branch first. You can also start a run by hand from the
-Actions tab.
+The repository is public, so GitHub Actions runs the bot for free.
+`.github/workflows/zbot.yml` runs it twice a day (07:17 and 19:17 UTC) for about 5 hours
+each time. Each run picks up from the ledger and pushes its results to the
+**`zbot-results`** branch; read `results/REPORT.md` and `results/ALERTS.md` there. To
+start a run by hand, open the Actions tab, choose "zbot", then "Run workflow".
+
+Limits:
+
+- GitHub stops any job at 6 hours. A hypothesis still running at the limit is lost and
+  re-run next time; everything finished before it is published.
+- GitHub turns off schedules in public repos after 60 days without activity. If that
+  happens, re-enable the workflow in the Actions tab.
+- Once the built-in queue is done, the bot only explores, and most of that is
+  untestable at these lengths. Consider cutting the schedule to weekly then (edit the
+  `cron` line).
+
+To run it on your own machine instead, use `python -m zbot run --hours 8`. The ledger
+is the same format, so you can copy it between machines.
 
 ## What's in the queue
 
