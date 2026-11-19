@@ -1,0 +1,7 @@
+{
+  "id": "user.z13.circles_distinct.simple",
+  "title": "Z13 with three distinct circles, simple substitution",
+  "motivation": "winchxyz F2: the pattern alone favours distinct circles by 10^2 to 10^4.5.",
+  "cipher": "z13.circles_distinct",
+  "model": "simple"
+}
