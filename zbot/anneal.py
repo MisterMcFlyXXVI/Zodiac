@@ -226,9 +226,9 @@ class Solution:
 
 def solve(segments: list[np.ndarray], n_sym: int, *, restarts: int = 8, iters: int | None = None,
           injective: bool = False, pins: dict[int, int] | None = None, klw: float = 1.0,
-          t0: float = 20.0, t1: float = 0.5, seed: int = 0) -> list[Solution]:
+          t0: float = 20.0, t1: float = 0.5, seed: int = 0, lang: str = "en") -> list[Solution]:
     """Return the best solution of each restart, best first."""
-    t = lm.load()
+    t = lm.load(lang)
     seq = np.concatenate(segments).astype(np.int64)
     lens = np.array([len(s) for s in segments], dtype=np.int64)
     seg_end = np.cumsum(lens)

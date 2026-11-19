@@ -23,6 +23,8 @@ import json
 import pathlib
 import random
 
+from . import lm
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 QUEUE_DIR = ROOT / "hypotheses" / "queue"
 
@@ -43,8 +45,9 @@ def builtin() -> list[dict]:
                   cipher="z408", iters=1_500_000, restarts=4, nulls=19, controls=0, extend_nulls=0))
 
     # --- 1. Baselines on the canonical and variant transcriptions (replicates prior work).
-    for c in ["z13", "z32"]:
-        for model in ["homophonic", "simple"]:
+    for c, models in [("z13", ["homophonic", "simple"]), ("z32", ["homophonic"])]:
+        # (Z32 has 29 distinct symbols, so a one-symbol-per-letter key is impossible.)
+        for model in models:
             H.append(dict(id=f"base.{c}.{model}", title=f"{c.upper()} canonical, {model} substitution, written order",
                           motivation="Baseline; replicates Oranchak and winchxyz null-model results.",
                           cipher=c, model=model))
@@ -92,6 +95,24 @@ def builtin() -> list[dict]:
                   motivation=WINCHXYZ + " ('a key model combined with transposition for Z32'). Widths 7-8 sampled.",
                   cipher="z32", families=["columnar2to6", "columnar7to8_sampled"], restarts=2,
                   nulls=19, controls=6))
+    # --- 3. Other languages. Zodiac's solved ciphers and letters are English, so the prior
+    # is low; but each test is cheap. Every language must pass its own calibration first.
+    for lang in ["es", "fr", "de", "it", "vi"]:
+        name = lm.LANG_NAMES[lang]
+        H.append(dict(id=f"calib.{lang}.synthetic408",
+                      title=f"Calibration: Z408-like homophonic cipher of held-out {name}",
+                      motivation=f"The {name} model and solver must crack a known {name} cipher "
+                                 f"before any {name} result counts.",
+                      lang=lang, synthetic={"length": 408, "key_size": 54, "seed": 1},
+                      iters=1_500_000, restarts=4, nulls=19, controls=0, extend_nulls=0))
+        H.append(dict(id=f"lang.{lang}.z13.simple", title=f"Z13 as {name}, simple substitution",
+                      motivation="Language hypothesis.", cipher="z13", model="simple", lang=lang))
+        H.append(dict(id=f"lang.{lang}.z13.homophonic", title=f"Z13 as {name}, homophonic",
+                      motivation="Language hypothesis.", cipher="z13", lang=lang))
+        H.append(dict(id=f"lang.{lang}.z32.homophonic", title=f"Z32 as {name}, homophonic",
+                      motivation="Language hypothesis.", cipher="z32", lang=lang))
+    # The slowest built-in (hours) goes last so it doesn't hold up everything else.
+    H.sort(key=lambda h: h["id"] == "new.z32.columnar_full")
     return H
 
 

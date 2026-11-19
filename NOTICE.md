@@ -21,6 +21,10 @@ Neither is redistributed here.
 
 - Brown Corpus of Standard American English (Francis and Kučera, 1961/1979).
 - NLTK's selection of Project Gutenberg texts.
+- NLTK's Europarl sample (Koehn, *Europarl: A Parallel Corpus for Statistical Machine
+  Translation*, 2005) for Spanish, French, German and Italian.
+- VNTC Vietnamese news corpus (Hoang, Dinh, Nguyen and Ngo, RIVF 2007), MIT licence,
+  github.com/duyvuleo/VNTC.
 
 ## Prior work this project builds on
 

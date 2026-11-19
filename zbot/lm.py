@@ -1,32 +1,60 @@
-"""Letter n-gram language model (orders 1..5) with interpolated smoothing.
+"""Letter n-gram language models (orders 1..5), one per language.
 
-Built from data/corpus/*.txt by `python -m zbot build-lm`. Stored as one
-.npz in data/lm/ (gitignored, rebuildable). The last HOLDOUT_FRAC of each
-corpus is held out: it never enters the n-gram counts and is used to make
+Built from data/corpus/ by `python -m zbot build-lm [--lang ...]`. Stored in
+data/lm/ (gitignored, rebuildable). The last HOLDOUT_FRAC of each corpus is
+held out: it never enters the n-gram counts and is used to make
 positive-control ciphers, so the controls are not text the model memorised.
+
+All languages are reduced to the 26 letters A-Z: accents and Vietnamese tone
+marks are stripped (é->E, ñ->N, ơ->O, đ->D), ß->SS. That is how someone
+enciphering with Zodiac's symbol set would most likely have written them.
 """
 from __future__ import annotations
 
 import hashlib
 import pathlib
 import re
+import unicodedata
 
 import numpy as np
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CORPUS_DIR = ROOT / "data" / "corpus"
-LM_PATH = ROOT / "data" / "lm" / "lm5.npz"
-HOLDOUT_PATH = ROOT / "data" / "lm" / "holdout.txt"
+LM_DIR = ROOT / "data" / "lm"
 ORDER = 5
 HOLDOUT_FRAC = 0.05
-# Corpus weights: Brown (1961 American English) is the closest in era and
-# register to Zodiac's letters, so it counts double.
-WEIGHTS = {"brown": 2, "gutenberg": 1}
 # Dirichlet-style interpolation strength per order (higher = trust lower order more).
 BETA = 4.0
 
+# Corpus files and weights per language. English: Brown (1961 American English) is
+# closest in era and register to Zodiac's letters, so it counts double.
+CORPORA = {
+    "en": {"brown": 2, "gutenberg": 1},
+    "es": {"es": 1},
+    "fr": {"fr": 1},
+    "de": {"de": 1},
+    "it": {"it": 1},
+    "vi": {"vi": 1},
+}
+LANG_NAMES = {"en": "English", "es": "Spanish", "fr": "French", "de": "German",
+              "it": "Italian", "vi": "Vietnamese"}
+_SPECIAL = str.maketrans({"ß": "SS", "đ": "D", "Đ": "D", "æ": "AE", "Æ": "AE",
+                          "œ": "OE", "Œ": "OE", "ø": "O", "Ø": "O"})
+
+
+def lm_path(lang: str = "en") -> pathlib.Path:
+    return LM_DIR / ("lm5.npz" if lang == "en" else f"lm5_{lang}.npz")
+
+
+def holdout_path(lang: str = "en") -> pathlib.Path:
+    return LM_DIR / ("holdout.txt" if lang == "en" else f"holdout_{lang}.txt")
+
+
+LM_PATH = lm_path("en")
+
 
 def letters_only(text: str) -> str:
+    text = unicodedata.normalize("NFD", text.translate(_SPECIAL))
     return re.sub(r"[^A-Z]", "", text.upper())
 
 
@@ -42,12 +70,12 @@ def _counts(seq: np.ndarray, n: int) -> np.ndarray:
     return np.bincount(code, minlength=26**n).astype(np.float64)
 
 
-def build(check_plaintexts: list[str] | None = None) -> dict:
+def build(check_plaintexts: list[str] | None = None, lang: str = "en") -> dict:
     train_parts, hold_parts = [], []
-    for name, w in WEIGHTS.items():
+    for name, w in CORPORA[lang].items():
         p = CORPUS_DIR / f"{name}.txt"
         if not p.exists():
-            raise FileNotFoundError(f"{p} missing: run `python scripts/fetch_corpus.py`")
+            raise FileNotFoundError(f"{p} missing: run `python scripts/fetch_corpus.py --lang {lang}`")
         s = letters_only(p.read_text(encoding="utf-8"))
         cut = int(len(s) * (1 - HOLDOUT_FRAC))
         train_parts += [s[:cut]] * w
@@ -76,38 +104,51 @@ def build(check_plaintexts: list[str] | None = None) -> dict:
         probs.append(p.reshape(-1))
     tables = {f"lp{n}": np.log(probs[n - 1]).astype(np.float32) for n in range(1, ORDER + 1)}
     tables["unigram"] = probs[0].astype(np.float64)
-    LM_PATH.parent.mkdir(parents=True, exist_ok=True)
-    np.savez_compressed(LM_PATH, **tables)
-    HOLDOUT_PATH.write_text(holdout, encoding="ascii")
+    LM_DIR.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(lm_path(lang), **tables)
+    holdout_path(lang).write_text(holdout, encoding="ascii")
+    _cache.pop(lang, None)
+    _fp.pop(lang, None)
     return tables
 
 
-_cache: dict | None = None
+_cache: dict[str, dict] = {}
+_fp: dict[str, str] = {}
 
 
-def load() -> dict:
-    global _cache
-    if _cache is None:
-        if not LM_PATH.exists():
-            raise FileNotFoundError(f"{LM_PATH} missing: run `python -m zbot build-lm`")
-        z = np.load(LM_PATH)
-        _cache = {k: z[k] for k in z.files}
-    return _cache
+def load(lang: str = "en") -> dict:
+    if lang not in _cache:
+        p = lm_path(lang)
+        if not p.exists():
+            raise FileNotFoundError(f"{p} missing: run `python -m zbot build-lm --lang {lang}`")
+        z = np.load(p)
+        _cache[lang] = {k: z[k] for k in z.files}
+    return _cache[lang]
 
 
-def fingerprint() -> str:
+def available() -> list[str]:
+    return [l for l in CORPORA if lm_path(l).exists()]
+
+
+def fingerprint(lang: str = "en") -> str:
     """Hash of the model file: results are only comparable under the same model."""
-    h = hashlib.sha256(LM_PATH.read_bytes()).hexdigest()
-    return h[:12]
+    if lang not in _fp:
+        _fp[lang] = hashlib.sha256(lm_path(lang).read_bytes()).hexdigest()[:12]
+    return _fp[lang]
 
 
-def holdout_text() -> str:
-    return HOLDOUT_PATH.read_text(encoding="ascii")
+_hold: dict[str, str] = {}
 
 
-def score_text(text: str) -> float:
+def holdout_text(lang: str = "en") -> str:
+    if lang not in _hold:
+        _hold[lang] = holdout_path(lang).read_text(encoding="ascii")
+    return _hold[lang]
+
+
+def score_text(text: str, lang: str = "en") -> float:
     """Total log-probability of a letter string (natural log)."""
-    t = load()
+    t = load(lang)
     x = _to_idx(letters_only(text))
     total = 0.0
     for i in range(len(x)):

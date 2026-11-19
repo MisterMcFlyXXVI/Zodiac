@@ -46,21 +46,21 @@ def write(rows: list[dict]) -> None:
     if cal:
         lines += ["## Calibration", ""]
         for r in cal:
-            lines.append(f"- `{r['id']}`: beats all {len(r.get('null_scores', []))} nulls: "
-                         f"{r.get('real_score', -1e18) > max(r.get('null_scores') or [0])}, z={r.get('z') or 0:.1f}, letter accuracy "
+            lines.append(f"- `{r['id']}`: **{r.get('verdict')}**, z={r.get('z') or 0:.1f} vs "
+                         f"{len(r.get('null_scores', []))} nulls, letter accuracy "
                          f"{r.get('calib_accuracy', 0):.1%}, best: `{(r.get('top') or [{}])[0].get('plaintext', '')[:60]}`")
         lines.append("")
     lines += ["## Hypotheses", "",
-              "| id | family | p | p (Holm) | z | power | verdict | best decode |",
-              "|---|---|---|---|---|---|---|---|"]
+              "| id | lang | family | p | p (Holm) | z | power | verdict | best decode |",
+              "|---|---|---|---|---|---|---|---|---|"]
     for r in sorted(tested, key=lambda r: r["p"]):
         best = (r.get("top") or [{}])[0]
         pw = "n/a" if r.get("power") is None else f"{r['power']:.2f}"
-        lines.append(f"| `{r['id']}` | {r.get('family_size', '?')} | {r['p']:.3f} | {r['p_holm']:.3f} | {r.get('z') or 0:+.1f} | {pw} | "
+        lines.append(f"| `{r['id']}` | {r.get('lang', 'en')} | {r.get('family_size', '?')} | {r['p']:.3f} | {r['p_holm']:.3f} | {r.get('z') or 0:+.1f} | {pw} | "
                      f"{r['verdict'].split(':')[0]} | `{best.get('plaintext', '')[:40]}` |")
-    errs = [r for r in rs if r.get("verdict") == "ERROR"]
+    errs = [r for r in rs if r.get("verdict") == "ERROR" or r.get("verdict", "").startswith("SKIPPED")]
     if errs:
-        lines += ["", "## Errors", ""] + [f"- `{r['id']}`: {r.get('error')}" for r in errs]
+        lines += ["", "## Errors and skips", ""] + [f"- `{r['id']}`: {r.get('error') or r['verdict']}" for r in errs]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(lines) + "\n")
 

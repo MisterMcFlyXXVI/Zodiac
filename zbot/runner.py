@@ -22,14 +22,21 @@ def ledger() -> list[dict]:
     return [json.loads(l) for l in LEDGER.read_text().splitlines() if l.strip()]
 
 
+def _current(r: dict) -> bool:
+    lang = r.get("lang", "en")
+    return lang in lm.available() and r.get("lm") == lm.fingerprint(lang)
+
+
 def _done_keys(rows: list[dict]) -> set[tuple[str, str]]:
-    return {(r["id"], r["spec_hash"]) for r in rows if r.get("lm") == lm.fingerprint()}
+    return {(r["id"], r["spec_hash"]) for r in rows if _current(r)}
 
 
 def pending() -> list[dict]:
     done = _done_keys(ledger())
     specs = hypotheses.builtin() + hypotheses.queued()
-    return [s for s in specs if (s["id"], evaluate._spec_hash(s)) not in done]
+    langs = lm.available()
+    return [s for s in specs if (s["id"], evaluate._spec_hash(s)) not in done
+            and evaluate.lang_of(s) in langs]
 
 
 def next_spec() -> dict:
@@ -40,12 +47,25 @@ def next_spec() -> dict:
     return hypotheses.explore(n)
 
 
-def calibrated() -> bool:
+def calib_id(lang: str) -> str:
+    return "calib.z408.homophonic" if lang == "en" else f"calib.{lang}.synthetic408"
+
+
+def calibrated(lang: str = "en") -> bool:
+    ok = False
     for r in ledger():
-        if r["id"] == "calib.z408.homophonic" and r.get("lm") == lm.fingerprint():
-            return (r.get("real_score", -1e18) > max(r.get("null_scores") or [0])
-                    and r.get("calib_accuracy", 0) > 0.9)
-    return False
+        if r["id"] == calib_id(lang) and _current(r):
+            ok = r.get("verdict") == "CALIBRATION PASS"
+    return ok
+
+
+def _skip(spec: dict, why: str) -> None:
+    lang = evaluate.lang_of(spec)
+    row = {"id": spec["id"], "spec_hash": evaluate._spec_hash(spec), "spec": spec, "lang": lang,
+           "lm": lm.fingerprint(lang), "p": None, "power": None, "verdict": "SKIPPED: " + why,
+           "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}
+    with LEDGER.open("a") as f:
+        f.write(json.dumps(row) + "\n")
 
 
 def _commit(msg: str) -> None:
@@ -62,20 +82,22 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
         if spec is None:
             log(f"{only}: already done")
             return
-        if not spec["id"].startswith("calib.") and not calibrated():
-            log("calibration has not passed under this language model; running it first")
-            spec = next(s for s in hypotheses.builtin() if s["id"] == "calib.z408.homophonic")
+        lang = evaluate.lang_of(spec)
+        if not spec["id"].startswith("calib.") and not calibrated(lang):
+            cid = calib_id(lang)
+            if any(r["id"] == cid and _current(r) for r in ledger()):
+                log(f"{cid} FAILED under the current model; skipping {spec['id']}")
+                _skip(spec, f"calibration {cid} failed")
+                continue
+            log(f"calibration for {lm.LANG_NAMES[lang]} has not run yet; running it first")
+            spec = next(s for s in hypotheses.builtin() if s["id"] == cid)
         log(f"[{time.strftime('%H:%M:%S')}] {spec['id']}: {spec['title']}")
         try:
             res = evaluate.run(spec, workers=workers, log=log)
         except Exception as e:  # record failures too, so the loop doesn't retry them forever
             res = {"id": spec["id"], "spec_hash": evaluate._spec_hash(spec), "spec": spec,
-                   "lm": lm.fingerprint(), "error": repr(e), "p": None, "power": None,
+                   "lang": evaluate.lang_of(spec), "lm": lm.fingerprint(evaluate.lang_of(spec)), "error": repr(e), "p": None, "power": None,
                    "verdict": "ERROR", "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}
-        if spec["id"] == "calib.z408.homophonic" and res.get("top"):
-            from .cipher import load
-            from .anneal import accuracy
-            res["calib_accuracy"] = accuracy(res["top"][0]["plaintext"], load("z408").plaintext)
         with LEDGER.open("a") as f:
             f.write(json.dumps(res) + "\n")
         report.write(ledger())

@@ -68,8 +68,38 @@ def test_solver_recovers_simple_substitution():
 
 
 @lm_built
-def test_encipher_matches_distinct_count():
-    rng = random.Random(0)
-    plain = lm.holdout_text()[:32]
-    c = evaluate._encipher(plain, 29, "homophonic", rng, {})
-    assert len(c) == 32 and abs(len(set(c)) - 29) <= 3
+@pytest.mark.parametrize("name,model", [("z13", "simple"), ("z13", "homophonic"), ("z32", "homophonic")])
+def test_controls_match_real_repeat_profile(name, model):
+    texts = evaluate.real_texts({"cipher": name})
+    for lang in lm.available():
+        plain, c = evaluate._encipher_matching(texts, model, lang, random.Random(0), {})
+        assert evaluate.profile(c) == evaluate.profile(texts[0])
+        assert len(plain) == len(c)
+
+
+@lm_built
+def test_pinned_symbol_used_in_control():
+    texts = evaluate.real_texts({"cipher": "z13"})
+    for seed in range(5):
+        plain, c = evaluate._encipher_matching(texts, "simple", "en", random.Random(seed), {"A": "A"})
+        assert all((p == "A") == (s == "A") for p, s in zip(plain, c))
+
+
+def test_simple_model_rejected_for_z32():
+    with pytest.raises(ValueError):
+        evaluate.validate({"id": "x", "cipher": "z32", "model": "simple"})
+
+
+@lm_built
+def test_each_language_prefers_itself():
+    samples = {"en": "THEPOLICEWILLNEVERCATCHME", "es": "LAPOLICIANUNCAMEATRAPARA",
+               "fr": "LAPOLICENEMATTRAPERAJAMAIS", "de": "DIEPOLIZEIWIRDMICHNIEFANGEN",
+               "it": "LAPOLIZIANONMIPRENDERAMAI", "vi": "CANHSATSEKHONGBAOGIOBATDUOCTOI"}
+    langs = lm.available()
+    for lang in langs:
+        t = samples[lang]
+        assert max(langs, key=lambda m: lm.score_text(t, m)) == lang
+
+
+def test_letters_only_strips_accents():
+    assert lm.letters_only("Nguyễn Văn Đức, señor, Straße") == "NGUYENVANDUCSENORSTRASSE"

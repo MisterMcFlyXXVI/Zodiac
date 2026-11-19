@@ -28,7 +28,7 @@ every result with:
 | quantity | meaning |
 |---|---|
 | **p** | How often shuffled copies of the cipher's own symbols score as well as the real cipher. The shuffled copy gets the same search: same read-order family, same pins. |
-| **power** | How often real English, enciphered under the same hypothesis, beats the nulls. **Low power means the hypothesis cannot be tested at this length.** |
+| **power** | How often real text, enciphered under the same hypothesis, beats the nulls. The control ciphers are built to have *exactly* the real cipher's repeat profile (for Z13: one symbol three times, three symbols twice, four once). **Low power means the hypothesis cannot be tested at this length.** |
 | **z** | Effect size against the null distribution. |
 | **p (Holm)** | p corrected for *every* hypothesis the bot has ever run, so trying many ideas can't produce a false hit. |
 
@@ -53,12 +53,15 @@ current language model.
 
 ```bash
 pip install -r requirements.txt
-python -m zbot setup            # downloads Brown + Gutenberg corpora, builds the 5-gram model (~1 min)
+sudo apt install libarchive-tools   # bsdtar, only needed for the Vietnamese corpus
+python -m zbot setup            # downloads corpora for all 6 languages, builds 5-gram models (~2 min)
+python -m zbot setup --lang en  # English only
 python -m pytest -q tests
 python -m zbot list             # the hypothesis queue
 python -m zbot run --hours 3    # work autonomously; safe to kill and resume
 python -m zbot run --only new.z13.transpositions.simple
-python -m zbot solve z13 --model simple   # quick look, no statistics
+python -m zbot solve z13 --model simple            # quick look, no statistics
+python -m zbot solve z13 --model simple --lang vi  # same, Vietnamese model
 ```
 
 The results go to:
@@ -88,14 +91,47 @@ The queue runs in this order:
    - crosshair or omega as a null in Z32
    - a joint Z13 + Z32 shared-key solve
    - subsets of letters standing for themselves
-4. **Your own hypotheses**: JSON files in `hypotheses/queue/` (see the README there).
-5. **Exploration**: open-ended families such as keyed columnar transposition of Z32 at
+4. **Other languages**: Spanish, French, German, Italian and Vietnamese, each tested on
+   Z13 (simple and homophonic) and Z32 (homophonic). See below.
+5. **Your own hypotheses**: JSON files in `hypotheses/queue/` (see the README there).
+6. **Exploration**: open-ended families such as keyed columnar transposition of Z32 at
    larger widths, and pin and transposition combinations.
+
+## Other languages
+
+| language | corpus | size |
+|---|---|---|
+| English | Brown (1961 American English, weighted ×2) + Gutenberg selection | ~14M letters |
+| Spanish, French, German, Italian | Europarl sample (European Parliament, 1990s) | ~2.8M letters each |
+| Vietnamese | VNTC news corpus (2000s, MIT licence) | ~30M letters |
+
+Text is reduced to A–Z: accents and Vietnamese tone marks are stripped (ễ→E, đ→D),
+and ß becomes SS. Someone writing with Zodiac's symbol set would almost certainly have
+dropped them too.
+
+Each language must first crack a Z408-like synthetic cipher made from its own held-out
+text. Until that calibration passes, the bot won't test that language on Z13 or Z32. All
+language tests count towards the multiple-comparison correction.
+
+What to expect:
+
+- **The prior is low.** Z408, Z340 and every letter are in idiomatic American English,
+  with consistent English misspellings.
+- **The length problem is the same in every language.** 13 letters fit thousands of
+  strings in any language, so a "best Vietnamese reading" means no more than a "best
+  English reading". The power column shows whether a language test could detect anything
+  at all.
+- **Vietnamese specifically:** stripped of tones it has many very short syllables, so
+  *more* random strings look like plausible Vietnamese, and power will likely be even
+  lower. A Vietnamese name such as NGUYEN VAN … fitting Z13 would not be evidence about
+  any person.
+- **Corpus era and register differ** (parliament speeches, 2000s news), and the corpora
+  are smaller than the English one, so these models are weaker than English.
 
 ## Layout
 
 ```
-zbot/lm.py           letter 5-gram model, held-out split, leak check against Z408/Z340 plaintexts
+zbot/lm.py           letter 5-gram models (6 languages), held-out split, leak check against Z408/Z340
 zbot/anneal.py       numba simulated annealing, homophonic or simple, pins, shared-key segments
 zbot/transforms.py   read-order families: decimation, rail fence, routes, columnar, Z340-style grid decimation
 zbot/evaluate.py     real vs nulls vs positive controls for one hypothesis

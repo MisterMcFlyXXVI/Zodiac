@@ -31,15 +31,16 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - run: sudo apt-get install -y -q libarchive-tools   # bsdtar, for the Vietnamese corpus
       - name: Cache language model
         uses: actions/cache@v4
         with:
           path: |
             data/corpus
             data/lm
-          key: lm-${{ hashFiles('scripts/fetch_corpus.py', 'zbot/lm.py') }}
+          key: lm-v2-${{ hashFiles('scripts/fetch_corpus.py', 'zbot/lm.py') }}
       - name: Build language model
-        run: test -f data/lm/lm5.npz || python -m zbot setup
+        run: test -f data/lm/lm5_vi.npz || python -m zbot setup
       - name: Restore previous results
         run: |
           if git fetch origin zbot-results 2>/dev/null; then
