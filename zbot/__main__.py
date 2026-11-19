@@ -5,7 +5,7 @@
   list               show the hypothesis queue and what is done
   run [--hours H]    work through the queue autonomously (resumable)
   run --only ID      run a single hypothesis
-  report             regenerate results/REPORT.md and ALERTS.md
+  report             regenerate results/REPORT.md, ALERTS.md and STATUS.json
   solve CIPHER       quick look: best decodes of one cipher, no statistics
 """
 from __future__ import annotations
@@ -66,7 +66,7 @@ def main(argv=None):
     elif a.cmd == "run":
         runner.run(a.hours, workers=a.workers, commit=a.commit, only=a.only)
     elif a.cmd == "report":
-        report.write(runner.ledger())
+        runner._publish()
         print(report.OUT)
     elif a.cmd == "solve":
         import numpy as np

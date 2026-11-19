@@ -117,12 +117,27 @@ def builtin() -> list[dict]:
 
 
 def queued() -> list[dict]:
+    """Specs from hypotheses/queue/*.json, checked against zbot.schema.
+
+    A spec that fails the checks is still returned, marked `invalid`, so the runner
+    can record why it was refused instead of silently ignoring it.
+    """
+    from . import schema
     out = []
     if QUEUE_DIR.exists():
         for p in sorted(QUEUE_DIR.glob("*.json")):
-            spec = json.loads(p.read_text())
+            try:
+                spec = json.loads(p.read_text())
+                if not isinstance(spec, dict):
+                    raise ValueError("not a JSON object")
+            except ValueError as e:
+                spec = {"id": f"user.{p.stem}", "title": p.name, "invalid": [f"unreadable JSON: {e}"]}
             spec.setdefault("id", p.stem)
             spec["source"] = str(p.relative_to(ROOT))
+            if "invalid" not in spec:
+                problems = schema.check(spec)
+                if problems:
+                    spec["invalid"] = problems
             out.append(spec)
     return out
 

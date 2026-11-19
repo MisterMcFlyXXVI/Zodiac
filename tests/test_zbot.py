@@ -103,3 +103,29 @@ def test_each_language_prefers_itself():
 
 def test_letters_only_strips_accents():
     assert lm.letters_only("Nguyễn Văn Đức, señor, Straße") == "NGUYENVANDUCSENORSTRASSE"
+
+
+def test_schema_accepts_good_user_spec():
+    from zbot import schema
+    spec = {"id": "user.test.z13-fr", "title": "Z13 as French", "cipher": "z13", "model": "simple",
+            "lang": "fr", "families": ["reverse"], "pins": {"A": "A"}, "nulls": 19}
+    assert schema.check(spec) == []
+
+
+@pytest.mark.parametrize("bad", [
+    {"id": "base.z13", "title": "t", "cipher": "z13"},                       # id must start user.
+    {"id": "user.x1", "title": "t", "cipher": "z99"},                         # unknown cipher
+    {"id": "user.x2", "title": "t", "cipher": "z32", "model": "simple"},      # >26 symbols
+    {"id": "user.x3", "title": "t", "cipher": "z13", "nulls": 10_000},        # over limit
+    {"id": "user.x4", "title": "t", "cipher": "z13", "pins": {"Q": "A"}},     # symbol not in cipher
+    {"id": "user.x5", "title": "t", "cipher": "z13", "evil": "__import__"},   # unknown field
+    {"id": "user.x6", "title": "t", "cipher": "z32", "families": ["columnar2to6", "columnar7to8_sampled"]},
+])
+def test_schema_rejects_bad_user_specs(bad):
+    from zbot import schema
+    assert schema.check(bad)
+
+
+def test_estimate_is_positive():
+    from zbot import status
+    assert status.estimate_seconds({"id": "x", "cipher": "z13"}) > 0

@@ -35,7 +35,8 @@ def _done_keys(rows: list[dict]) -> set[tuple[str, str]]:
 
 def pending() -> list[dict]:
     done = _done_keys(ledger())
-    specs = hypotheses.builtin() + hypotheses.queued()
+    # Work you queued yourself (web app or hypotheses/queue/) goes ahead of the built-ins.
+    specs = hypotheses.queued() + hypotheses.builtin()
     langs = lm.available()
     return [s for s in specs if (s["id"], evaluate._spec_hash(s)) not in done
             and evaluate.lang_of(s) in langs]
@@ -59,6 +60,13 @@ def calibrated(lang: str = "en") -> bool:
         if r["id"] == calib_id(lang) and _current(r):
             ok = r.get("verdict") == "CALIBRATION PASS"
     return ok
+
+
+def _publish() -> None:
+    from . import status
+    rows = ledger()
+    report.write(rows)
+    status.write(rows, RESULTS / "STATUS.json")
 
 
 def _skip(spec: dict, why: str) -> None:
@@ -93,6 +101,11 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
                 continue
             log(f"calibration for {lm.LANG_NAMES[lang]} has not run yet; running it first")
             spec = next(s for s in hypotheses.builtin() if s["id"] == cid)
+        if spec.get("invalid"):
+            log(f"refusing {spec['id']}: {'; '.join(spec['invalid'])}")
+            _skip(spec, "invalid spec: " + "; ".join(spec["invalid"]))
+            _publish()
+            continue
         log(f"[{time.strftime('%H:%M:%S')}] {spec['id']}: {spec['title']}")
         try:
             res = evaluate.run(spec, workers=workers, log=log)
@@ -102,7 +115,7 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
                    "verdict": "ERROR", "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}
         with LEDGER.open("a") as f:
             f.write(json.dumps(res) + "\n")
-        report.write(ledger())
+        _publish()
         log(f"   -> {res['verdict']}  p={res.get('p')}  power={res.get('power')}  "
             f"({res.get('seconds', '?')}s)")
         if res.get("top"):

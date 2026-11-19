@@ -1,0 +1,682 @@
+{
+ "generated": "2026-11-19T23:01:34Z",
+ "run": {
+  "github_run_id": null,
+  "github_run_url": null
+ },
+ "models": {
+  "en": "79a1a6526f43",
+  "es": "39da73f11e68",
+  "fr": "e151725b04d2",
+  "de": "f65c848ef88c",
+  "it": "5201a0d3b04d",
+  "vi": "9c6d3d865bb7"
+ },
+ "counts": {
+  "CALIBRATION PASS": 1,
+  "UNTESTABLE": 9,
+  "NO SIGNAL": 3
+ },
+ "pending": [
+  {
+   "id": "new.z13.transpositions.simple",
+   "title": "Z13 under transpositions other than reversal, simple substitution",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 1818.4249999999997
+  },
+  {
+   "id": "new.z32.transpositions.homophonic",
+   "title": "Z32 under structured transpositions (incl. Z340-style grid decimation) + homophonic key",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 315.02
+  },
+  {
+   "id": "new.z32.crosshair_null",
+   "title": "Z32 with the crosshair symbol as a null",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.58
+  },
+  {
+   "id": "new.z32.omega_null",
+   "title": "Z32 with the omega symbol as a null",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.58
+  },
+  {
+   "id": "new.joint.z13_z32.homophonic",
+   "title": "Z13 and Z32 enciphered with one shared key",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 12.38
+  },
+  {
+   "id": "new.z13.literal_pin_subsets",
+   "title": "Z13 with subsets of its Latin-letter symbols standing for themselves",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 64.77499999999999
+  },
+  {
+   "id": "new.z32.literal_pin_subsets_sampled",
+   "title": "Z32 with random subsets (size 3-6) of its Latin-letter symbols standing for themselves",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 179.59999999999997
+  },
+  {
+   "id": "calib.es.synthetic408",
+   "title": "Calibration: Z408-like homophonic cipher of held-out Spanish",
+   "lang": "es",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 66.79999999999998
+  },
+  {
+   "id": "lang.es.z13.simple",
+   "title": "Z13 as Spanish, simple substitution",
+   "lang": "es",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.es.z13.homophonic",
+   "title": "Z13 as Spanish, homophonic",
+   "lang": "es",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.es.z32.homophonic",
+   "title": "Z32 as Spanish, homophonic",
+   "lang": "es",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999
+  },
+  {
+   "id": "calib.fr.synthetic408",
+   "title": "Calibration: Z408-like homophonic cipher of held-out French",
+   "lang": "fr",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 68.20689655172413
+  },
+  {
+   "id": "lang.fr.z13.simple",
+   "title": "Z13 as French, simple substitution",
+   "lang": "fr",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.fr.z13.homophonic",
+   "title": "Z13 as French, homophonic",
+   "lang": "fr",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.fr.z32.homophonic",
+   "title": "Z32 as French, homophonic",
+   "lang": "fr",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999
+  },
+  {
+   "id": "calib.de.synthetic408",
+   "title": "Calibration: Z408-like homophonic cipher of held-out German",
+   "lang": "de",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 68.20689655172413
+  },
+  {
+   "id": "lang.de.z13.simple",
+   "title": "Z13 as German, simple substitution",
+   "lang": "de",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.de.z13.homophonic",
+   "title": "Z13 as German, homophonic",
+   "lang": "de",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.de.z32.homophonic",
+   "title": "Z32 as German, homophonic",
+   "lang": "de",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999
+  },
+  {
+   "id": "calib.it.synthetic408",
+   "title": "Calibration: Z408-like homophonic cipher of held-out Italian",
+   "lang": "it",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 68.20689655172413
+  },
+  {
+   "id": "lang.it.z13.simple",
+   "title": "Z13 as Italian, simple substitution",
+   "lang": "it",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.it.z13.homophonic",
+   "title": "Z13 as Italian, homophonic",
+   "lang": "it",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.it.z32.homophonic",
+   "title": "Z32 as Italian, homophonic",
+   "lang": "it",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999
+  },
+  {
+   "id": "calib.vi.synthetic408",
+   "title": "Calibration: Z408-like homophonic cipher of held-out Vietnamese",
+   "lang": "vi",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 70.5090909090909
+  },
+  {
+   "id": "lang.vi.z13.simple",
+   "title": "Z13 as Vietnamese, simple substitution",
+   "lang": "vi",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.vi.z13.homophonic",
+   "title": "Z13 as Vietnamese, homophonic",
+   "lang": "vi",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "id": "lang.vi.z32.homophonic",
+   "title": "Z32 as Vietnamese, homophonic",
+   "lang": "vi",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999
+  },
+  {
+   "id": "new.z32.columnar_full",
+   "title": "Z32 under keyed columnar transposition, widths 2-8",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 7051.535999999999
+  }
+ ],
+ "done": [
+  {
+   "id": "calib.z408.homophonic",
+   "title": "Z408 as plain homophonic substitution",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 71.33333333333334,
+   "verdict": "CALIBRATION PASS"
+  },
+  {
+   "id": "base.z13.homophonic",
+   "title": "Z13 canonical, homophonic substitution, written order",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "base.z13.simple",
+   "title": "Z13 canonical, simple substitution, written order",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "base.z32.homophonic",
+   "title": "Z32 canonical, homophonic substitution, written order",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "variant.z13.circles_distinct",
+   "title": "Transcription variant z13.circles_distinct, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 5.18,
+   "verdict": "NO SIGNAL: real cipher scores like shuffled nulls"
+  },
+  {
+   "id": "variant.z13.bracket_is_perp",
+   "title": "Transcription variant z13.bracket_is_perp, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999,
+   "verdict": "NO SIGNAL: real cipher scores like shuffled nulls"
+  },
+  {
+   "id": "variant.z13.crosshair_null",
+   "title": "Transcription variant z13.crosshair_null, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.4,
+   "verdict": "NO SIGNAL: real cipher scores like shuffled nulls"
+  },
+  {
+   "id": "variant.z13.reversed",
+   "title": "Transcription variant z13.reversed, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 4.699999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "variant.z32.bar_is_serif_I",
+   "title": "Transcription variant z32.bar_is_serif_I, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "variant.z32.t2_is_perp",
+   "title": "Transcription variant z32.t2_is_perp, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "variant.z32.tau_distinct",
+   "title": "Transcription variant z32.tau_distinct, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "variant.z32.triangles_merged",
+   "title": "Transcription variant z32.triangles_merged, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.639999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  },
+  {
+   "id": "variant.z32.bar_I_and_t2_perp",
+   "title": "Transcription variant z32.bar_I_and_t2_perp, homophonic",
+   "lang": "en",
+   "source": "built-in",
+   "suggested_by": null,
+   "est_seconds": 10.879999999999999,
+   "verdict": "UNTESTABLE: real text would not stand out from nulls at this length"
+  }
+ ],
+ "explore_next": "Z13 pins ['A', 'K', 'E'] literal + columnar 2-6",
+ "suggestions": [
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.circles_distinct as English with a simple key.",
+   "spec": {
+    "id": "user.cover.en.z13-circles_distinct.simple",
+    "cipher": "z13.circles_distinct",
+    "model": "simple",
+    "lang": "en",
+    "title": "z13.circles_distinct as English, simple substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 5.18
+  },
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.bracket_is_perp as English with a simple key.",
+   "spec": {
+    "id": "user.cover.en.z13-bracket_is_perp.simple",
+    "cipher": "z13.bracket_is_perp",
+    "model": "simple",
+    "lang": "en",
+    "title": "z13.bracket_is_perp as English, simple substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.crosshair_null as English with a simple key.",
+   "spec": {
+    "id": "user.cover.en.z13-crosshair_null.simple",
+    "cipher": "z13.crosshair_null",
+    "model": "simple",
+    "lang": "en",
+    "title": "z13.crosshair_null as English, simple substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 4.4
+  },
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.reversed as English with a simple key.",
+   "spec": {
+    "id": "user.cover.en.z13-reversed.simple",
+    "cipher": "z13.reversed",
+    "model": "simple",
+    "lang": "en",
+    "title": "z13.reversed as English, simple substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.circles_distinct as Spanish with a simple key.",
+   "spec": {
+    "id": "user.cover.es.z13-circles_distinct.simple",
+    "cipher": "z13.circles_distinct",
+    "model": "simple",
+    "lang": "es",
+    "title": "z13.circles_distinct as Spanish, simple substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 5.18
+  },
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.circles_distinct as Spanish with a homophonic key.",
+   "spec": {
+    "id": "user.cover.es.z13-circles_distinct.homophonic",
+    "cipher": "z13.circles_distinct",
+    "model": "homophonic",
+    "lang": "es",
+    "title": "z13.circles_distinct as Spanish, homophonic substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 5.18
+  },
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.bracket_is_perp as Spanish with a simple key.",
+   "spec": {
+    "id": "user.cover.es.z13-bracket_is_perp.simple",
+    "cipher": "z13.bracket_is_perp",
+    "model": "simple",
+    "lang": "es",
+    "title": "z13.bracket_is_perp as Spanish, simple substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "kind": "coverage",
+   "why": "Not tried yet: z13.bracket_is_perp as Spanish with a homophonic key.",
+   "spec": {
+    "id": "user.cover.es.z13-bracket_is_perp.homophonic",
+    "cipher": "z13.bracket_is_perp",
+    "model": "homophonic",
+    "lang": "es",
+    "title": "z13.bracket_is_perp as Spanish, homophonic substitution",
+    "motivation": "Fills a gap in the transcription x key x language grid.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 4.699999999999999
+  },
+  {
+   "kind": "idea",
+   "why": "Z340 was transposed; a reading-order search in another language hasn't been run.",
+   "spec": {
+    "id": "user.idea.es.z13.transpositions",
+    "cipher": "z13",
+    "model": "simple",
+    "lang": "es",
+    "families": [
+     "decimations",
+     "railfences",
+     "routes"
+    ],
+    "title": "Z13 as Spanish under simple transpositions",
+    "motivation": "Combines the transposition and language hypotheses at modest cost.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 93.79999999999998
+  },
+  {
+   "kind": "idea",
+   "why": "Z340 was transposed; a reading-order search in another language hasn't been run.",
+   "spec": {
+    "id": "user.idea.fr.z13.transpositions",
+    "cipher": "z13",
+    "model": "simple",
+    "lang": "fr",
+    "families": [
+     "decimations",
+     "railfences",
+     "routes"
+    ],
+    "title": "Z13 as French under simple transpositions",
+    "motivation": "Combines the transposition and language hypotheses at modest cost.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 93.79999999999998
+  },
+  {
+   "kind": "idea",
+   "why": "Z340 was transposed; a reading-order search in another language hasn't been run.",
+   "spec": {
+    "id": "user.idea.de.z13.transpositions",
+    "cipher": "z13",
+    "model": "simple",
+    "lang": "de",
+    "families": [
+     "decimations",
+     "railfences",
+     "routes"
+    ],
+    "title": "Z13 as German under simple transpositions",
+    "motivation": "Combines the transposition and language hypotheses at modest cost.",
+    "suggested_by": "zbot"
+   },
+   "est_seconds": 93.79999999999998
+  }
+ ],
+ "options": {
+  "ciphers": [
+   {
+    "name": "z13",
+    "text": "AENz0K0M0[NAM",
+    "length": 13,
+    "distinct": 8,
+    "solved": false
+   },
+   {
+    "name": "z13.bracket_is_perp",
+    "text": "AENz0K0M0tNAM",
+    "length": 13,
+    "distinct": 8,
+    "solved": false
+   },
+   {
+    "name": "z13.circles_distinct",
+    "text": "AENz0K{M}[NAM",
+    "length": 13,
+    "distinct": 10,
+    "solved": false
+   },
+   {
+    "name": "z13.crosshair_null",
+    "text": "AEN0K0M0[NAM",
+    "length": 12,
+    "distinct": 7,
+    "solved": false
+   },
+   {
+    "name": "z13.reversed",
+    "text": "MAN[0M0K0zNEA",
+    "length": 13,
+    "distinct": 8,
+    "solved": false
+   },
+   {
+    "name": "z32",
+    "text": "C9J|#Ok[AMf8?ORTGX6FDVj%HCELzPW9",
+    "length": 32,
+    "distinct": 29,
+    "solved": false
+   },
+   {
+    "name": "z32.bar_I_and_t2_perp",
+    "text": "C9JI#OktAMf8?ORTGX6FDVj%HCELzPW9",
+    "length": 32,
+    "distinct": 29,
+    "solved": false
+   },
+   {
+    "name": "z32.bar_is_serif_I",
+    "text": "C9JI#Ok[AMf8?ORTGX6FDVj%HCELzPW9",
+    "length": 32,
+    "distinct": 29,
+    "solved": false
+   },
+   {
+    "name": "z32.t2_is_perp",
+    "text": "C9J|#OktAMf8?ORTGX6FDVj%HCELzPW9",
+    "length": 32,
+    "distinct": 29,
+    "solved": false
+   },
+   {
+    "name": "z32.tau_distinct",
+    "text": "C9J|#Ok[AMf8?ORTGX6FDV$%HCELzPW9",
+    "length": 32,
+    "distinct": 29,
+    "solved": false
+   },
+   {
+    "name": "z32.triangles_merged",
+    "text": "C9J|#Ok[AMf9?ORTGX6FDVj%HCELzPW9",
+    "length": 32,
+    "distinct": 28,
+    "solved": false
+   },
+   {
+    "name": "z408",
+    "text": "9%P/Z/UB%kOR=pX=BWV+eGYF69HP@K!qYeMJY^UIk7qTtNQYD5)S(/9#BPORAU%fRlqEk^LMZJdr\\pFHVWe8Y@+qGD9KI)6qX85zS(RNt!YElO8qGBTQS#BLd/P#B@XqEHMU^RRkcZKqpI)Wq!85LMr9#BPDR+j=6\\N(eEUHkFZcpOVWI5+tL)l^R6HI9DR_TYr\\de/@XJQAP5M8RUt%L)NVEKH=GrI!Jk598LMlNA)Z(PzUpkA9#BVW\\+VTtOP^=SrlfUe67DzG%%IMNk)ScE/9%%ZfAP#BVpeXqWq_F#8c+@9A9B%OT5RUc+_dYq_^SqWVZeGYKE_TYA9%#Lt_H!FBX9zXADd\\7L!=q_ed##6e5PORXQF%GcZ@JTtq_8JI+rBPQW6VEXr9WI6qEHM)=UIk",
+    "length": 408,
+    "distinct": 54,
+    "solved": true
+   },
+   {
+    "name": "z340",
+    "text": "HER>pl^VPk|1LTG2dNp+B(#O%DWY.<*Kf)By:cM+UZGW()L#zHJSpp7^l8*V3pO++RK2_9M+ztjd|5FP+&4k/p8R^FlO-*dCkF>2D(#5+Kq%;2UcXGV.zL|(G2Jfj#O+_NYz+@L9d<M+b+ZR2FBcyA64K-zlUV+^J+Op7<FBy-U+R/5tE|DYBpbTMKO2<clRJ|*5T4M.+&BFz69Sy#+N|5FBc(;8RlGFN^f524b.cV4t++yBX1*:49CE>VUZ5-+|c.3zBK(Op^.fMqG2RcT+L16C<+FlWB|)L++)WCzWcPOSHT/()p|FkdW<7tB_YOB*-Cc>MDHNpkSzZO8A|K;+",
+    "length": 340,
+    "distinct": 63,
+    "solved": true
+   }
+  ],
+  "models": {
+   "homophonic": "Several symbols may stand for the same letter (Zodiac's usual method)",
+   "simple": "Exactly one symbol per letter"
+  },
+  "languages": {
+   "en": "English",
+   "es": "Spanish",
+   "fr": "French",
+   "de": "German",
+   "it": "Italian",
+   "vi": "Vietnamese"
+  },
+  "families": {
+   "identity": "Read as written (no transposition)",
+   "reverse": "Read backwards",
+   "decimations": "Read every k-th symbol, wrapping around",
+   "railfences": "Rail-fence (zig-zag) transposition, 2-5 rails",
+   "routes": "Boustrophedon and column-by-column reads for each grid width",
+   "griddec": "Z340-style diagonal reads on a grid (how Z340 was transposed)",
+   "columnar2to6": "Keyed columnar transposition, widths 2-6, every key (872 orders)",
+   "columnar7to8_sampled": "Keyed columnar transposition, widths 7-8, 500 random keys each"
+  },
+  "limits": {
+   "restarts": [
+    1,
+    8
+   ],
+   "nulls": [
+    9,
+    199
+   ],
+   "controls": [
+    0,
+    20
+   ],
+   "extend_nulls": [
+    0,
+    499
+   ],
+   "iters": [
+    10000,
+    3000000
+   ],
+   "pins": 10,
+   "pin_family": 64,
+   "drop_symbols": 3,
+   "family_orders": 2000,
+   "title": 120,
+   "motivation": 1000
+  }
+ }
+}
