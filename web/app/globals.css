@@ -199,3 +199,5 @@ pre { background: var(--surface-2); padding: 10px 12px; border-radius: 8px; over
 .card .explain > div:last-child { border-bottom: none; }
 .card .explain dt, .card .explain dd { margin: 0; }
 @media (max-width: 640px) { .card .explain > div { grid-template-columns: 1fr; gap: 0; } }
+.progress { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin: 8px 0 4px; }
+.progress span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }

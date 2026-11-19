@@ -1,8 +1,9 @@
 import { loadAll } from "@/lib/data";
-import { cipherLabel, fmtDuration, fmtP, isAlert, nextScheduled, relTime } from "@/lib/stats";
+import { cipherLabel, fmtDuration, fmtP, isAlert, relTime } from "@/lib/stats";
 import Verdict from "@/components/Verdict";
+import NowPanel from "@/components/NowPanel";
 
-export const revalidate = 120;
+export const dynamic = "force-dynamic"; // fresh relative times; GitHub data itself is cached 2 min
 
 const LANGS: Record<string, string> = { en: "English", es: "Spanish", fr: "French", de: "German", it: "Italian", vi: "Vietnamese" };
 
@@ -15,8 +16,6 @@ export default async function Overview() {
   const candidates = tests.filter((r) => r.verdictKind === "candidate");
   const calib = rows.filter((r) => r.id.startsWith("calib."));
   const recent = [...rows].sort((a, b) => (b.finished ?? "").localeCompare(a.finished ?? "")).slice(0, 8);
-  const active = runs.find((r) => r.status !== "completed");
-  const last = runs.find((r) => r.status === "completed");
   const pendingHours = (status?.pending ?? []).reduce((a, p) => a + (isFinite(p.est_seconds) ? p.est_seconds : 0), 0);
 
   let headline: React.ReactNode;
@@ -59,27 +58,7 @@ export default async function Overview() {
       </div>
 
       <div className="grid two" style={{ marginTop: 14 }}>
-        <div className="card">
-          <h3>The bot right now</h3>
-          {active ? (
-            <p>
-              <span className="badge pass"><span aria-hidden="true">●</span>Running</span>{" "}
-              started {relTime(active.run_started_at ?? active.created_at, now)}.{" "}
-              <a href={active.html_url} target="_blank" rel="noreferrer">Live log on GitHub ↗</a>
-            </p>
-          ) : (
-            <p>
-              <span className="badge nosignal"><span aria-hidden="true">○</span>Idle</span>{" "}
-              {last ? <>last run finished {relTime(last.updated_at, now)} ({last.conclusion}).</> : "no runs yet."}
-            </p>
-          )}
-          <p className="small muted">
-            Runs for 5.5 hours every 6 hours. Next scheduled start: {nextScheduled(now).toUTCString().replace(":00 GMT", " UTC")}
-            {" "}({relTime(nextScheduled(now).toISOString(), now)}).
-            {status?.generated && <> Status last published {relTime(status.generated, now)}.</>}
-          </p>
-          <a className="btn ghost small" href="/queue">Give it work →</a>
-        </div>
+        <NowPanel status={status} runs={runs} />
         <div className="card">
           <h3>Calibration</h3>
           <p className="small muted">Before any result in a language counts, the bot must crack a known cipher in that language.</p>

@@ -109,7 +109,7 @@ def suggestions(rows: list[dict], known_ids: set[str], specs: list[dict] = ()) -
     return out[:20]
 
 
-def write(rows: list[dict], path) -> dict:
+def write(rows: list[dict], path, current: dict | None = None) -> dict:
     latest = _latest(rows)
     specs = hypotheses.queued() + hypotheses.builtin()
     langs = lm.available()
@@ -137,6 +137,10 @@ def write(rows: list[dict], path) -> dict:
                 "github_run_url": (f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}"
                                    f"/actions/runs/{os.environ['GITHUB_RUN_ID']}")
                 if os.environ.get("GITHUB_RUN_ID") else None},
+        "current": ({"id": current["id"], "title": current.get("title", current["id"]),
+                     "lang": evaluate.lang_of(current),
+                     "started": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                     "est_seconds": estimate_seconds(current)} if current else None),
         "models": {l: lm.fingerprint(l) for l in langs},
         "counts": counts,
         "pending": pending,

@@ -62,18 +62,19 @@ def calibrated(lang: str = "en") -> bool:
     return ok
 
 
-def _publish() -> None:
+def _publish(current: dict | None = None) -> None:
+    """Rewrite REPORT/ALERTS/STATUS. `current` is the test being started, if any."""
     from . import status
     rows = ledger()
     report.write(rows)
-    status.write(rows, RESULTS / "STATUS.json")
+    status.write(rows, RESULTS / "STATUS.json", current=current)
 
 
 def _skip(spec: dict, why: str) -> None:
     lang = evaluate.lang_of(spec)
     row = {"id": spec["id"], "spec_hash": evaluate._spec_hash(spec), "spec": spec, "lang": lang,
            "lm": lm.fingerprint(lang), "p": None, "power": None, "verdict": "SKIPPED: " + why,
-           "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}
+           "finished": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
     with LEDGER.open("a") as f:
         f.write(json.dumps(row) + "\n")
 
@@ -107,12 +108,13 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
             _publish()
             continue
         log(f"[{time.strftime('%H:%M:%S')}] {spec['id']}: {spec['title']}")
+        _publish(current=spec)  # lets the dashboard show what is running right now
         try:
             res = evaluate.run(spec, workers=workers, log=log)
         except Exception as e:  # record failures too, so the loop doesn't retry them forever
             res = {"id": spec["id"], "spec_hash": evaluate._spec_hash(spec), "spec": spec,
                    "lang": evaluate.lang_of(spec), "lm": lm.fingerprint(evaluate.lang_of(spec)), "error": repr(e), "p": None, "power": None,
-                   "verdict": "ERROR", "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}
+                   "verdict": "ERROR", "finished": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
         with LEDGER.open("a") as f:
             f.write(json.dumps(res) + "\n")
         _publish()

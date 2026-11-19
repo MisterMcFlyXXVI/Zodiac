@@ -4,6 +4,7 @@ import { canWrite, getQueue } from "@/lib/github";
 import { estimateSeconds, fmtDuration, relTime } from "@/lib/stats";
 import Login from "@/components/Login";
 import RunNow from "@/components/RunNow";
+import NowPanel from "@/components/NowPanel";
 import SuggestionList from "@/components/SuggestionList";
 import QueueList, { type QueueItem } from "@/components/QueueList";
 import AddForm from "@/components/AddForm";
@@ -50,7 +51,8 @@ export default async function QueuePage() {
       <div className="card"><Login admin={admin} configured={writable} /></div>
 
       <h2>Run the bot</h2>
-      <div className="card">
+      <NowPanel status={status} runs={runs} compact />
+      <div className="card" style={{ marginTop: 12 }}>
         <p style={{ marginTop: 0 }}>
           {active
             ? <>A run is going now (started {relTime(active.run_started_at ?? active.created_at)}). <a href={active.html_url} target="_blank" rel="noreferrer">Watch it on GitHub ↗</a></>

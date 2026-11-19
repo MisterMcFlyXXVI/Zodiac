@@ -2,7 +2,7 @@ import { loadAll } from "@/lib/data";
 import ResultsTable, { type SlimRow } from "@/components/ResultsTable";
 import { cipherBase, cipherLabel, isAlert } from "@/lib/stats";
 
-export const revalidate = 120;
+export const dynamic = "force-dynamic"; // fresh relative times; GitHub data itself is cached 2 min
 
 export default async function Results({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const sp = await searchParams;

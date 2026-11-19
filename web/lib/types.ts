@@ -98,6 +98,7 @@ export type Options = {
 export type Status = {
   generated: string;
   run: { github_run_id: string | null; github_run_url: string | null };
+  current?: { id: string; title: string; lang: string; started: string; est_seconds: number } | null;
   models: Record<string, string>;
   counts: Record<string, number>;
   pending: PendingItem[];

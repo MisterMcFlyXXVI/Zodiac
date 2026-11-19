@@ -8,7 +8,7 @@ import ScoreChart from "@/components/ScoreChart";
 import SuggestionList from "@/components/SuggestionList";
 import type { Spec } from "@/lib/types";
 
-export const revalidate = 120;
+export const dynamic = "force-dynamic"; // fresh relative times; GitHub data itself is cached 2 min
 
 const LANGS: Record<string, string> = { en: "English", es: "Spanish", fr: "French", de: "German", it: "Italian", vi: "Vietnamese" };
 
