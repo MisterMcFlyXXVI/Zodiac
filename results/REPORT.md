@@ -2,7 +2,7 @@
 
 Generated from `results/ledger.jsonl`. Do not edit by hand.
 
-Hypotheses run: 3 (excluding calibration: 2).
+Hypotheses run: 7 (excluding calibration: 6).
 
 How to read this: **p** compares the real cipher with shuffled copies of its own symbols. **power** is how often genuine English, enciphered the same way, beats the nulls. If power is low, a low or high p means nothing. **p (Holm)** corrects for every hypothesis the bot has tried.
 
@@ -14,5 +14,9 @@ How to read this: **p** compares the real cipher with shuffled copies of its own
 
 | id | lang | family | p | p (Holm) | z | power | verdict | best decode |
 |---|---|---|---|---|---|---|---|---|
-| `base.z13.homophonic` | en | 1 | 0.250 | 0.500 | +0.4 | 0.00 | UNTESTABLE | `INTHERESENTIS` |
-| `base.z13.simple` | en | 1 | 0.550 | 0.550 | -0.0 | 0.00 | UNTESTABLE | `INTHEDESERTIS` |
+| `variant.z13.crosshair_null` | en | 1 | 0.150 | 0.900 | +1.3 | 0.30 | NO SIGNAL | `INTERESENTIS` |
+| `base.z13.homophonic` | en | 1 | 0.250 | 1.000 | +0.4 | 0.00 | UNTESTABLE | `INTHERESENTIS` |
+| `variant.z13.bracket_is_perp` | en | 1 | 0.250 | 1.000 | +0.6 | 0.30 | NO SIGNAL | `INTHERESENTIS` |
+| `variant.z13.circles_distinct` | en | 1 | 0.350 | 1.000 | +0.4 | 0.30 | NO SIGNAL | `THATSOMEDIATE` |
+| `base.z13.simple` | en | 1 | 0.550 | 1.000 | -0.0 | 0.00 | UNTESTABLE | `INTHEDESERTIS` |
+| `base.z32.homophonic` | en | 1 | 0.700 | 1.000 | -0.4 | 0.10 | UNTESTABLE | `LICATIONSRECEIVEDAYSOFTHELORDUNI` |
