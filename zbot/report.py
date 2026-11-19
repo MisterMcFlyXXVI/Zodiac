@@ -6,11 +6,13 @@ correction is applied across all of them, so a long-running bot cannot
 """
 from __future__ import annotations
 
+import os
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT = ROOT / "results" / "REPORT.md"
-ALERTS = ROOT / "results" / "ALERTS.md"
+RESULTS = pathlib.Path(os.environ.get("ZBOT_RESULTS_DIR", ROOT / "results"))
+OUT = RESULTS / "REPORT.md"
+ALERTS = RESULTS / "ALERTS.md"
 
 
 def holm(ps: list[float]) -> list[float]:

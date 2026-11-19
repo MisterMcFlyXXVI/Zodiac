@@ -6,6 +6,7 @@ killed at any moment and resumed later, on this machine or another one.
 from __future__ import annotations
 
 import json
+import os
 import pathlib
 import subprocess
 import time
@@ -13,7 +14,8 @@ import time
 from . import evaluate, hypotheses, lm, report
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-LEDGER = ROOT / "results" / "ledger.jsonl"
+RESULTS = pathlib.Path(os.environ.get("ZBOT_RESULTS_DIR", ROOT / "results"))
+LEDGER = RESULTS / "ledger.jsonl"
 
 
 def ledger() -> list[dict]:
