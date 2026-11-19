@@ -70,6 +70,12 @@ The results go to:
 - `results/REPORT.md`: a table of all hypotheses
 - `results/ALERTS.md`: anything that survives the correction
 
+## Web dashboard
+
+`web/` is a Next.js app for Vercel. It shows results in plain language, lets you queue the
+bot's suggestions or your own tests, and can start a run. Setup steps are in
+[`web/README.md`](web/README.md).
+
 ## Running unattended
 
 The repository is public, so GitHub Actions runs the bot for free.
@@ -151,6 +157,9 @@ zbot/evaluate.py     real vs nulls vs positive controls for one hypothesis
 zbot/hypotheses.py   built-in queue, user queue, explorer
 zbot/runner.py       resumable autonomous loop
 zbot/report.py       REPORT.md / ALERTS.md with Holm correction
+zbot/status.py       STATUS.json for the web app: queue, time estimates, suggestions
+zbot/schema.py       checks for hypotheses added from outside (web app or queue files)
+web/                 the dashboard (Next.js, deploys to Vercel)
 data/ciphers/        verified transcriptions and variants (credits in NOTICE.md)
 ```
 

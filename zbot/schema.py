@@ -109,7 +109,8 @@ def options() -> dict:
     ciphers = []
     for n in cipher_names():
         c = load_cipher(n)
+        sizes = {f: len(transforms.FAMILIES[f](len(c.text))) for f in transforms.FAMILIES}
         ciphers.append({"name": n, "text": c.text, "length": len(c.text), "distinct": len(set(c.text)),
-                        "solved": n.split(".")[0] in ("z408", "z340")})
+                        "solved": n.split(".")[0] in ("z408", "z340"), "family_sizes": sizes})
     return {"ciphers": ciphers, "models": MODELS, "languages": lm.LANG_NAMES,
             "families": FAMILY_HELP, "limits": LIMITS}

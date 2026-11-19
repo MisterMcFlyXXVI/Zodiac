@@ -112,18 +112,21 @@ def test_schema_accepts_good_user_spec():
     assert schema.check(spec) == []
 
 
-@pytest.mark.parametrize("bad", [
-    {"id": "base.z13", "title": "t", "cipher": "z13"},                       # id must start user.
-    {"id": "user.x1", "title": "t", "cipher": "z99"},                         # unknown cipher
-    {"id": "user.x2", "title": "t", "cipher": "z32", "model": "simple"},      # >26 symbols
-    {"id": "user.x3", "title": "t", "cipher": "z13", "nulls": 10_000},        # over limit
-    {"id": "user.x4", "title": "t", "cipher": "z13", "pins": {"Q": "A"}},     # symbol not in cipher
-    {"id": "user.x5", "title": "t", "cipher": "z13", "evil": "__import__"},   # unknown field
-    {"id": "user.x6", "title": "t", "cipher": "z32", "families": ["columnar2to6", "columnar7to8_sampled"]},
+@pytest.mark.parametrize("bad,why", [
+    ({"id": "base.z13x", "title": "t", "cipher": "z13"}, "id must"),
+    ({"id": "user.bad1", "title": "t", "cipher": "z99"}, "cipher must"),
+    ({"id": "user.bad2", "title": "t", "cipher": "z32", "model": "simple"}, "impossible"),
+    ({"id": "user.bad3", "title": "t", "cipher": "z13", "nulls": 10_000}, "nulls must"),
+    ({"id": "user.bad4", "title": "t", "cipher": "z13", "pins": {"Q": "A"}}, "pins map"),
+    ({"id": "user.bad5", "title": "t", "cipher": "z13", "evil": "__import__"}, "unknown fields"),
+    ({"id": "user.bad6", "title": "t", "cipher": "z408",
+      "families": ["columnar2to6", "columnar7to8_sampled", "griddec", "routes"]}, "more than 2000"),
+    ({"id": "user.bad7", "title": "", "cipher": "z13"}, "title is required"),
 ])
-def test_schema_rejects_bad_user_specs(bad):
+def test_schema_rejects_bad_user_specs(bad, why):
     from zbot import schema
-    assert schema.check(bad)
+    problems = schema.check(bad)
+    assert len(problems) == 1 and why in problems[0], problems
 
 
 def test_estimate_is_positive():
