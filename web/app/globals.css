@@ -212,3 +212,11 @@ pre { background: var(--surface-2); padding: 10px 12px; border-radius: 8px; over
 .sym .glyph { color: inherit; }
 .sym .code { font-family: var(--mono); font-size: 0.7rem; opacity: 0.6; }
 .glyph-key td { vertical-align: middle; }
+/* phones: shrink glyphs so a 17-symbol Z32 row fits without scrolling; no stuck link underline on tiles */
+a.card, a.card:hover { text-decoration: none; }
+@media (max-width: 640px) {
+  .cipher-row { gap: 1px; }
+  .cipher-row .cell { min-width: 0; padding: 2px 0; flex: 1 1 0; max-width: 26px; }
+  .cipher-row .glyph { width: 100%; height: auto; }
+  .card { padding: 14px 12px; }
+}
