@@ -89,14 +89,11 @@ export function estimateSeconds(spec: Spec, cipher: CipherOption | undefined): n
   return 2 + (instances * orders * pinSets * (spec.restarts ?? 4) * iters * perIter) / 4;
 }
 
-// Next scheduled run: the workflow cron is minute 17 of every 6th hour (UTC).
+// Daily backup start: the workflow cron is 03:17 UTC. Normally each run starts the next
+// one as it finishes, so this only matters if that chain has stopped.
 export function nextScheduled(now: Date): Date {
-  const d = new Date(now);
-  d.setUTCSeconds(0, 0);
-  for (let i = 0; i < 7 * 60; i++) {
-    if (d.getUTCMinutes() === 17 && d.getUTCHours() % 6 === 0 && d > now) return d;
-    d.setUTCMinutes(d.getUTCMinutes() + 1);
-  }
+  const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 3, 17));
+  if (d <= now) d.setUTCDate(d.getUTCDate() + 1);
   return d;
 }
 

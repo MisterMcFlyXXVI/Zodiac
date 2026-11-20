@@ -30,10 +30,9 @@ test("verdict kinds", () => {
   assert.equal(verdictKind("SKIPPED: invalid spec"), "skipped");
 });
 
-test("next scheduled run is minute 17 of an hour divisible by 6, in the future", () => {
-  const now = new Date("2026-11-19T23:00:00Z");
-  assert.equal(nextScheduled(now).toISOString(), "2026-11-20T00:17:00.000Z");
-  assert.equal(nextScheduled(new Date("2026-11-20T00:17:00Z")).toISOString(), "2026-11-20T06:17:00.000Z");
+test("daily backup start is the next 03:17 UTC", () => {
+  assert.equal(nextScheduled(new Date("2026-11-19T23:00:00Z")).toISOString(), "2026-11-20T03:17:00.000Z");
+  assert.equal(nextScheduled(new Date("2026-11-20T03:17:00Z")).toISOString(), "2026-11-21T03:17:00.000Z");
 });
 
 const status = JSON.parse(readFileSync(new URL("../../live-results/STATUS.json", import.meta.url), "utf8")) as Status;

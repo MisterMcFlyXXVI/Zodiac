@@ -6,7 +6,9 @@ name: zbot
 
 on:
   schedule:
-    - cron: "17 */6 * * *"   # every 6 hours: 00:17, 06:17, 12:17, 18:17 UTC
+    # Each successful run starts the next one (last step), so the bot works back to back.
+    # This daily run only restarts the chain if it ever stops.
+    - cron: "17 3 * * *"
   workflow_dispatch:
     inputs:
       hours:
@@ -15,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # to start the next run
 
 concurrency:
   group: zbot
@@ -65,3 +68,11 @@ jobs:
         run: |
           python -m zbot report   # rewrites STATUS.json with no current test (run is over)
           scripts/ci_publish.sh
+      - name: Start the next run
+        # Only after a successful run, so a broken setup can't loop; the daily schedule
+        # restarts the chain after a failure. Runs started this way are allowed to start
+        # workflows (workflow_dispatch is exempt from the GITHUB_TOKEN restriction).
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run zbot.yml --ref "${{ github.ref_name }}" -f hours=5.5

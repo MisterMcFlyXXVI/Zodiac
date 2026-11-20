@@ -50,7 +50,9 @@ export default function NowPanel({ status, runs, compact = false }: { status: St
       {!active && (
         <p className="small" style={{ margin: 0 }}>
           {last ? <>Last run finished {relTime(last.updated_at, now)}. </> : null}
-          Next scheduled start {relTime(sched.toISOString(), now)} ({sched.toUTCString().slice(17, 22)} UTC).
+          Runs normally follow each other back to back, so a gap usually means the last one failed or GitHub was slow
+          to start the next. Start one from the Queue page, or the daily restart will at {sched.toUTCString().slice(17, 22)} UTC
+          ({relTime(sched.toISOString(), now)}).
         </p>
       )}
 
@@ -69,7 +71,7 @@ export default function NowPanel({ status, runs, compact = false }: { status: St
       <div className="row small">
         {active && <a href={active.html_url} target="_blank" rel="noreferrer">Live log on GitHub ↗</a>}
         <span className="spacer" />
-        <span className="muted">Runs 5.5 h every 6 h{status?.generated ? ` · updated ${relTime(status.generated, now)}` : ""}</span>
+        <span className="muted">5.5-hour runs, back to back{status?.generated ? ` · updated ${relTime(status.generated, now)}` : ""}</span>
       </div>
     </div>
   );

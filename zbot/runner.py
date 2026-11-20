@@ -88,6 +88,7 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
         log=print) -> None:
     deadline = time.time() + hours * 3600
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
+    started_any = False
     while time.time() < deadline:
         spec = next((s for s in pending() if s["id"] == only), None) if only else next_spec()
         if spec is None:
@@ -107,6 +108,16 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
             _skip(spec, "invalid spec: " + "; ".join(spec["invalid"]))
             _publish()
             continue
+        if not only and started_any:
+            from .status import estimate_seconds
+            est = estimate_seconds(spec)
+            left = deadline - time.time()
+            # Don't start something that would run into the job's hard time limit; it will
+            # be first in line next run. (Estimates are rough, hence the 1.5x margin.)
+            if est == est and est * 1.5 > left and est * 1.5 < hours * 3600:
+                log(f"{spec['id']} needs ~{est/60:.0f} min, only {left/60:.0f} min left; leaving it for the next run")
+                return
+        started_any = True
         log(f"[{time.strftime('%H:%M:%S')}] {spec['id']}: {spec['title']}")
         _publish(current=spec)  # lets the dashboard show what is running right now
         try:

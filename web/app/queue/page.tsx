@@ -56,7 +56,7 @@ export default async function QueuePage() {
         <p style={{ marginTop: 0 }}>
           {active
             ? <>A run is going now (started {relTime(active.run_started_at ?? active.created_at)}). <a href={active.html_url} target="_blank" rel="noreferrer">Watch it on GitHub ↗</a></>
-            : <>No run is going right now. Scheduled runs start every 6 hours; you can start one sooner.</>}
+            : <>No run is going right now. Runs normally follow each other back to back; start one here to restart the chain.</>}
         </p>
         <RunNow enabled={admin && writable} busy={Boolean(active)} />
       </div>

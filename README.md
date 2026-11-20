@@ -78,24 +78,23 @@ bot's suggestions or your own tests, and can start a run. Setup steps are in
 
 ## Running unattended
 
-The repository is public, so GitHub Actions runs the bot for free.
-`.github/workflows/zbot.yml` runs it every 6 hours (00:17, 06:17, 12:17, 18:17 UTC) for
-5.5 hours each time, so it is working almost around the clock. Each run picks up from the ledger and pushes its results to the
-**`zbot-results`** branch; read `results/REPORT.md` and `results/ALERTS.md` there. To
-start a run by hand, open the Actions tab, choose "zbot", then "Run workflow".
+The repository is public, so GitHub Actions runs the bot for free. Each run works for 5.5
+hours, publishes its results to the **`zbot-results`** branch every 10 minutes, and when it
+finishes successfully starts the next run itself, so the bot works back to back. A daily
+run at 03:17 UTC restarts the chain if it ever stops (for example after a failed run). The
+dashboard in `web/` has a button to start a run by hand.
 
 Limits:
 
-- GitHub stops any job at 6 hours. A hypothesis still running at the limit is lost and
-  re-run next time; everything finished before it is published.
-- GitHub turns off schedules in public repos after 60 days without activity. If that
-  happens, re-enable the workflow in the Actions tab.
-- Once the built-in queue is done, the bot only explores, and most of that is
-  untestable at these lengths. Queue targeted ideas from the web app (`web/`) to give
-  it better work.
+- GitHub stops any job at 6 hours. The bot won't start a test it can't finish in the time
+  left; that test goes first next run.
+- GitHub turns off schedules in public repos after 60 days without activity. The bot's own
+  runs keep it active; if it ever happens, re-enable the workflow in the Actions tab.
+- Once the built-in queue is done, the bot only explores, and most of that is untestable
+  at these lengths. Queue targeted ideas from the web app to give it better work.
 
-To run it on your own machine instead, use `python -m zbot run --hours 8`. The ledger
-is the same format, so you can copy it between machines.
+To run it on your own machine instead, use `python -m zbot run --hours 8`. The ledger has
+the same format, so you can copy it between machines.
 
 ## What's in the queue
 

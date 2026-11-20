@@ -132,3 +132,30 @@ def test_schema_rejects_bad_user_specs(bad, why):
 def test_estimate_is_positive():
     from zbot import status
     assert status.estimate_seconds({"id": "x", "cipher": "z13"}) > 0
+
+
+def test_runner_leaves_long_work_for_next_run(tmp_path, monkeypatch):
+    from zbot import runner, status, evaluate
+    monkeypatch.setattr(runner, "LEDGER", tmp_path / "ledger.jsonl")
+    monkeypatch.setattr(runner, "RESULTS", tmp_path)
+    monkeypatch.setattr(runner, "calibrated", lambda lang="en": True)
+    monkeypatch.setattr(runner, "_publish", lambda current=None: None)
+    specs = iter([{"id": "a", "title": "a", "cipher": "z13"}, {"id": "b", "title": "b", "cipher": "z13"}])
+    monkeypatch.setattr(runner, "next_spec", lambda: next(specs))
+    import time as _time
+    clock = {"t": 1_000_000.0}
+    fake = type("T", (), {"time": staticmethod(lambda: clock["t"]),
+                          "strftime": staticmethod(_time.strftime), "gmtime": staticmethod(_time.gmtime)})
+    monkeypatch.setattr(runner, "time", fake)
+    ran = []
+
+    def fake_run(spec, **k):
+        ran.append(spec["id"])
+        clock["t"] += 1800                       # each test takes 30 min
+        return {"id": spec["id"], "spec_hash": "h", "verdict": "NO SIGNAL", "p": 0.5, "power": 0.5}
+
+    monkeypatch.setattr(evaluate, "run", fake_run)
+    monkeypatch.setattr(status, "estimate_seconds", lambda spec: 1800.0)   # estimated 30 min each
+    runner.run(hours=1.0, log=lambda *a: None)                          # 60 min budget
+    # After "a", 30 min are left; "b" needs 30 min x 1.5 margin, so it waits for the next run.
+    assert ran == ["a"]
