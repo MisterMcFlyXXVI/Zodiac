@@ -5,6 +5,7 @@ import { canWrite } from "@/lib/github";
 import { cipherLabel, fmtDuration, fmtP, isAlert, relTime } from "@/lib/stats";
 import Verdict, { VERDICT_HELP } from "@/components/Verdict";
 import ScoreChart from "@/components/ScoreChart";
+import { CipherGlyphs } from "@/components/Glyph";
 import SuggestionList from "@/components/SuggestionList";
 import type { Spec } from "@/lib/types";
 
@@ -21,6 +22,19 @@ export default async function Hypothesis({ params }: { params: Promise<{ id: str
   const slug = id.replace(/^user\./, "");
   const related = (status?.suggestions ?? []).filter((s) => s.spec.id.includes(slug));
   const isCalib = id.startsWith("calib.");
+  // The tested cipher as written (after any ignored symbols are removed), for the glyph views.
+  const names = Array.isArray(r.spec.cipher) ? r.spec.cipher : r.spec.cipher ? [r.spec.cipher] : [];
+  const opts = status?.options.ciphers ?? [];
+  const tested = names.map((n) => {
+    let t = opts.find((c) => c.name === n)?.text ?? "";
+    for (const d of r.spec.drop_symbols ?? []) t = t.split(d).join("");
+    return t;
+  });
+  const haveText = tested.length > 0 && tested.every((t) => t.length > 0) && tested.join("").length <= 60;
+  const best = r.top?.[0];
+  // Letters line up with the glyphs only when the cipher was read as written.
+  const aligned = haveText && best && best.order.startsWith("identity") && best.plaintext.replaceAll("/", "").length === tested.join("").length
+    ? best.plaintext.split("/") : null;
 
   return (
     <>
@@ -72,6 +86,15 @@ export default async function Hypothesis({ params }: { params: Promise<{ id: str
           {r.top && r.top.length > 0 && (
             <>
               <h2>Best decodes</h2>
+              {aligned && (
+                <div className="card" style={{ marginBottom: 12 }}>
+                  <div className="small muted" style={{ marginBottom: 6 }}>The best decode, letter by letter under each symbol:</div>
+                  {tested.map((t, i) => (
+                    <CipherGlyphs key={i} text={t} under={aligned[i] ?? ""}
+                      rows={names[i]?.split(".")[0] === "z32" && t.length === 32 ? [17, 15] : undefined} />
+                  ))}
+                </div>
+              )}
               <p className="small muted">
                 {isCalib
                   ? "The solver's reading of the calibration cipher."
@@ -98,7 +121,17 @@ export default async function Hypothesis({ params }: { params: Promise<{ id: str
       )}
 
       <h2>What was tested</h2>
-      <div className="card"><Describe spec={r.spec} /></div>
+      <div className="card">
+        {haveText && (
+          <div style={{ marginBottom: 10 }}>
+            {tested.map((t, i) => (
+              <CipherGlyphs key={i} text={t} rows={names[i]?.split(".")[0] === "z32" && t.length === 32 ? [17, 15] : undefined} />
+            ))}
+            {(r.spec.drop_symbols?.length ?? 0) > 0 && <div className="small muted">Shown with the ignored symbols removed.</div>}
+          </div>
+        )}
+        <Describe spec={r.spec} />
+      </div>
       <details style={{ marginTop: 10 }}>
         <summary className="small">Exact specification (JSON)</summary>
         <pre>{JSON.stringify(r.spec, null, 2)}</pre>

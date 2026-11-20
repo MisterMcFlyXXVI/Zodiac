@@ -32,6 +32,16 @@ you queue the bot's own suggestions, add new tests, and start a run.
 
 Then open the site, go to **Queue & ideas**, and unlock with your password.
 
+## Troubleshooting
+
+- **`PYTHON_ENTRYPOINT_NOT_FOUND` / "Framework: python"**: that Vercel project is building
+  the repo root, where it finds the bot's Python files. Set *Settings → Build and Deployment
+  → Root Directory* to `web` and *Framework Preset* to Next.js, then redeploy.
+- **Only one Vercel project should be connected to this repo.** Every connected project
+  builds every push.
+- The `zbot-results` branch holds only results plus a `vercel.json` that turns deployments
+  off for it, so the bot's pushes every 10 minutes don't start website builds.
+
 ## How the buttons work
 
 | Button | What happens on GitHub |

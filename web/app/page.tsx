@@ -2,6 +2,7 @@ import { loadAll } from "@/lib/data";
 import { cipherLabel, fmtDuration, fmtP, isAlert, relTime } from "@/lib/stats";
 import Verdict from "@/components/Verdict";
 import NowPanel from "@/components/NowPanel";
+import { CipherGlyphs } from "@/components/Glyph";
 
 export const dynamic = "force-dynamic"; // fresh relative times; GitHub data itself is cached 2 min
 
@@ -46,6 +47,16 @@ export default async function Overview() {
         transcription, language) and measures whether the real cipher looks any more like text than chance.
       </p>
       {problems.length > 0 && <div className="msg err">Couldn&apos;t load everything: {problems.join("; ")}</div>}
+      <div className="grid two" style={{ marginTop: 12 }}>
+        <a className="card" href="/guide" style={{ color: "inherit" }}>
+          <div className="small muted">Z13 · “My name is …” · April 1970</div>
+          <CipherGlyphs text="AENz0K0M0[NAM" size={22} />
+        </a>
+        <a className="card" href="/guide" style={{ color: "inherit" }}>
+          <div className="small muted">Z32 · the Mt. Diablo map cipher · June 1970</div>
+          <CipherGlyphs text="C9J|#Ok[AMf8?ORTGX6FDVj%HCELzPW9" rows={[17, 15]} size={22} />
+        </a>
+      </div>
       <div className={`headline ${alerts.length ? "alert" : ""}`}>{headline}</div>
 
       <div className="grid tiles" style={{ marginTop: 18 }}>

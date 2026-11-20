@@ -4,6 +4,7 @@ import { call } from "@/lib/client";
 import { estimateSeconds, fmtDuration } from "@/lib/stats";
 import { checkSpec, slugify } from "@/lib/validate";
 import type { Options, Spec } from "@/lib/types";
+import Glyph, { CipherGlyphs } from "./Glyph";
 
 const PRESETS: { label: string; apply: Partial<Spec> }[] = [
   { label: "Z13, one symbol per letter", apply: { cipher: "z13", model: "simple", families: ["identity"] } },
@@ -89,7 +90,11 @@ export default function AddForm({ options, admin, writable }: { options: Options
               {solved.map((x) => <option key={x.name} value={x.name}>{label(x.name)} — {x.length} symbols</option>)}
             </optgroup>
           </select>
-          <div className="help mono" style={{ wordBreak: "break-all" }}>{c.text.length <= 40 ? c.text : c.text.slice(0, 40) + "…"}</div>
+          <div className="help" style={{ marginTop: 6 }}>
+            {c.length <= 40
+              ? <CipherGlyphs text={c.text} rows={c.name.startsWith("z32") && c.length === 32 ? [17, 15] : undefined} size={20} />
+              : <span className="mono" style={{ wordBreak: "break-all" }}>{c.text.slice(0, 40)}… (shown as transcription codes)</span>}
+          </div>
         </div>
         <div className="field">
           <label htmlFor="f-lang">Language of the hidden message</label>
@@ -139,15 +144,17 @@ export default function AddForm({ options, admin, writable }: { options: Options
           <div className="symbols">
             {symbols.map((s) => (
               <button type="button" key={s} className={`sym ${drops.includes(s) ? "on" : ""}`} aria-pressed={drops.includes(s)}
-                onClick={() => setDrops((d) => (d.includes(s) ? d.filter((x) => x !== s) : d.length < 3 ? [...d, s] : d))}>{s}</button>
+                onClick={() => setDrops((d) => (d.includes(s) ? d.filter((x) => x !== s) : d.length < 3 ? [...d, s] : d))}>
+                <Glyph code={s} size={18} /><span className="code">{s}</span>
+              </button>
             ))}
           </div>
-          <div className="help">Up to 3. Example: Zodiac&apos;s crosshair <code>z</code> may be a signature rather than a letter.</div>
+          <div className="help">Up to 3. Example: Zodiac&apos;s crosshair may be a signature rather than a letter.</div>
           <label style={{ marginTop: 12 }}>Fix symbols to letters</label>
           <div className="symbols">
             {symbols.filter((s) => !drops.includes(s)).map((s) => (
               <span key={s} className="row" style={{ gap: 2 }}>
-                <span className="mono">{s}=</span>
+                <Glyph code={s} size={18} /><span className="mono small">=</span>
                 <select aria-label={`Letter for ${s}`} value={pins[s] ?? ""} style={{ width: 56, padding: "2px 4px" }}
                   onChange={(e) => setPins((p) => ({ ...p, [s]: e.target.value }))}>
                   <option value="">?</option>

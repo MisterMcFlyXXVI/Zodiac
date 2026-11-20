@@ -201,3 +201,14 @@ pre { background: var(--surface-2); padding: 10px 12px; border-radius: 8px; over
 @media (max-width: 640px) { .card .explain > div { grid-template-columns: 1fr; gap: 0; } }
 .progress { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; margin: 8px 0 4px; }
 .progress span { display: block; height: 100%; background: var(--accent); border-radius: 999px; }
+/* cipher glyphs */
+.glyph { display: block; color: var(--text); }
+.cipher-glyphs { display: flex; flex-direction: column; gap: 6px; overflow-x: auto; padding: 2px 0; }
+.cipher-row { display: flex; gap: 3px; }
+.cipher-row .cell { display: flex; flex-direction: column; align-items: center; min-width: 26px; padding: 2px 1px; border-radius: 5px; }
+.cipher-row .cell:hover { background: var(--surface-2); }
+.cipher-row .under { font-family: var(--mono); font-size: 0.85rem; font-weight: 600; color: var(--accent-ink); line-height: 1.2; }
+.sym { display: inline-flex; align-items: center; gap: 2px; }
+.sym .glyph { color: inherit; }
+.sym .code { font-family: var(--mono); font-size: 0.7rem; opacity: 0.6; }
+.glyph-key td { vertical-align: middle; }

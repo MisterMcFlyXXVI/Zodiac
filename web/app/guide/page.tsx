@@ -1,4 +1,10 @@
+import Glyph, { CipherGlyphs } from "@/components/Glyph";
+import { GLYPHS } from "@/lib/glyphs";
+
 export const metadata = { title: "How to read this · zbot" };
+
+const Z13 = "AENz0K0M0[NAM";
+const Z32 = "C9J|#Ok[AMf8?ORTGX6FDVj%HCELzPW9";
 
 export default function Guide() {
   return (
@@ -13,12 +19,12 @@ export default function Guide() {
       <div className="grid two">
         <div className="card">
           <h3>Z13: &ldquo;My name is …&rdquo;</h3>
-          <p className="mono">AENz0K0M0[NAM</p>
+          <CipherGlyphs text={Z13} />
           <p className="small">April 1970. 13 symbols, only 8 different ones. Thousands of English phrases and names fit its repeat pattern.</p>
         </div>
         <div className="card">
           <h3>Z32: the Mt. Diablo map cipher</h3>
-          <p className="mono">C9J|#Ok[AMf8?ORTG<br />X6FDVj%HCELzPW9</p>
+          <CipherGlyphs text={Z32} rows={[17, 15]} />
           <p className="small">June 1970. 32 symbols, 29 different ones. Almost any English text of that length fits.</p>
         </div>
       </div>
@@ -26,6 +32,34 @@ export default function Guide() {
         Z408 (solved 1969) and Z340 (solved 2020) are used only to prove the solver works. zbot recovers 97.5% and 97.1% of their
         letters from scratch.
       </p>
+
+      <h2>The symbols, and their codes</h2>
+      <p className="small">
+        The bot names each glyph with a keyboard character (David Oranchak&apos;s standard scheme, also used by AZdecrypt, the
+        solver that cracked Z340). Only <em>which positions share a symbol</em> matters to the solver, never the shape, so the
+        names don&apos;t affect results. The drawings here are approximations from written descriptions of the scans, not
+        tracings. Hover over any glyph to see its description.
+      </p>
+      <details>
+        <summary className="small">Show the key ({Object.keys(GLYPHS).length} glyphs)</summary>
+        <div className="table-wrap" style={{ marginTop: 8 }}>
+          <table className="glyph-key">
+            <thead><tr><th>Glyph</th><th>Code</th><th>Description</th><th className="num">In Z13</th><th className="num">In Z32</th></tr></thead>
+            <tbody>
+              {[...new Set([...Z13, ...Z32]), ...Object.keys(GLYPHS).filter((c) => !Z13.includes(c) && !Z32.includes(c))]
+                .map((code) => [code, GLYPHS[code]] as const).filter(([, g]) => g).map(([code, g]) => (
+                <tr key={code}>
+                  <td><Glyph code={code} size={26} /></td>
+                  <td className="mono">{code}</td>
+                  <td className="small">{g.desc}</td>
+                  <td className="num">{[...Z13].filter((c) => c === code).length || ""}</td>
+                  <td className="num">{[...Z32].filter((c) => c === code).length || ""}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
 
       <h2>What each test does</h2>
       <ol>
