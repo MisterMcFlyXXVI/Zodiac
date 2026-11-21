@@ -20,7 +20,17 @@ semantic (neural language model) scorer was therefore NOT pursued.
 | Z32 radians/inches instructions from the 26 Jun / 26 Jul 1970 letters (`hypotheses/candidates/z32_radians_v1`) | 165 | 0 in all 6 readings | 0.036 |
 | Z13 Mikado names (26 Jul 1970 letter quotes Ko-Ko's "little list") + persona phrases (`z13_mikado_persona_v1`) | 128 | 0 in all 10 readings x keys | ~0.00 |
 
-Images: the best Z13 image available offline (zodiackillerfacts.com copy in Oranchak's repository,
+Images (update): the Wikimedia Commons scan of the 20 Apr 1970 letter (binarized; fetched as a
+500 px thumbnail of the 640x829 original because Wikimedia rate-limits this connection) was examined
+at 7x. All three circled glyphs (positions 5, 7, 9) share one construction: heavy circle, inner small
+top loop over a lower part split in two (circled 8 / Taurus). Differences are tilt, ovalness and size,
+typical of handwriting; no added, missing or differently shaped inner stroke. This supports reading them
+as ONE symbol (the standard transcription), moderately: each circle is ~12 px wide. The hooked
+upside-down T (position 10) shows its base curling up at the right, as transcribed. The other Commons
+Z13 image ("My Name Is....Zodiac Cipher.jpg") is a modern redrawing made for a suspect theory, not
+evidence. The environment service refused the FBI vault and Zodiac research sites; Wikimedia was allowed.
+
+Earlier images note: the best Z13 image available offline (zodiackillerfacts.com copy in Oranchak's repository,
 407x576) was examined at 8x: the three circles look alike but are ~10 pixels wide, too coarse to
 settle whether they are one symbol. A request to reach the FBI vault and other image hosts from this
 environment was rejected.
