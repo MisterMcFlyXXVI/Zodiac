@@ -1,3 +1,4 @@
+import json
 import random
 
 import numpy as np
@@ -199,3 +200,25 @@ def test_schema_scorer_must_be_offered():
     assert schema.check(ok) == []
     assert schema.check(dict(ok, scorer={"words": 99.0}))
     assert schema.check(dict(ok, lang="fr"))
+
+
+def test_exploration_never_repeats_a_test(tmp_path, monkeypatch):
+    from zbot import runner, hypotheses
+    monkeypatch.setattr(runner, "LEDGER", tmp_path / "ledger.jsonl")
+    monkeypatch.setattr(runner, "pending", lambda: [])
+    done = []
+    for _ in range(30):
+        spec = runner.next_spec()
+        assert runner._content(spec) not in {runner._content(d) for d in done}
+        done.append(spec)
+        with runner.LEDGER.open("a") as f:
+            f.write(json.dumps({"id": spec["id"], "spec": spec, "spec_hash": "x"}) + "\n")
+
+
+def test_holm_family_excludes_untestable():
+    from zbot import report
+    rows = [{"id": "good", "p": 0.01, "power": 0.6, "verdict": "NO SIGNAL", "spec": {}},
+            {"id": "blind", "p": 0.02, "power": 0.05, "verdict": "UNTESTABLE", "spec": {}}]
+    report.write.__globals__["OUT"]  # module loads
+    fam = [r for r in rows if r["power"] >= report.MIN_POWER]
+    assert [r["id"] for r in fam] == ["good"]

@@ -13,6 +13,8 @@ export function verdictKind(v: string | undefined): VerdictKind {
   return "error";
 }
 
+export const MIN_POWER = 0.2;
+
 /** Holm-Bonferroni adjusted p-values, same as zbot/report.py. */
 export function holm(ps: number[]): number[] {
   const m = ps.length;
@@ -32,8 +34,10 @@ export function prepare(rows: LedgerRow[]): Row[] {
   for (const r of rows) latest.set(r.id, r);
   const all = [...latest.values()];
   const tested = all.filter((r) => r.p !== null && r.p !== undefined && !r.id.startsWith("calib."));
-  const adj = holm(tested.map((r) => r.p as number));
-  const holmById = new Map(tested.map((r, i) => [r.id, adj[i]]));
+  // Same family as zbot/report.py: only tests that could see something (power >= 0.2).
+  const family = tested.filter((r) => r.power === null || r.power === undefined || r.power >= MIN_POWER);
+  const adj = holm(family.map((r) => r.p as number));
+  const holmById = new Map(family.map((r, i) => [r.id, adj[i]]));
   return all.map((r) => ({
     ...r,
     p_holm: holmById.get(r.id) ?? null,

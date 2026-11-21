@@ -15,6 +15,9 @@ OUT = RESULTS / "REPORT.md"
 ALERTS = RESULTS / "ALERTS.md"
 
 
+MIN_POWER = 0.2
+
+
 def holm(ps: list[float]) -> list[float]:
     m = len(ps)
     order = sorted(range(m), key=lambda i: ps[i])
@@ -33,8 +36,15 @@ def write(rows: list[dict]) -> None:
         latest[r["id"]] = r
     rs = list(latest.values())
     tested = [r for r in rs if r.get("p") is not None and not r["id"].startswith("calib.")]
-    adj = holm([r["p"] for r in tested])
-    for r, a in zip(tested, adj):
+    # Correction family: tests that could see something. A test with power < MIN_POWER can't
+    # yield an alert anyway, and power is measured on genuine-text controls independently of
+    # the real cipher's score, so filtering on it doesn't cherry-pick p-values (independent
+    # filtering). Untestable tests get no corrected p.
+    family = [r for r in tested if r.get("power") is None or r["power"] >= MIN_POWER]
+    adj = holm([r["p"] for r in family])
+    for r in tested:
+        r["p_holm"] = None
+    for r, a in zip(family, adj):
         r["p_holm"] = a
 
     lines = ["# Zodiac bot: results", "",
@@ -58,7 +68,7 @@ def write(rows: list[dict]) -> None:
     for r in sorted(tested, key=lambda r: r["p"]):
         best = (r.get("top") or [{}])[0]
         pw = "n/a" if r.get("power") is None else f"{r['power']:.2f}"
-        lines.append(f"| `{r['id']}` | {r.get('lang', 'en')} | {r.get('family_size', '?')} | {r['p']:.3f} | {r['p_holm']:.3f} | {r.get('z') or 0:+.1f} | {pw} | "
+        lines.append(f"| `{r['id']}` | {r.get('lang', 'en')} | {r.get('family_size', '?')} | {r['p']:.3f} | {"–" if r['p_holm'] is None else f"{r['p_holm']:.3f}"} | {r.get('z') or 0:+.1f} | {pw} | "
                      f"{r['verdict'].split(':')[0]} | `{best.get('plaintext', '')[:40]}` |")
     errs = [r for r in rs if r.get("verdict") == "ERROR" or r.get("verdict", "").startswith("SKIPPED")]
     if errs:
@@ -66,7 +76,7 @@ def write(rows: list[dict]) -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(lines) + "\n")
 
-    hits = [r for r in tested if r["p_holm"] < 0.05 and (r.get("power") or 0) >= 0.5]
+    hits = [r for r in tested if r["p_holm"] is not None and r["p_holm"] < 0.05 and (r.get("power") or 0) >= 0.5]
     alert = ["# Alerts", ""]
     if not hits:
         alert.append("None. No hypothesis survives correction for multiple comparisons with adequate power.")

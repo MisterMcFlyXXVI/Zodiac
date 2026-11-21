@@ -24,6 +24,16 @@ test("prepare keeps the latest row per id and excludes calibrations from correct
   assert.equal(rows.find((r) => r.id.startsWith("calib"))!.p_holm, null);
 });
 
+test("untestable tests are left out of the correction", () => {
+  const base = { spec_hash: "x", spec: { id: "a" }, verdict: "NO SIGNAL: x" };
+  const rows = prepare([
+    { ...base, id: "good", p: 0.01, power: 0.6 },
+    { ...base, id: "blind", p: 0.02, power: 0.05, verdict: "UNTESTABLE: x" },
+  ]);
+  assert.equal(rows.find((r) => r.id === "good")!.p_holm, 0.01);   // family of one
+  assert.equal(rows.find((r) => r.id === "blind")!.p_holm, null);
+});
+
 test("verdict kinds", () => {
   assert.equal(verdictKind("UNTESTABLE: x"), "untestable");
   assert.equal(verdictKind("CALIBRATION PASS"), "pass");

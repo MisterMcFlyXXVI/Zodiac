@@ -42,12 +42,45 @@ def pending() -> list[dict]:
             and evaluate.lang_of(s) in langs]
 
 
-def next_spec() -> dict:
+def _content(spec: dict) -> str:
+    """What a test actually does, ignoring its name and description."""
+    return json.dumps({k: v for k, v in spec.items() if k not in ("id", "title", "motivation", "source")},
+                      sort_keys=True)
+
+
+def next_spec() -> dict | None:
+    """Next queued test, else a NEW exploration idea (never one that already ran).
+    Returns None when exploration has nothing new left."""
     p = pending()
     if p:
         return p[0]
-    n = sum(1 for r in ledger() if r["id"].startswith("explore."))
-    return hypotheses.explore(n)
+    rows = ledger()
+    seen = {_content(r["spec"]) for r in rows if "spec" in r}
+    n = sum(1 for r in rows if r["id"].startswith("explore."))
+    for k in range(n, n + 500):
+        spec = hypotheses.explore(k)
+        if _content(spec) not in seen:
+            return spec
+    return None
+
+
+PILOT = {"nulls": 9, "controls": 8, "extend_nulls": 0}
+PILOT_MIN_POWER = 0.25
+
+
+def _run(spec: dict, workers, log) -> dict:
+    """Exploration ideas get a cheap power pilot first; if genuine text couldn't stand out,
+    the pilot result is recorded (as untestable) instead of spending a full test."""
+    if spec["id"].startswith("explore."):
+        pilot = evaluate.run(dict(spec, **PILOT), workers=workers, log=log)
+        if pilot.get("power") is not None and pilot["power"] < PILOT_MIN_POWER:
+            pilot["spec"] = spec
+            pilot["spec_hash"] = evaluate._spec_hash(spec)
+            pilot["pilot"] = True
+            pilot["verdict"] = ("UNTESTABLE: power pilot (8 genuine-text tests) found real text would not "
+                                "stand out; full test skipped")
+            return pilot
+    return evaluate.run(spec, workers=workers, log=log)
 
 
 def calib_id(lang: str) -> str:
@@ -92,7 +125,7 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
     while time.time() < deadline:
         spec = next((s for s in pending() if s["id"] == only), None) if only else next_spec()
         if spec is None:
-            log(f"{only}: already done")
+            log(f"{only}: already done" if only else "nothing new to explore; stopping (queue more work)")
             return
         lang = evaluate.lang_of(spec)
         if not spec["id"].startswith("calib.") and not calibrated(lang):
@@ -121,7 +154,7 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
         log(f"[{time.strftime('%H:%M:%S')}] {spec['id']}: {spec['title']}")
         _publish(current=spec)  # lets the dashboard show what is running right now
         try:
-            res = evaluate.run(spec, workers=workers, log=log)
+            res = _run(spec, workers, log)
         except Exception as e:  # record failures too, so the loop doesn't retry them forever
             res = {"id": spec["id"], "spec_hash": evaluate._spec_hash(spec), "spec": spec,
                    "lang": evaluate.lang_of(spec), "lm": lm.fingerprint(evaluate.lang_of(spec)), "error": repr(e), "p": None, "power": None,
