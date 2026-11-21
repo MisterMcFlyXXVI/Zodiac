@@ -1,0 +1,9 @@
+{
+  "id": "user.cover.en.z13-reversed.simple",
+  "cipher": "z13.reversed",
+  "model": "simple",
+  "lang": "en",
+  "title": "z13.reversed as English, simple substitution",
+  "motivation": "Fills a gap in the transcription x key x language grid.",
+  "suggested_by": "zbot"
+}

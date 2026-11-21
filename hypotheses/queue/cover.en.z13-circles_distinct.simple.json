@@ -1,0 +1,9 @@
+{
+  "id": "user.cover.en.z13-circles_distinct.simple",
+  "cipher": "z13.circles_distinct",
+  "model": "simple",
+  "lang": "en",
+  "title": "z13.circles_distinct as English, simple substitution",
+  "motivation": "Fills a gap in the transcription x key x language grid.",
+  "suggested_by": "zbot"
+}
