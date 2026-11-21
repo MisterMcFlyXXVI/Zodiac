@@ -3,6 +3,28 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-21 (later): Case-grounded candidate tests
+
+Context-based ideas only help as short, specific candidate lists checked exactly. A fit is meaningful
+when (list size) x (chance a random English passage fits) is small. Measured chance rates: Z13 under a
+one-to-one key, under 1 in 700,000 (0 of 715,000 whole-word passages); Z32 under a homophonic key,
+about 1 in 4,500 (157 of 713,360). The Z32 figure means many meaningful sentences fit it, e.g.
+"POLICE GOT CLOSE ENOUGH TO THE PLANE TO", so no judge of meaning can single out its message: a
+semantic (neural language model) scorer was therefore NOT pursued.
+
+| List (all committed before checking) | Size | Fits | Chance expects |
+|---|---|---|---|
+| Passages from Zodiac's own letters, vs Z13 (4 readings) | 992 | 0 | ~0.00 |
+| Passages from Zodiac's own letters, vs Z32 | 1,031 | 0 | 0.23 |
+| 36 publicly discussed suspects, 387 spellings (winchxyz list, re-checked with our code), vs every Z13 reading | 387 | 0 (only a post-hoc reading built to fit) | – |
+| Z32 radians/inches instructions from the 26 Jun / 26 Jul 1970 letters (`hypotheses/candidates/z32_radians_v1`) | 165 | 0 in all 6 readings | 0.036 |
+| Z13 Mikado names (26 Jul 1970 letter quotes Ko-Ko's "little list") + persona phrases (`z13_mikado_persona_v1`) | 128 | 0 in all 10 readings x keys | ~0.00 |
+
+Images: the best Z13 image available offline (zodiackillerfacts.com copy in Oranchak's repository,
+407x576) was examined at 8x: the three circles look alike but are ~10 pixels wide, too coarse to
+settle whether they are one symbol. A request to reach the FBI vault and other image hosts from this
+environment was rejected.
+
 ## 2026-11-21: Sharper scoring, Zodiac priors, and why the ciphers resist
 
 **Goal.** Raise the bot's *power* (how often genuine text, enciphered with the real cipher's
