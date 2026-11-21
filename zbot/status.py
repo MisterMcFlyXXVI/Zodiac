@@ -26,6 +26,8 @@ def estimate_seconds(spec: dict) -> float:
     nsym = len(set("".join(texts)))
     iters = spec.get("iters") or max(50_000, 10_000 * nsym)
     per_iter = 0.8e-6 + 0.2e-6 * (n / nsym)  # fitted to measured run times
+    if (spec.get("scorer") or {}).get("words"):
+        per_iter *= 2.0  # word segmentation roughly doubles the cost per step (measured)
     members = len(evaluate.family_for(spec, len(texts[0]))) * len(evaluate.pin_sets(spec))
     instances = 1 + spec.get("nulls", 19) + spec.get("controls", 10)
     return 2.0 + instances * members * spec.get("restarts", 4) * iters * per_iter / WORKERS

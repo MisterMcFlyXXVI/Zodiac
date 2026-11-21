@@ -27,6 +27,10 @@ def _build_lm(langs):
         check = [cipher.load("z408").plaintext, ro.plaintext.replace("?", "")] if lang == "en" else None
         lm.build(check, lang=lang)
         print(f"{lm.LANG_NAMES[lang]} model built: {lm.lm_path(lang)} ({lm.fingerprint(lang)})")
+        if lang == "en":
+            from . import words
+            n = int(words.build()["nwords"])
+            print(f"English word list built: {n} words ({words.OUT})")
 
 
 def main(argv=None):

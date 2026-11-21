@@ -60,6 +60,33 @@ def gutenberg_text(z: zipfile.ZipFile) -> str:
 
 
 EUROPARL = {"es": "spanish", "fr": "french", "de": "german", "it": "italian"}
+ZODIAC_REPO = "https://github.com/DrDub/zodiac-killer-ciphers"   # mirror of Oranchak's project data
+NORVIG_1W = "https://raw.githubusercontent.com/norvig/pytudes/main/data/text/count_1w.txt"
+
+
+def fetch_zodiac_letters(dest: pathlib.Path) -> None:
+    """Transcriptions of the Zodiac letters (letters/*.txt), one file per item, for the
+    vocabulary prior. Not redistributed here (the source repo has no licence file)."""
+    if dest.exists() and any(dest.iterdir()):
+        print(f"{dest} exists, skipping", file=sys.stderr)
+        return
+    with tempfile.TemporaryDirectory() as d:
+        subprocess.run(["git", "clone", "-q", "--depth", "1", "--filter=blob:none", "--sparse", ZODIAC_REPO, d],
+                       check=True)
+        subprocess.run(["git", "-C", d, "sparse-checkout", "set", "letters"], check=True)
+        dest.mkdir(parents=True, exist_ok=True)
+        for p in sorted(pathlib.Path(d, "letters").glob("*.txt")):
+            (dest / p.name).write_bytes(p.read_bytes())
+    print(f"wrote {dest}", file=sys.stderr)
+
+
+def fetch_word_counts(dest: pathlib.Path) -> None:
+    if dest.exists() and dest.stat().st_size > 0:
+        print(f"{dest} exists, skipping", file=sys.stderr)
+        return
+    print(f"downloading {NORVIG_1W}", file=sys.stderr)
+    with urllib.request.urlopen(NORVIG_1W, timeout=300) as r:
+        dest.write_bytes(r.read())
 VNTC_URL = "https://raw.githubusercontent.com/duyvuleo/VNTC/master/Data/27Topics/Ver1.1/Train.rar"
 
 
@@ -110,6 +137,8 @@ def main() -> None:
         print(f"wrote {dest} ({dest.stat().st_size:,} bytes)", file=sys.stderr)
     if "en" not in langs:
         return
+    fetch_word_counts(OUT / "count_1w.txt")
+    fetch_zodiac_letters(OUT / "zodiac_letters")
     targets = {"brown": brown_text, "gutenberg": gutenberg_text}
     for name, extract in targets.items():
         dest = OUT / f"{name}.txt"

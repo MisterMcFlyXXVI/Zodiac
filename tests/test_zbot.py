@@ -159,3 +159,43 @@ def test_runner_leaves_long_work_for_next_run(tmp_path, monkeypatch):
     runner.run(hours=1.0, log=lambda *a: None)                          # 60 min budget
     # After "a", 30 min are left; "b" needs 30 min x 1.5 margin, so it waits for the next run.
     assert ran == ["a"]
+
+
+words_built = pytest.mark.skipif(not (lm.LM_PATH.parent / "words_en.npz").exists(), reason="run `python -m zbot setup`")
+
+
+@words_built
+def test_word_segmentation_prefers_real_words():
+    from zbot import words
+    good, seg = words.segment("INTHEDESERTIS")
+    assert seg == ["IN", "THE", "DESERT", "IS"]
+    assert good > words.segment("QXZJVKWPQXZJV")[0] + 30
+
+
+@words_built
+def test_numba_word_score_matches_reference():
+    from zbot import words
+    t = words.load()
+    text = "ILIKEKILLINGPEOPLE"
+    seq = np.array([ord(c) - 65 for c in text])
+    key = np.arange(26)
+    got = anneal._wordseg(key, seq, np.array([0]), np.array([len(text)]), t["children"], t["wscore"],
+                          -8.0, 0.0, np.zeros(len(text) + 1))
+    assert got == pytest.approx(words.segment(text, unk=-8.0)[0], abs=1e-3)
+
+
+def test_zodiac_vocab_excludes_z408_solution():
+    from zbot import words
+    if not words.LETTERS_DIR.exists():
+        pytest.skip("letters not fetched")
+    assert all(p.name != "1969-07-31-cipher.txt" for p in words.zodiac_files())
+    a, b = set(words.zodiac_files("A")), set(words.zodiac_files("B"))
+    assert a and b and not (a & b)
+
+
+def test_schema_scorer_must_be_offered():
+    from zbot import schema
+    ok = {"id": "user.words-z32", "title": "t", "cipher": "z32", "scorer": schema.SCORERS["words"]["config"]}
+    assert schema.check(ok) == []
+    assert schema.check(dict(ok, scorer={"words": 99.0}))
+    assert schema.check(dict(ok, lang="fr"))

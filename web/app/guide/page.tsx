@@ -97,6 +97,15 @@ export default function Guide() {
         Z340. Each test costs a little statistical credibility (see p (Holm)), so a few well-motivated tests beat many random ones.
       </p>
 
+      <h2>What we&apos;ve learned so far</h2>
+      <p>
+        Measured on genuine test ciphers built like Z32, the solver finds readings that score <em>higher</em> than the true
+        message in 12 of 12 cases. So the ciphers don&apos;t resist because the search is weak; with this much freedom in the
+        key, many readings are more &ldquo;English&rdquo; than the real one. Scoring whole words raised Z32&apos;s power from about
+        0.07 to about 0.2–0.28, which is why some tests use it. The full measurements, including what didn&apos;t work, are in
+        the <a href="https://github.com/MisterMcFlyXXVI/Zodiac/blob/HEAD/results/FINDINGS.md" target="_blank" rel="noreferrer">research log ↗</a>.
+      </p>
+
       <h2>What this is not</h2>
       <p>
         zbot does not identify anyone. A name that fits Z13&apos;s pattern is not evidence about a person: hundreds of names fit.

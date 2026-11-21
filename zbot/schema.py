@@ -13,7 +13,16 @@ from .cipher import load as load_cipher, variants
 
 BASE_CIPHERS = ["z13", "z32", "z408", "z340"]
 MODELS = {"homophonic": "Several symbols may stand for the same letter (Zodiac's usual method)",
-          "simple": "Exactly one symbol per letter"}
+          "simple": "Exactly one symbol per letter",
+          "zodiac": "Homophonic, but each letter gets no more symbols than Zodiac gave it in Z408/Z340"}
+# Scoring methods the web form offers (results/FINDINGS.md has the measurements).
+SCORERS = {
+    "letters": {"label": "Letter patterns", "help": "5-letter chunks; passes every calibration. Best for Z13.",
+                "config": None},
+    "words": {"label": "Whole words", "help": "Decodes must split into real English words. Best detector for "
+              "Z32 (power ~0.2-0.28 vs ~0.07); English only.",
+              "config": {"ngram": 0.0, "words": 1.0, "unk": -5.0, "wpen": 3.0}},
+}
 FAMILY_HELP = {
     "identity": "Read as written (no transposition)",
     "reverse": "Read backwards",
@@ -29,7 +38,7 @@ LIMITS = {"restarts": (1, 8), "nulls": (9, 199), "controls": (0, 20), "extend_nu
           "family_orders": 2_000, "title": 120, "motivation": 1_000}
 ALLOWED_KEYS = {"id", "title", "motivation", "cipher", "model", "lang", "families", "drop_symbols",
                 "pins", "pin_family", "restarts", "iters", "nulls", "controls", "extend_nulls",
-                "explore_columnar", "klw", "source", "suggested_by"}
+                "explore_columnar", "klw", "source", "suggested_by", "scorer", "key_budget_weight", "control_text"}
 ID_RE = re.compile(r"^user\.[a-z0-9][a-z0-9._-]{2,80}$")
 
 
@@ -94,6 +103,14 @@ def check(spec: dict) -> list[str]:
                 break
     if spec.get("model") == "simple" and len(set(text)) - len(set(drops)) > 26:
         errs.append("simple substitution is impossible: more than 26 distinct symbols")
+    if spec.get("scorer") is not None:
+        offered = [v["config"] for v in SCORERS.values() if v["config"]]
+        if spec["scorer"] not in offered:
+            errs.append("scorer must be one of the offered scoring methods")
+        elif spec.get("lang", "en") != "en":
+            errs.append("word scoring is only available for English")
+    if spec.get("control_text") not in (None, "zodiac_A", "zodiac_B"):
+        errs.append("control_text must be zodiac_A or zodiac_B")
     ec = spec.get("explore_columnar")
     if ec is not None:
         ok = (isinstance(ec, dict) and isinstance(ec.get("width"), int) and 2 <= ec["width"] <= 16
@@ -113,4 +130,4 @@ def options() -> dict:
         ciphers.append({"name": n, "text": c.text, "length": len(c.text), "distinct": len(set(c.text)),
                         "solved": n.split(".")[0] in ("z408", "z340"), "family_sizes": sizes})
     return {"ciphers": ciphers, "models": MODELS, "languages": lm.LANG_NAMES,
-            "families": FAMILY_HELP, "limits": LIMITS}
+            "families": FAMILY_HELP, "limits": LIMITS, "scorers": SCORERS}

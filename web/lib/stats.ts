@@ -81,7 +81,7 @@ export function estimateSeconds(spec: Spec, cipher: CipherOption | undefined): n
   const n = cipher.length - drops.reduce((a, d) => a + cipher.text.split(d).length - 1, 0);
   const nsym = cipher.distinct - drops.length;
   const iters = spec.iters ?? Math.max(50_000, 10_000 * nsym);
-  const perIter = 0.8e-6 + 0.2e-6 * (n / nsym);
+  const perIter = (0.8e-6 + 0.2e-6 * (n / nsym)) * (spec.scorer?.words ? 2 : 1);
   const fams = spec.families?.length ? spec.families : ["identity"];
   const orders = fams.reduce((a, f) => a + (cipher.family_sizes[f] ?? 0), 0) || 1;
   const pinSets = spec.pin_family?.length ?? 1;

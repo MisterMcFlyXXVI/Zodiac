@@ -157,6 +157,23 @@ def holdout_text(lang: str = "en") -> str:
     return _hold[lang]
 
 
+_hold_words: dict[str, list[str]] = {}
+
+
+def holdout_words(lang: str = "en") -> list[str]:
+    """Held-out text as whole words (A-Z only), for test texts that start and end on word
+    boundaries, like a complete cipher message. Same held-out share of each corpus as
+    holdout_text, so nothing here was used to train the models."""
+    if lang not in _hold_words:
+        out: list[str] = []
+        for name in CORPORA[lang]:
+            raw = (CORPUS_DIR / f"{name}.txt").read_text(encoding="utf-8")
+            cut = int(len(raw) * (1 - HOLDOUT_FRAC))
+            out += [w for w in (letters_only(t) for t in raw[cut:].split()) if w]
+        _hold_words[lang] = out
+    return _hold_words[lang]
+
+
 def score_text(text: str, lang: str = "en") -> float:
     """Total log-probability of a letter string (natural log)."""
     t = load(lang)

@@ -17,8 +17,9 @@ export default function AddForm({ options, admin, writable }: { options: Options
   const [title, setTitle] = useState("");
   const [motivation, setMotivation] = useState("");
   const [cipher, setCipher] = useState("z13");
-  const [model, setModel] = useState<"homophonic" | "simple">("simple");
+  const [model, setModel] = useState<"homophonic" | "simple" | "zodiac">("simple");
   const [lang, setLang] = useState("en");
+  const [scoring, setScoring] = useState("letters");
   const [families, setFamilies] = useState<string[]>(["identity"]);
   const [drops, setDrops] = useState<string[]>([]);
   const [pins, setPins] = useState<Record<string, string>>({});
@@ -45,11 +46,13 @@ export default function AddForm({ options, admin, writable }: { options: Options
     if (drops.length) s.drop_symbols = drops;
     const p = Object.fromEntries(Object.entries(pins).filter(([sym, l]) => l && !drops.includes(sym)));
     if (Object.keys(p).length) s.pins = p;
+    const sc = options.scorers?.[scoring]?.config;
+    if (sc) s.scorer = sc;
     if (nulls !== 19) s.nulls = nulls;
     if (controls !== 10) s.controls = controls;
     if (restarts !== 4) s.restarts = restarts;
     return JSON.parse(JSON.stringify(s)) as Spec; // drop undefined
-  }, [title, motivation, cipher, model, lang, families, drops, pins, nulls, controls, restarts, stamp, options]);
+  }, [title, motivation, cipher, model, lang, scoring, families, drops, pins, nulls, controls, restarts, stamp, options]);
 
   const problems = checkSpec(spec, options);
   const est = estimateSeconds(spec, c);
@@ -110,7 +113,7 @@ export default function AddForm({ options, admin, writable }: { options: Options
         <div className="checks">
           {Object.entries(options.models).map(([k, help]) => (
             <label key={k}>
-              <input type="radio" name="model" checked={model === k} onChange={() => setModel(k as "homophonic" | "simple")}
+              <input type="radio" name="model" checked={model === k} onChange={() => setModel(k as "homophonic" | "simple" | "zodiac")}
                 disabled={k === "simple" && c.distinct - drops.length > 26} />
               <span><strong>{k}</strong><br /><span className="small muted">{help}</span></span>
             </label>
@@ -118,6 +121,22 @@ export default function AddForm({ options, admin, writable }: { options: Options
         </div>
         {tooSimple && <div className="help">This cipher has more than 26 different symbols, so one-symbol-per-letter is impossible.</div>}
       </div>
+
+      {options.scorers && (
+        <div className="field">
+          <label>How to judge a decode</label>
+          <div className="checks">
+            {Object.entries(options.scorers).map(([k, v]) => (
+              <label key={k}>
+                <input type="radio" name="scoring" checked={scoring === k} onChange={() => setScoring(k)}
+                  disabled={k !== "letters" && lang !== "en"} />
+                <span><strong>{v.label}</strong><br /><span className="small muted">{v.help}</span></span>
+              </label>
+            ))}
+          </div>
+          {scoring !== "letters" && lang !== "en" && <div className="help">Word scoring is English only.</div>}
+        </div>
+      )}
 
       <div className="field">
         <label>Reading orders to try</label>

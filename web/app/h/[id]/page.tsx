@@ -68,6 +68,28 @@ export default async function Hypothesis({ params }: { params: Promise<{ id: str
             <Metric v={String(r.length ?? "–")} l="symbols" h="length of the text searched" />
           </div>
 
+          {!isCalib && r.p_dominance !== undefined && r.p_dominance !== null && (
+            <div className="card" style={{ marginTop: 14 }}>
+              <h3>Second test: does one reading stand out?</h3>
+              <p className="small muted" style={{ marginTop: 0 }}>
+                How far the best reading scores above the best <em>clearly different</em> reading, compared the same way with
+                shuffled copies and genuine text. Real messages sometimes have one dominant reading where noise has many near-ties.
+              </p>
+              <div className="row">
+                <span><strong>p</strong> {fmtP(r.p_dominance)}</span>
+                <span><strong>power</strong> {r.power_dominance === null || r.power_dominance === undefined ? "–" : r.power_dominance.toFixed(2)}</span>
+                <span className="small muted">gap {r.dominance?.toFixed(1)} nats</span>
+              </div>
+              <p className="small muted" style={{ marginBottom: 0 }}>
+                {(r.power_dominance ?? 0) < 0.2
+                  ? "Low power: this test can't tell either."
+                  : (r.p_dominance ?? 1) < 0.05
+                    ? "The real cipher's best reading stands out more than chance would give. Treat it as a lead, not a result: this second test is not part of the Holm correction."
+                    : "The real cipher's best reading doesn't stand out more than noise."}
+              </p>
+            </div>
+          )}
+
           {r.null_scores && r.real_score !== undefined && (
             <>
               <h2>Did the real cipher stand out?</h2>
@@ -161,7 +183,11 @@ function Describe({ spec }: { spec: Spec }) {
   const items: [string, React.ReactNode][] = [];
   items.push(["Cipher", spec.synthetic ? `A synthetic ${spec.synthetic.length}-symbol cipher made from held-out ${LANGS[spec.lang ?? "en"]} text` : cipherLabel(spec.cipher)]);
   items.push(["Language", LANGS[spec.lang ?? "en"]]);
-  items.push(["Key", spec.model === "simple" ? "One symbol per letter" : "Several symbols may share a letter (homophonic)"]);
+  items.push(["Key", spec.model === "simple" ? "One symbol per letter"
+    : spec.model === "zodiac" ? "Homophonic, limited to Zodiac's own number of symbols per letter"
+    : "Several symbols may share a letter (homophonic)"]);
+  items.push(["Scoring", !spec.scorer ? "Letter patterns (5-letter chunks)"
+    : `${spec.scorer.ngram ? "Letter patterns + " : ""}whole English words${spec.scorer.zodiac_boost ? ", favouring words Zodiac used in his letters" : ""}`]);
   items.push(["Reading orders", (spec.families ?? ["identity"]).join(", ")]);
   if (spec.drop_symbols?.length) items.push(["Ignored symbols", <code key="d">{spec.drop_symbols.join(" ")}</code>]);
   if (spec.pins && Object.keys(spec.pins).length) items.push(["Fixed letters", <code key="p">{Object.entries(spec.pins).map(([s, l]) => `${s}→${l}`).join("  ")}</code>]);

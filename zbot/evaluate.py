@@ -107,6 +107,13 @@ def pin_sets(spec: dict) -> list[dict[str, str]]:
     return [spec.get("pins", {})]
 
 
+def _budget(spec: dict):
+    if spec.get("model") != "zodiac":
+        return None
+    from . import zkey
+    return zkey.budget()
+
+
 def _search(texts: list[str], spec: dict, seed: int, keep: int = 0):
     """Best score over family x pin sets for one instance. Returns (score, top list)."""
     alphabet = sorted(set("".join(texts)))
@@ -116,6 +123,7 @@ def _search(texts: list[str], spec: dict, seed: int, keep: int = 0):
         raise ValueError("read-order families are only supported for single-cipher hypotheses")
     best = -math.inf
     top: list[tuple[float, str, str]] = []
+    pool: list[tuple[float, str]] = []  # every restart's answer, for the uniqueness measure
     for pins in pin_sets(spec):
         pin_idx = {idx[s]: ord(l) - 65 for s, l in pins.items() if s in idx}
         for label, order in fams[0]:
@@ -126,14 +134,38 @@ def _search(texts: list[str], spec: dict, seed: int, keep: int = 0):
             sols = anneal.solve(segs, len(alphabet), restarts=spec.get("restarts", 4),
                                 iters=spec.get("iters"), injective=spec.get("model") == "simple",
                                 pins=pin_idx, klw=spec.get("klw", 1.0), seed=seed,
-                                lang=lang_of(spec))
+                                lang=lang_of(spec), scorer=spec.get("scorer"),
+                                key_budget=_budget(spec), key_budget_weight=spec.get("key_budget_weight", 6.0)
+                                if spec.get("model") == "zodiac" else 0.0)
             s = sols[0]
             best = max(best, s.score)
+            pool.extend((x.score, x.plaintext) for x in sols)
             if keep:
                 tag = label + (f" pins={pins}" if pins else "")
                 top.append((s.score, tag, s.plaintext))
     top.sort(key=lambda x: -x[0])
-    return best, top[:keep]
+    return best, top[:keep], dominance(pool)
+
+
+DISTINCT = 0.30  # readings differing in more than 30% of letters count as different answers
+
+
+def dominance(pool: list[tuple[float, str]]) -> float:
+    """How far the best reading stands above the best clearly different reading (nats).
+
+    Large = one reading dominates; near 0 = several unrelated readings tie. If every
+    restart agreed on the same reading, the gap to the worst restart is used (a lower
+    bound), so convergence still counts as dominance.
+    """
+    if not pool:
+        return float("nan")
+    pool = sorted(pool, key=lambda x: -x[0])
+    s1, p1 = pool[0]
+    for s, p in pool[1:]:
+        diff = sum(a != b for a, b in zip(p, p1)) / max(1, len(p1))
+        if diff > DISTINCT:
+            return s1 - s
+    return s1 - pool[-1][0]
 
 
 def _shuffle(texts: list[str], rng: random.Random) -> list[str]:
@@ -162,7 +194,8 @@ def _partitions(c: int, need: Counter, max_part: int):
             need[k] += 1
 
 
-def _refine(counts: list[tuple[str, int]], need: Counter, rng: random.Random, budget: list[int]):
+def _refine(counts: list[tuple[str, int]], need: Counter, rng: random.Random, budget: list[int],
+            maxparts: dict[str, int] | None = None):
     """Split each letter's count into homophone parts so the parts equal `need` exactly."""
     if not counts:
         return {} if sum(need.values()) == 0 else None
@@ -170,12 +203,12 @@ def _refine(counts: list[tuple[str, int]], need: Counter, rng: random.Random, bu
     if budget[0] < 0:
         return None
     (letter, c), rest = counts[0], counts[1:]
-    opts = list(_partitions(c, need, c))
+    opts = [o for o in _partitions(c, need, c) if maxparts is None or len(o) <= maxparts.get(letter, 99)]
     rng.shuffle(opts)
     for parts in opts:
         for k in parts:
             need[k] -= 1
-        sub = _refine(rest, need, rng, budget)
+        sub = _refine(rest, need, rng, budget, maxparts)
         for k in parts:
             need[k] += 1
         if sub is not None:
@@ -184,17 +217,36 @@ def _refine(counts: list[tuple[str, int]], need: Counter, rng: random.Random, bu
     return None
 
 
+def _sample_words(words: list[str], total: int, rng: random.Random) -> str | None:
+    """A run of whole consecutive words with exactly `total` letters, or None."""
+    i = rng.randrange(len(words))
+    out = ""
+    while len(out) < total and i < len(words):
+        out += words[i]
+        i += 1
+    return out if len(out) == total else None
+
+
 def _encipher_matching(texts: list[str], model: str, lang: str, rng: random.Random,
-                       pinned: dict[str, str], tries: int = 400_000):
-    """Held-out plaintext + key giving a cipher with exactly the real repeat profile."""
-    hold = lm.holdout_text(lang)
+                       pinned: dict[str, str], tries: int = 400_000, control_source: str | None = None,
+                       words: list[str] | None = None):
+    """Held-out plaintext + key giving a cipher with exactly the real repeat profile.
+
+    With `words`, the plaintext is a run of whole words (like a complete message);
+    otherwise a window cut anywhere from `control_source` or the held-out letters."""
+    hold = control_source or lm.holdout_text(lang)
     target = profile("".join(texts))
     need0 = Counter(target)
     total = sum(target)
     pin_by_letter = {l: s for s, l in pinned.items()}
     for _ in range(tries):
-        start = rng.randrange(len(hold) - total)
-        plain = hold[start:start + total]
+        if words is not None:
+            plain = _sample_words(words, total, rng)
+            if plain is None:
+                continue
+        else:
+            start = rng.randrange(len(hold) - total)
+            plain = hold[start:start + total]
         lc = Counter(plain)
         if model == "simple":
             if tuple(sorted(lc.values(), reverse=True)) != target:
@@ -204,7 +256,12 @@ def _encipher_matching(texts: list[str], model: str, lang: str, rng: random.Rand
             if len(lc) > len(target) or max(lc.values()) < target[0]:
                 continue
             counts = sorted(lc.items(), key=lambda x: -x[1])
-            parts = _refine(counts, Counter(need0), rng, [2_000])
+            maxparts = None
+            if model == "zodiac":
+                from . import zkey
+                b = zkey.budget()
+                maxparts = {chr(65 + i): int(b[i]) for i in range(26)}
+            parts = _refine(counts, Counter(need0), rng, [2_000], maxparts)
             if parts is None:
                 continue
         # Assign symbols: each part of a letter is one homophone; occurrences are dealt
@@ -227,8 +284,15 @@ def _encipher_matching(texts: list[str], model: str, lang: str, rng: random.Rand
 
 def _control(texts: list[str], spec: dict, rng: random.Random):
     pinned = rng.choice(pin_sets(spec))  # controls honour one of H's pin sets
+    # Test texts are runs of whole words, like a complete message (both Z13 and Z32 are).
+    if spec.get("control_text") in ("zodiac_A", "zodiac_B", "zodiac"):
+        from . import words
+        raw = words.zodiac_text({"zodiac_A": "A", "zodiac_B": "B"}.get(spec["control_text"], "all"))
+        wl = [w for w in (lm.letters_only(t) for t in raw.split()) if w]
+    else:
+        wl = lm.holdout_words(lang_of(spec))
     plain_all, enc_all = _encipher_matching(texts, spec.get("model", "homophonic"),
-                                            lang_of(spec), rng, pinned)
+                                            lang_of(spec), rng, pinned, words=wl)
     plains, ciphers, i = [], [], 0
     for t in texts:
         plains.append(plain_all[i:i + len(t)])
@@ -247,16 +311,16 @@ def _task(args):
     kind, j, texts, spec, seed = args
     t0 = time.time()
     if kind == "real":
-        score, top = _search(texts, spec, seed, keep=10)
-        return kind, j, score, {"top": top}, time.time() - t0
+        score, top, dom = _search(texts, spec, seed, keep=10)
+        return kind, j, score, {"top": top, "dom": dom}, time.time() - t0
     rng = random.Random(seed)
     if kind == "null":
-        score, _ = _search(_shuffle(texts, rng), spec, seed)
-        return kind, j, score, {}, time.time() - t0
+        score, _, dom = _search(_shuffle(texts, rng), spec, seed)
+        return kind, j, score, {"dom": dom}, time.time() - t0
     ciphers, plains, label = _control(texts, spec, rng)
-    score, top = _search(ciphers, spec, seed, keep=1)
+    score, top, dom = _search(ciphers, spec, seed, keep=1)
     acc = anneal.accuracy(top[0][2], "".join(plains)) if top else 0.0
-    return kind, j, score, {"truth_order": label, "recovery": acc}, time.time() - t0
+    return kind, j, score, {"truth_order": label, "recovery": acc, "dom": dom}, time.time() - t0
 
 
 def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
@@ -282,6 +346,7 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
     res = batch(tasks)
     real = next(r for r in res if r[0] == "real")
     null_scores = [r[2] for r in res if r[0] == "null"]
+    null_doms = [r[3]["dom"] for r in res if r[0] == "null"]
     ctrl = [r for r in res if r[0] == "control"]
 
     def pval(ns):
@@ -292,7 +357,13 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
         log(f"  p={p:.3f} with {nulls} nulls; extending to {extend_nulls}")
         more = batch([("null", j, texts, spec, base + 1 + j) for j in range(nulls, extend_nulls)])
         null_scores += [r[2] for r in more]
+        null_doms += [r[3]["dom"] for r in more]
         p = pval(null_scores)
+    # Second statistic: uniqueness of the best reading, judged the same way.
+    real_dom = real[3]["dom"]
+    p_dom = (1 + sum(d >= real_dom for d in null_doms)) / (1 + len(null_doms)) if null_doms else None
+    dq95 = float(np.quantile(null_doms, 0.95)) if null_doms else math.inf
+    power_dom = sum(c[3]["dom"] > dq95 for c in ctrl) / len(ctrl) if ctrl else None
 
     q95 = float(np.quantile(null_scores, 0.95)) if null_scores else math.inf
     sd = float(np.std(null_scores)) if len(null_scores) > 1 else 0.0
@@ -321,6 +392,11 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
         "p": p,
         "z": z,
         "power": power,
+        "dominance": real_dom,
+        "null_dominance": null_doms,
+        "control_dominance": [c[3]["dom"] for c in ctrl],
+        "p_dominance": p_dom,
+        "power_dominance": power_dom,
     }
     if spec["id"].startswith("calib."):
         t = truth(spec)

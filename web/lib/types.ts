@@ -5,7 +5,7 @@ export type Spec = {
   title?: string;
   motivation?: string;
   cipher?: string | string[];
-  model?: "homophonic" | "simple";
+  model?: "homophonic" | "simple" | "zodiac";
   lang?: string;
   families?: string[];
   drop_symbols?: string[];
@@ -13,6 +13,7 @@ export type Spec = {
   pin_family?: Record<string, string>[];
   restarts?: number;
   iters?: number;
+  scorer?: { ngram?: number; words?: number; unk?: number; wpen?: number; zodiac_boost?: number; zodiac_fold?: string } | null;
   nulls?: number;
   controls?: number;
   extend_nulls?: number;
@@ -46,6 +47,11 @@ export type LedgerRow = {
   power: number | null;
   verdict: string;
   calib_accuracy?: number;
+  dominance?: number | null;
+  null_dominance?: number[];
+  control_dominance?: number[];
+  p_dominance?: number | null;
+  power_dominance?: number | null;
   error?: string;
 };
 
@@ -93,6 +99,7 @@ export type Options = {
   languages: Record<string, string>;
   families: Record<string, string>;
   limits: Record<string, number | [number, number]>;
+  scorers?: Record<string, { label: string; help: string; config: Spec["scorer"] }>;
 };
 
 export type Status = {

@@ -111,6 +111,26 @@ def builtin() -> list[dict]:
                       motivation="Language hypothesis.", cipher="z13", lang=lang))
         H.append(dict(id=f"lang.{lang}.z32.homophonic", title=f"Z32 as {name}, homophonic",
                       motivation="Language hypothesis.", cipher="z32", lang=lang))
+    # --- 4. Word-level scoring for Z32 (results/FINDINGS.md, 2026-11-21). Letter 5-grams
+    # gave Z32 power ~0.07; dictionary-word scoring ~0.2-0.28. Each test still measures its
+    # own power with whole-word genuine-text controls, so every verdict says how far to trust it.
+    W = {"ngram": 0.0, "words": 1.0, "unk": -5.0, "wpen": 3.0}
+    WHY = "Word scoring raised Z32 power from ~0.07 to ~0.2-0.28 in the power study (results/FINDINGS.md)."
+    for c, title in [("z32", "Z32, word-level scoring"),
+                     ("z32.triangles_merged", "Z32 with the two triangles as one symbol, word-level scoring"),
+                     ("z32.bar_I_and_t2_perp", "Z32 read with Z408's I and plain upside-down T, word-level scoring")]:
+        H.append(dict(id=f"words.{c}", title=title, motivation=WHY, cipher=c, scorer=W, controls=20))
+    H.append(dict(id="words.z32.crosshair_null", title="Z32 with the crosshair as a null, word-level scoring",
+                  motivation=WHY, cipher="z32", drop_symbols=["z"], scorer=W, controls=20))
+    H.append(dict(id="words.z32.transpositions", title="Z32 under structured transpositions, word-level scoring",
+                  motivation=WHY + " Z340 itself was transposed.", cipher="z32",
+                  families=["reverse", "decimations", "railfences", "griddec"], scorer=W, restarts=3))
+    H.append(dict(id="words.z32.zodiac_vocab",
+                  title="Z32 favouring words Zodiac used in his letters",
+                  motivation="Zodiac-vocabulary prior: power 0.12 -> 0.30 on Zodiac-style test texts with "
+                             "word-only scoring (built from half his letters, tested on the other half).",
+                  cipher="z32", scorer=dict(W, zodiac_boost=6.0, zodiac_fold="A"), control_text="zodiac_B",
+                  controls=20))
     # The slowest built-in (hours) goes last so it doesn't hold up everything else.
     H.sort(key=lambda h: h["id"] == "new.z32.columnar_full")
     return H

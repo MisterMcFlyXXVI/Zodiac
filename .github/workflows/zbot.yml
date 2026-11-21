@@ -43,9 +43,9 @@ jobs:
           path: |
             data/corpus
             data/lm
-          key: lm-v3-${{ hashFiles('scripts/fetch_corpus.py', 'zbot/lm.py') }}
+          key: lm-v4-${{ hashFiles('scripts/fetch_corpus.py', 'zbot/lm.py', 'zbot/words.py') }}
       - name: Build language models
-        run: test -f data/lm/lm5_vi.npz || python -m zbot setup
+        run: test -f data/lm/lm5_vi.npz -a -f data/lm/words_en.npz || python -m zbot setup
       - name: Restore previous results
         run: |
           if git fetch origin zbot-results 2>/dev/null; then
