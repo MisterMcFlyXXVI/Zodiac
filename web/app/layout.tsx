@@ -5,6 +5,8 @@ import Nav from "@/components/Nav";
 export const metadata: Metadata = {
   title: "zbot · Zodiac cipher hypothesis tester",
   description: "Results of an automated, statistically honest search of the unsolved Zodiac ciphers Z13 and Z32.",
+  // Home Screen: the icon comes from app/apple-icon.png; this sets its label and full-screen launch.
+  appleWebApp: { capable: true, title: "zbot", statusBarStyle: "black" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
