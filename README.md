@@ -178,5 +178,9 @@ data/ciphers/        verified transcriptions and variants (credits in NOTICE.md)
 - **The null model** shuffles the symbol order, which keeps the symbol counts. It asks
   whether the repeat pattern and order are more English-compatible than chance. It does
   not ask whether a decode *means* something.
+- **Pre-registration.** A targeted test (queue file or built-in) runs only once its spec is
+  committed to git and unchanged since; each result row records the commit that registered
+  it (`registered`). The dashboard's queue commits do this automatically. Uncommitted specs
+  are left queued, not skipped. `ZBOT_ALLOW_UNREGISTERED=1` bypasses this for local experiments.
 - **This bot does not identify anyone.** A name that fits Z13's pattern is not evidence
   about a person: hundreds of names fit.
