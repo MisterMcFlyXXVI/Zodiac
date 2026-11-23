@@ -11,7 +11,7 @@ import json
 import os
 import time
 
-from . import evaluate, hypotheses, lm, schema
+from . import evaluate, hypotheses, lm, runner, schema
 
 WORKERS = 4  # GitHub's public runners have 4 cores
 
@@ -133,6 +133,7 @@ def write(rows: list[dict], path, current: dict | None = None) -> dict:
     for r in latest.values():
         v = (r.get("verdict") or "?").split(":")[0]
         counts[v] = counts.get(v, 0) + 1
+    nxt = runner.next_explore(rows)
     status = {
         "generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "run": {"github_run_id": os.environ.get("GITHUB_RUN_ID"),
@@ -147,7 +148,7 @@ def write(rows: list[dict], path, current: dict | None = None) -> dict:
         "counts": counts,
         "pending": pending,
         "done": done,
-        "explore_next": hypotheses.explore(sum(1 for i in latest if i.startswith("explore."))).get("title"),
+        "explore_next": (nxt or {}).get("title"),
         "suggestions": suggestions(rows, known, specs),
         "options": schema.options(),
     }

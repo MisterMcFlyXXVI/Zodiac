@@ -54,6 +54,7 @@ jobs:
           wc -l results/ledger.jsonl || true
       - run: python -m pytest -q tests
       - name: Run bot
+        id: bot
         # A hypothesis still running at the limit is lost, but everything finished
         # before it is published by the next step.
         timeout-minutes: 340   # 5.5 h of work + a hypothesis already under way
@@ -62,7 +63,12 @@ jobs:
           ( while sleep 600; do scripts/ci_publish.sh; done ) &
           publisher=$!
           trap 'kill $publisher 2>/dev/null || true' EXIT
-          python -m zbot run --hours "${{ github.event.inputs.hours || '5.5' }}"
+          rc=0
+          python -m zbot run --hours "${{ github.event.inputs.hours || '5.5' }}" || rc=$?
+          # Exit code 3: nothing left to test. The run still succeeded, but the next one
+          # would stop at once too, so the chain pauses (see "Start the next run").
+          if [ "$rc" = 3 ]; then echo "idle=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          exit "$rc"
       - name: Publish results
         if: always()
         run: |
@@ -70,9 +76,12 @@ jobs:
           scripts/ci_publish.sh
       - name: Start the next run
         # Only after a successful run, so a broken setup can't loop; the daily schedule
-        # restarts the chain after a failure. Runs started this way are allowed to start
-        # workflows (workflow_dispatch is exempt from the GITHUB_TOKEN restriction).
-        if: success()
+        # restarts the chain after a failure. Not when the bot ran out of work: each run
+        # would end within a minute and start another, without end. Queue a test and use
+        # the dashboard's run button, or wait for the daily run. Runs started this way are
+        # allowed to start workflows (workflow_dispatch is exempt from the GITHUB_TOKEN
+        # restriction).
+        if: success() && steps.bot.outputs.idle != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run zbot.yml --ref "${{ github.ref_name }}" -f hours=5.5

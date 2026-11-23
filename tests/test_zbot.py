@@ -222,3 +222,31 @@ def test_holm_family_excludes_untestable():
     report.write.__globals__["OUT"]  # module loads
     fam = [r for r in rows if r["power"] >= report.MIN_POWER]
     assert [r["id"] for r in fam] == ["good"]
+
+
+def test_exploration_continues_past_skipped_numbers():
+    # Reproduces the stall of 2026-11-23: idea numbers that repeat an earlier test are
+    # skipped, so the ledger held ~600 exploration rows numbered up to 1149. A scan starting
+    # at the row count saw only old work and the bot stopped; it must start after 1149.
+    from zbot import runner, hypotheses
+    rows, seen = [], set()
+    for k in range(1150):
+        spec = hypotheses.explore(k)
+        if runner._content(spec) not in seen:
+            seen.add(runner._content(spec))
+            rows.append({"id": spec["id"], "spec": spec})
+    n = len(rows)
+    assert all(runner._content(hypotheses.explore(k)) in seen for k in range(n, n + 500))
+    spec = runner.next_explore(rows)
+    assert spec is not None and int(spec["id"].split(".")[1]) >= 1150
+    assert runner._content(spec) not in seen
+
+
+def test_run_reports_idle_and_cli_exits_3(tmp_path, monkeypatch):
+    from zbot import runner, __main__ as cli
+    monkeypatch.setattr(runner, "LEDGER", tmp_path / "ledger.jsonl")
+    monkeypatch.setattr(runner, "next_spec", lambda: None)
+    assert runner.run(hours=1.0, log=lambda *a: None) == "idle"
+    with pytest.raises(SystemExit) as e:
+        cli.main(["run", "--hours", "0.01"])
+    assert e.value.code == cli.IDLE_EXIT == 3

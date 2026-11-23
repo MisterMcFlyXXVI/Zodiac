@@ -3,7 +3,8 @@
   setup [--lang ..]  download corpora and build language models (default: all languages)
   build-lm [--lang]  (re)build language models only
   list               show the hypothesis queue and what is done
-  run [--hours H]    work through the queue autonomously (resumable)
+  run [--hours H]    work through the queue autonomously (resumable); exits with code 3
+                     if it stops because nothing is left to test
   run --only ID      run a single hypothesis
   report             regenerate results/REPORT.md, ALERTS.md and STATUS.json
   solve CIPHER       quick look: best decodes of one cipher, no statistics
@@ -18,6 +19,7 @@ from . import cipher, evaluate, hypotheses, lm, report, runner
 
 
 ALL_LANGS = list(lm.CORPORA)
+IDLE_EXIT = 3   # `run` found nothing to test; the workflow then doesn't start another run
 
 
 def _build_lm(langs):
@@ -68,7 +70,8 @@ def main(argv=None):
             status = r["verdict"].split(":")[0] if r else "pending"
             print(f"{status:18} {spec['id']:40} {spec['title']}")
     elif a.cmd == "run":
-        runner.run(a.hours, workers=a.workers, commit=a.commit, only=a.only)
+        if runner.run(a.hours, workers=a.workers, commit=a.commit, only=a.only) == "idle":
+            sys.exit(IDLE_EXIT)
     elif a.cmd == "report":
         runner._publish()
         print(report.OUT)

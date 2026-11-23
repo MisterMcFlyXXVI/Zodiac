@@ -92,6 +92,9 @@ Limits:
   runs keep it active; if it ever happens, re-enable the workflow in the Actions tab.
 - Once the built-in queue is done, the bot only explores, and most of that is untestable
   at these lengths. Queue targeted ideas from the web app to give it better work.
+- If the bot runs out of work entirely, the run ends early and the chain pauses rather
+  than starting an empty run every minute. Queue a test and start a run from the
+  dashboard, or wait for the daily run.
 
 To run it on your own machine instead, use `python -m zbot run --hours 8`. The ledger has
 the same format, so you can copy it between machines.
