@@ -58,13 +58,18 @@ jobs:
         # A hypothesis still running at the limit is lost, but everything finished
         # before it is published by the next step.
         timeout-minutes: 340   # 5.5 h of work + a hypothesis already under way
+        env:
+          # Inputs reach the shell as variables, never pasted into the script text, so a
+          # crafted value can't run commands.
+          HOURS: ${{ github.event.inputs.hours || '5.5' }}
         run: |
+          case "$HOURS" in ''|*[!0-9.]*) echo "hours must be a number, got: $HOURS" >&2; exit 1;; esac
           # Publish progress every 10 minutes so the dashboard shows current work.
           ( while sleep 600; do scripts/ci_publish.sh; done ) &
           publisher=$!
           trap 'kill $publisher 2>/dev/null || true' EXIT
           rc=0
-          python -m zbot run --hours "${{ github.event.inputs.hours || '5.5' }}" || rc=$?
+          python -m zbot run --hours "$HOURS" || rc=$?
           # Exit code 3: nothing left to test. The run still succeeded, but the next one
           # would stop at once too, so the chain pauses (see "Start the next run").
           if [ "$rc" = 3 ]; then echo "idle=true" >> "$GITHUB_OUTPUT"; exit 0; fi
@@ -84,4 +89,5 @@ jobs:
         if: success() && steps.bot.outputs.idle != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run zbot.yml --ref "${{ github.ref_name }}" -f hours=5.5
+          REF: ${{ github.ref_name }}
+        run: gh workflow run zbot.yml --ref "$REF" -f hours=5.5
