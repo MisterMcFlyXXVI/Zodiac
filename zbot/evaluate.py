@@ -307,6 +307,30 @@ def _control(texts: list[str], spec: dict, rng: random.Random):
     return ciphers, plains, label
 
 
+CONFIRM_NULL_STAGES = (499, 999)
+CONFIRM_MAX_EXTRA_SECONDS = 2 * 3600  # a stage that would take longer is left to a dedicated run
+
+
+def tier(spec_id: str) -> str:
+    if spec_id.startswith("calib."):
+        return "calibration"
+    if spec_id.startswith("explore."):
+        return "exploratory"
+    return "confirmatory"
+
+
+def power_pooled(real_score, null_scores, control_scores):
+    """Share of controls above the 95th percentile of {real} + nulls.
+
+    Under the null the real score is exchangeable with the nulls, so this threshold does
+    not depend on which of the scores is the real one, and filtering on it leaves p valid.
+    """
+    if not control_scores or not null_scores or real_score is None:
+        return None
+    q = float(np.quantile(np.append(np.asarray(null_scores, dtype=float), real_score), 0.95))
+    return sum(c > q for c in control_scores) / len(control_scores)
+
+
 def _task(args):
     kind, j, texts, spec, seed = args
     t0 = time.time()
@@ -347,6 +371,7 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
     real = next(r for r in res if r[0] == "real")
     null_scores = [r[2] for r in res if r[0] == "null"]
     null_doms = [r[3]["dom"] for r in res if r[0] == "null"]
+    null_secs = [r[4] for r in res if r[0] == "null"]
     ctrl = [r for r in res if r[0] == "control"]
 
     def pval(ns):
@@ -359,6 +384,26 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
         null_scores += [r[2] for r in more]
         null_doms += [r[3]["dom"] for r in more]
         p = pval(null_scores)
+    nulls_capped = False
+    if tier(spec["id"]) == "confirmatory":
+        # Only a result that still looks significant gets more nulls, so most tests cost the
+        # same as before. Stop once 5 nulls reach the real score: p is then known well enough.
+        for stage in CONFIRM_NULL_STAGES:
+            if p > 0.05 or sum(s >= real[2] for s in null_scores) >= 5:
+                break
+            if stage <= len(null_scores):
+                continue
+            need = (stage - len(null_scores)) * (sum(null_secs) / len(null_secs)) / workers
+            if need > CONFIRM_MAX_EXTRA_SECONDS:
+                log(f"  confirmatory: {stage} nulls would take ~{need / 60:.0f} more min; stopping at "
+                    f"{len(null_scores)} (queue a dedicated run with more nulls)")
+                nulls_capped = True
+                break
+            log(f"  confirmatory: p={p:.4f} with {len(null_scores)} nulls; extending to {stage}")
+            more = batch([("null", j, texts, spec, base + 1 + j) for j in range(len(null_scores), stage)])
+            null_scores += [r[2] for r in more]
+            null_doms += [r[3]["dom"] for r in more]
+            p = pval(null_scores)
     # Second statistic: uniqueness of the best reading, judged the same way.
     real_dom = real[3]["dom"]
     p_dom = (1 + sum(d >= real_dom for d in null_doms)) / (1 + len(null_doms)) if null_doms else None
@@ -368,7 +413,7 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
     q95 = float(np.quantile(null_scores, 0.95)) if null_scores else math.inf
     sd = float(np.std(null_scores)) if len(null_scores) > 1 else 0.0
     z = (real[2] - float(np.mean(null_scores))) / sd if sd > 0 else None
-    power = sum(c[2] > q95 for c in ctrl) / len(ctrl) if ctrl else None
+    power = power_pooled(real[2], null_scores, [c[2] for c in ctrl])
     recovery = float(np.mean([c[3]["recovery"] for c in ctrl])) if ctrl else None
     n_total = sum(len(t) for t in texts)
     top = [{"score": s, "order": lab, "plaintext": pt} for s, lab, pt in real[3]["top"]]
@@ -392,6 +437,8 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
         "p": p,
         "z": z,
         "power": power,
+        "power_basis": "pooled",
+        "nulls_capped": nulls_capped,
         "dominance": real_dom,
         "null_dominance": null_doms,
         "control_dominance": [c[3]["dom"] for c in ctrl],
