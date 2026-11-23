@@ -98,6 +98,11 @@ Limits:
 - If the bot runs out of work entirely, the run ends early and the chain pauses rather
   than starting an empty run every minute. Queue a test and start a run from the
   dashboard, or wait for the daily run.
+- Each exploration idea first runs a power pilot with 20 genuine-text controls and needs a
+  Wilson 95% lower bound of at least 0.2. That costs 12 more control searches per idea but
+  saves full tests that could not produce evidence.
+- To pause exploration, commit an empty `hypotheses/EXPLORE_PAUSED`; queued work still runs,
+  then the chain goes idle. Delete the file to resume.
 
 To run it on your own machine instead, use `python -m zbot run --hours 8`. The ledger has
 the same format, so you can copy it between machines.
@@ -178,5 +183,9 @@ data/ciphers/        verified transcriptions and variants (credits in NOTICE.md)
 - **The null model** shuffles the symbol order, which keeps the symbol counts. It asks
   whether the repeat pattern and order are more English-compatible than chance. It does
   not ask whether a decode *means* something.
+- **Pre-registration.** A targeted test (queue file or built-in) runs only once its spec is
+  committed to git and unchanged since; each result row records the commit that registered
+  it (`registered`). The dashboard's queue commits do this automatically. Uncommitted specs
+  are left queued, not skipped. `ZBOT_ALLOW_UNREGISTERED=1` bypasses this for local experiments.
 - **This bot does not identify anyone.** A name that fits Z13's pattern is not evidence
   about a person: hundreds of names fit.

@@ -71,17 +71,59 @@ def next_explore(rows: list[dict]) -> dict | None:
     return None
 
 
-def next_spec() -> dict | None:
+def registration(spec: dict) -> dict | None:
+    """Pre-registration: the spec's file must be tracked by git and unchanged since its last
+    commit. Returns which commit registered it, or None if it is not registered."""
+    path = spec.get("source") or "zbot/hypotheses.py"  # built-ins live in code
+
+    def git(*args: str) -> subprocess.CompletedProcess:
+        return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=False)
+    try:
+        if git("ls-files", "--error-unmatch", "--", path).returncode != 0:
+            return None
+        if git("diff", "--quiet", "HEAD", "--", path).returncode != 0:
+            return None
+        if git("diff", "--quiet", "--cached", "--", path).returncode != 0:
+            return None
+        out = git("log", "-1", "--format=%H%x09%cI", "--", path)
+    except OSError:  # git not installed, or ROOT missing
+        return None
+    if out.returncode != 0 or "\t" not in out.stdout:
+        return None
+    sha, when = out.stdout.strip().split("\t", 1)
+    return {"path": path, "commit": sha, "committed_at": when}
+
+
+def explore_paused() -> bool:
+    """Owner switch: a committed hypotheses/EXPLORE_PAUSED file stops idea generation."""
+    return (ROOT / "hypotheses" / "EXPLORE_PAUSED").exists()
+
+
+def next_spec(skip=()) -> dict | None:
     """Next queued test, else a NEW exploration idea (never one that already ran).
-    Returns None when exploration has nothing new left."""
-    p = pending()
+    Returns None when exploration has nothing new left, or is paused. `skip` holds ids to
+    pass over."""
+    p = [s for s in pending() if s["id"] not in skip]
     if p:
         return p[0]
+    if explore_paused():
+        return None
     return next_explore(ledger())
 
 
-PILOT = {"nulls": 9, "controls": 8, "extend_nulls": 0}
-PILOT_MIN_POWER = 0.25
+PILOT = {"nulls": 9, "controls": 20, "extend_nulls": 0}
+PILOT_MIN_LOWER = 0.2  # same as the family filter's report.MIN_POWER
+
+
+def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """Wilson score interval for k successes in n trials."""
+    if n <= 0:
+        return 0.0, 1.0
+    p = k / n
+    d = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / d
+    return max(0.0, c - h), min(1.0, c + h)
 
 
 def _run(spec: dict, workers, log) -> dict:
@@ -89,12 +131,17 @@ def _run(spec: dict, workers, log) -> dict:
     the pilot result is recorded (as untestable) instead of spending a full test."""
     if spec["id"].startswith("explore."):
         pilot = evaluate.run(dict(spec, **PILOT), workers=workers, log=log)
-        if pilot.get("power") is not None and pilot["power"] < PILOT_MIN_POWER:
+        lower = None
+        if pilot.get("power") is not None:
+            n = PILOT["controls"]
+            lower = wilson(round(pilot["power"] * n), n)[0]
+        if lower is not None and lower < PILOT_MIN_LOWER:
             pilot["spec"] = spec
             pilot["spec_hash"] = evaluate._spec_hash(spec)
             pilot["pilot"] = True
-            pilot["verdict"] = ("UNTESTABLE: power pilot (8 genuine-text tests) found real text would not "
-                                "stand out; full test skipped")
+            pilot["verdict"] = (f"UNTESTABLE: power pilot (20 genuine-text tests) found real text would not "
+                                f"stand out (power {pilot['power']:.2f}, 95% lower bound {lower:.2f} < "
+                                f"{PILOT_MIN_LOWER}); full test skipped")
             return pilot
     return evaluate.run(spec, workers=workers, log=log)
 
@@ -139,14 +186,29 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
     deadline = time.time() + hours * 3600
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
     started_any = False
+    unregistered: set[str] = set()  # held back this run only; no ledger row, so a later commit picks them up
     while time.time() < deadline:
-        spec = next((s for s in pending() if s["id"] == only), None) if only else next_spec()
+        spec = next((s for s in pending() if s["id"] == only), None) if only else (next_spec(unregistered) if unregistered else next_spec())
+        if spec is None and only and only in unregistered:
+            return "idle"
         if spec is None:
             if only:
                 log(f"{only}: already done")
                 return "ok"
+            if explore_paused():
+                log("exploration paused (hypotheses/EXPLORE_PAUSED exists); queue work or delete the file")
             log("nothing new to explore; stopping (queue more work)")
             return "idle"
+        reg = None
+        if not spec["id"].startswith(("explore.", "calib.")):
+            reg = registration(spec)
+            if reg is None:
+                if os.environ.get("ZBOT_ALLOW_UNREGISTERED") == "1":
+                    reg = {"override": True}
+                else:
+                    log(f"{spec['id']}: not registered — commit it before running (pre-registration)")
+                    unregistered.add(spec["id"])
+                    continue
         lang = evaluate.lang_of(spec)
         if not spec["id"].startswith("calib.") and not calibrated(lang):
             cid = calib_id(lang)
@@ -156,6 +218,7 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
                 continue
             log(f"calibration for {lm.LANG_NAMES[lang]} has not run yet; running it first")
             spec = next(s for s in hypotheses.builtin() if s["id"] == cid)
+            reg = None
         if spec.get("invalid"):
             log(f"refusing {spec['id']}: {'; '.join(spec['invalid'])}")
             _skip(spec, "invalid spec: " + "; ".join(spec["invalid"]))
@@ -179,6 +242,7 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
             res = {"id": spec["id"], "spec_hash": evaluate._spec_hash(spec), "spec": spec,
                    "lang": evaluate.lang_of(spec), "lm": lm.fingerprint(evaluate.lang_of(spec)), "error": repr(e), "p": None, "power": None,
                    "verdict": "ERROR", "finished": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+        res["registered"] = reg
         with LEDGER.open("a") as f:
             f.write(json.dumps(res) + "\n")
         _publish()
