@@ -98,6 +98,11 @@ Limits:
 - If the bot runs out of work entirely, the run ends early and the chain pauses rather
   than starting an empty run every minute. Queue a test and start a run from the
   dashboard, or wait for the daily run.
+- Each exploration idea first runs a power pilot with 20 genuine-text controls and needs a
+  Wilson 95% lower bound of at least 0.2. That costs 12 more control searches per idea but
+  saves full tests that could not produce evidence.
+- To pause exploration, commit an empty `hypotheses/EXPLORE_PAUSED`; queued work still runs,
+  then the chain goes idle. Delete the file to resume.
 
 To run it on your own machine instead, use `python -m zbot run --hours 8`. The ledger has
 the same format, so you can copy it between machines.
