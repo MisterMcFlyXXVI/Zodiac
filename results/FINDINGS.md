@@ -3,6 +3,47 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-23 (later): Key habits, glyphs, 9,000 pre-registered Z13 phrases, evidence map
+
+**Zodiac's key habits add about 0 bits.** Habits learned from one solved key were used to predict the
+other (Z408 → Z340 and back): leave-one-out gain −0.018 bits per symbol, permutation p > 0.4. Of the 47
+symbols in both keys, 5 keep their letter, against 2.9 by chance (p = 0.16). Letter-shaped symbols don't
+encode their own letter more than chance. The one real habit: he used a letter's homophones evenly
+(Z408 p < 0.001, Z340 p = 0.012). Ceiling if every habit transferred: 1.7 bits for Z32, 0.45 for Z13.
+
+**Glyphs.** Every ambiguous reading was priced with `scripts/voi.py`. Z32's repeat pairs (C, O, open
+triangle) and the solid vs open triangles are readable on a 5100x7014 police photo of the original
+(zodiackillerciphers.com wiki), so the standard Z32 transcription stands. Z13's three circles are the
+largest open decision (about 8.4 bits, since three distinct symbols loosen the pattern); no image found above
+640x829 resolves them.
+
+**9,000 Z13 phrases, pre-registered.** Three lists built from Zodiac's own vocabulary (181 ordinary words;
+no names of any person) were committed and pushed (fork branch `prereg/z13-phrase-lists-v1`, commit
+`10f6e3d`, 16:26 UTC) before being checked. The decision rule is in `hypotheses/candidates/z13_phrase_lists_v1_PLAN.md`;
+`scripts/check_z13_phrase_lists.py` reproduces the check.
+
+| key | readings checked | fits |
+|---|---|---|
+| one symbol per letter (primary) | canonical, reversed, bracket_is_perp, circles_distinct | **0 of 9,000** on every reading |
+| homophonic | same | 2, both on circles_distinct (I CAN KILL A MAIL, I CAN TELL A MAIL) |
+
+The 2 homophonic fits are at chance. The circles_distinct reading leaves only 3 equal-letter constraints, and on
+2,000 decoys with that profile the list averages 0.44 fits (95th percentile 2). That baseline was computed after
+checking, because the pre-registered decoys used the canonical profile. One-slip fits (4) are exploratory
+and at chance. crosshair_null has 12 symbols, so no 13-letter phrase applies.
+
+**Evidence map** (`results/EVIDENCE_MAP.md`, `scripts/evidence_map.py`):
+- **Z32** pins about 12.2 bits of a message carrying roughly 32-48. Every source available today adds under 3. An
+  estimated 70-150 more symbols under the same key would close the gap (extrapolated; synthetic keys).
+- **Z13** pins at least 17.9 bits under one symbol per letter, about what a 13-letter message carries. None of
+  714,956 whole-word passages fit it, but neither do 97% of random patterns with Z13's profile (mean 0.03),
+  so that says nothing about whether it is English.
+- **Lists.** A committed list of up to roughly 200,000 Z13 candidates (4,500 for Z32) can still yield a
+  meaningful fit.
+
+**Next.** The two things that could change the picture are a primary-quality image of the 20 Apr 1970 letter
+(the circles) and more ciphertext under the same key. More computing or stronger scoring won't.
+
 ## 2026-11-23: Z32 as a "radians & inches" instruction: the map can't settle it
 
 **Question.** The 26 Jul 1970 letter says the Mt. Diablo code "concerns Radians & # inches along the
