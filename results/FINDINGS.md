@@ -3,6 +3,27 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-23 (evening): 119,803 pre-registered Z13 phrases, incl. symbols as dashes or blanks: 0 fits
+
+**A single one-slip fit is chance.** Allowing one encoding slip, the loose `circles_distinct` reading
+matches 1-4 phrases of a 9,000-phrase list against a *random* pattern of its profile, so the four
+v1 one-slip/homophonic fits there are all below their own chance mean. Chance rates must be measured
+on each reading's own repeat profile; the v1 canonical-profile baseline under-priced it ~100x.
+
+**C1 v2: 0 fits in all 23 confirmatory tests** (expected by chance: 0.041). Lists were pushed
+(`ad8e1e9`) before the check; `scripts/check_z13_phrase_lists_v2.py` verifies every hash first.
+- 13 letters: the 100,000 most probable phrases after "MY NAME IS" or at a sentence start, from a
+  word trigram model of brown + gutenberg with proper nouns excluded (no names can be generated),
+  deduplicated against everything tried before. Simple key on all 100k, homophonic on the top 15k.
+- Non-letter readings: each of Z13's 8 symbols as a blank (null) or a dash (word separator), 16
+  readings, 11 lists. 19 of their 32 tests could confirm a single hit; the rest are too loose.
+- Each test's size was chosen on decoys alone, so that one fit would be robustly notable.
+- Exploratory results are at chance (`circles_distinct` homophonic 24 vs 17.2 expected, p = 0.26).
+
+This covers the head of "Z13 is a common English phrase" (with C2's 0 of 714,956 corpus passages).
+It does not rule out English. Readings that turn on the three circled symbols can't be tested with
+lists at all; a primary-quality scan of those glyphs remains the most informative next step.
+
 ## 2026-11-23 (later): Key habits, glyphs, 9,000 pre-registered Z13 phrases, evidence map
 
 **Zodiac's key habits add about 0 bits.** Habits learned from one solved key were used to predict the
