@@ -32,6 +32,8 @@ every result with:
 |---|---|
 | **p** | How often shuffled copies of the cipher's own symbols score as well as the real cipher. The shuffled copy gets the same search: same read-order family, same pins. |
 | **power** | How often real text, enciphered under the same hypothesis, beats the 95th percentile of the real score and the nulls pooled together (the pooled cutoff doesn't depend on which score is real, so filtering on power doesn't bias p). The control ciphers are built to have *exactly* the real cipher's repeat profile (for Z13: one symbol three times, three symbols twice, four once). **Low power means the hypothesis cannot be tested at this length.** |
+| **power at alert bar** | The same power, measured at the strictness an alert really needs (0.05 divided by the number of confirmatory tests, about 0.004) instead of 0.05. It is usually lower and is the honest figure for "could this test ever alert?". Confirmatory rows only; shown as `–` elsewhere. |
+| **power 95% CI** | Range the true power plausibly lies in (Wilson interval); few controls mean a wide range. Confirmatory tests use 50 controls. |
 | **z** | Effect size against the null distribution. |
 | **p (Holm)** | p corrected for every hypothesis in the same tier (see below), so trying many ideas can't produce a false hit. |
 

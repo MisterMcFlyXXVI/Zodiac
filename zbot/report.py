@@ -9,7 +9,7 @@ from __future__ import annotations
 import os
 import pathlib
 
-from .evaluate import power_pooled, tier
+from .evaluate import power_at, power_ci, power_pooled, tier, wilson
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 RESULTS = pathlib.Path(os.environ.get("ZBOT_RESULTS_DIR", ROOT / "results"))
@@ -62,6 +62,15 @@ def write(rows: list[dict]) -> None:
         for r, a in zip(family, holm([r["p"] for r in family])):
             r["p_holm"] = a
 
+    m_conf = len([r for r in tested if r["tier"] == "confirmatory" and r["p_holm"] is not None])
+    for r in tested:
+        r["power_alert"] = None
+        if r["tier"] == "confirmatory" and m_conf and r.get("real_score") is not None \
+                and r.get("null_scores") and r.get("control_scores"):
+            r["power_alert"] = power_at(0.05 / m_conf, r["real_score"], r["null_scores"], r["control_scores"])
+        r["power_ci_now"] = (power_ci(r["power"], len(r["control_scores"]))
+                             if r["power"] is not None and r.get("control_scores") else r.get("power_ci"))
+
     lines = ["# Zodiac bot: results", "",
              "Generated from `results/ledger.jsonl`. Do not edit by hand.", "",
              f"Hypotheses run: {len(rs)} (excluding calibration: {len(tested)}).", "",
@@ -80,12 +89,19 @@ def write(rows: list[dict]) -> None:
                          f"{r.get('calib_accuracy', 0):.1%}, best: `{(r.get('top') or [{}])[0].get('plaintext', '')[:60]}`")
         lines.append("")
     lines += ["## Hypotheses", "",
-              "| id | tier | lang | family | p | p (Holm) | z | power | verdict | best decode |",
-              "|---|---|---|---|---|---|---|---|---|---|"]
+              "| id | tier | lang | family | p | p (Holm) | z | power | power 95% CI | power at alert bar | verdict | best decode |",
+              "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in sorted(tested, key=lambda r: r["p"]):
         best = (r.get("top") or [{}])[0]
         pw = "n/a" if r.get("power") is None else f"{r['power']:.2f}"
-        lines.append(f"| `{r['id']}` | {r['tier']} | {r.get('lang', 'en')} | {r.get('family_size', '?')} | {r['p']:.3f} | {"–" if r['p_holm'] is None else f"{r['p_holm']:.3f}"} | {r.get('z') or 0:+.1f} | {pw} | "
+        ci = r["power_ci_now"]
+        pci = "–" if not ci else f"{ci[0]:.2f}–{ci[1]:.2f}"
+        pa = "–"
+        if r["power_alert"] is not None:
+            n_c = len(r["control_scores"])
+            lo, hi = wilson(round(r["power_alert"] * n_c), n_c)
+            pa = f"{r['power_alert']:.2f} ({lo:.2f}–{hi:.2f})"
+        lines.append(f"| `{r['id']}` | {r['tier']} | {r.get('lang', 'en')} | {r.get('family_size', '?')} | {r['p']:.3f} | {"–" if r['p_holm'] is None else f"{r['p_holm']:.3f}"} | {r.get('z') or 0:+.1f} | {pw} | {pci} | {pa} | "
                      f"{r['verdict'].split(':')[0]} | `{best.get('plaintext', '')[:40]}` |")
     errs = [r for r in rs if r.get("verdict") == "ERROR" or r.get("verdict", "").startswith("SKIPPED")]
     if errs:
@@ -93,6 +109,7 @@ def write(rows: list[dict]) -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(lines) + "\n")
 
+    # Gating on power_alert (power at the Holm alpha) instead of power is the owner's call; the rule stays as is.
     hits = [r for r in tested if r["tier"] == "confirmatory" and r["p_holm"] is not None and r["p_holm"] < 0.05 and (r.get("power") or 0) >= 0.5]
     alert = ["# Alerts", ""]
     if not hits:

@@ -331,6 +331,56 @@ def power_pooled(real_score, null_scores, control_scores):
     return sum(c > q for c in control_scores) / len(control_scores)
 
 
+CONFIRM_CONTROLS = 50  # controls for confirmatory specs that don't set their own
+CONFIRM_FAMILY_GUESS = 12  # current confirmatory family size; alert bar alpha = 0.05 / this
+_EULER = 0.5772156649015329
+
+
+def gumbel_fit(scores):
+    """Method-of-moments Gumbel fit (mu, beta). Search scores are maxima over many
+    candidate readings, so the extreme-value (Gumbel) family is the natural tail model."""
+    a = np.asarray(scores, dtype=float)
+    beta = float(np.std(a, ddof=1)) * math.sqrt(6) / math.pi
+    return float(np.mean(a)) - _EULER * beta, beta
+
+
+def gumbel_quantile(fit, q):
+    mu, beta = fit
+    return mu - beta * math.log(-math.log(q))
+
+
+def power_at(alpha, real_score, null_scores, control_scores):
+    """Share of controls above the (1 - alpha) threshold of the pooled {real} + nulls.
+
+    Pooling keeps the threshold independent of p under the null (see power_pooled). With
+    enough pooled scores (>= 1/alpha + 1) the empirical quantile is used, otherwise a
+    Gumbel tail fit extrapolates it.
+    """
+    if not control_scores or not null_scores or real_score is None:
+        return None
+    pooled = np.append(np.asarray(null_scores, dtype=float), real_score)
+    if len(pooled) >= 1 / alpha + 1:
+        thr = float(np.quantile(pooled, 1 - alpha))
+    else:
+        thr = gumbel_quantile(gumbel_fit(pooled), 1 - alpha)
+    return sum(c > thr for c in control_scores) / len(control_scores)
+
+
+def wilson(k, n, z=1.96):
+    """Wilson score interval for k successes out of n."""
+    if not n:
+        return None
+    ph = k / n
+    d = 1 + z * z / n
+    c = (ph + z * z / (2 * n)) / d
+    h = z * math.sqrt(ph * (1 - ph) / n + z * z / (4 * n * n)) / d
+    return max(0.0, c - h), min(1.0, c + h)
+
+
+def power_ci(power, n):
+    return None if power is None or not n else wilson(round(power * n), n)
+
+
 def _task(args):
     kind, j, texts, spec, seed = args
     t0 = time.time()
@@ -351,7 +401,8 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
         extend_nulls: int | None = None, workers: int | None = None, log=print) -> dict:
     validate(spec)
     nulls = nulls if nulls is not None else spec.get("nulls", 19)
-    controls = controls if controls is not None else spec.get("controls", 10)
+    default_controls = CONFIRM_CONTROLS if tier(spec["id"]) == "confirmatory" else 10
+    controls = controls if controls is not None else spec.get("controls", default_controls)
     extend_nulls = extend_nulls if extend_nulls is not None else spec.get("extend_nulls", 99)
     workers = workers or os.cpu_count() or 1
     texts = real_texts(spec)
@@ -438,6 +489,7 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
         "z": z,
         "power": power,
         "power_basis": "pooled",
+        "power_ci": power_ci(power, len(ctrl)),
         "nulls_capped": nulls_capped,
         "dominance": real_dom,
         "null_dominance": null_doms,
@@ -445,6 +497,10 @@ def run(spec: dict, *, nulls: int | None = None, controls: int | None = None,
         "p_dominance": p_dom,
         "power_dominance": power_dom,
     }
+    if tier(spec["id"]) == "confirmatory":
+        a = 0.05 / CONFIRM_FAMILY_GUESS
+        out["power_alert"] = power_at(a, real[2], null_scores, [c[2] for c in ctrl])
+        out["power_alert_alpha"] = a
     if spec["id"].startswith("calib."):
         t = truth(spec)
         out["calib_accuracy"] = anneal.accuracy(top[0]["plaintext"], t) if (t and top) else 0.0
