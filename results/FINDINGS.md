@@ -3,6 +3,48 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-23: Z32 as a "radians & inches" instruction: the map can't settle it
+
+**Question.** The 26 Jul 1970 letter says the Mt. Diablo code "concerns Radians & # inches along the
+radians". The 26 Jun letter says the map's 0 "is to be set to Mag. N.". If Z32 is that instruction,
+could the map provide the missing information? A candidate would have to fit the cipher and also land
+somewhere meaningful when measured out on the map.
+
+**Method.** `scripts/z32_instruction_coverage.py` builds instruction sentences from templates
+(A RADIANS [AND] B INCHES, B INCHES ALONG RADIAN A, with openers, joins and tails). It counts how many
+fit Z32's repeats: under a homophonic key, only positions (0,25), (1,31) and (5,13) must match. The
+measure is how many distinct (radians, inches) **instructions** have at least one fitting wording.
+Coverage, not a candidate list: no reading is claimed.
+
+| grammar | sentences | fit (standard transcription) | fit (triangles merged) |
+|---|---|---|---|
+| broad: abbreviations, fractions, compass tails | 11.6 M | 4,705 (4.1e-4, about 2x random English) | 889 |
+| natural: full words, whole numbers, exactly 32 letters | 13,161 | **0** | 0 |
+| natural + 1-4 filler letters (as Zodiac padded Z408) | 35,657 | 57 of 91 instructions | 2 of 91 |
+
+- **Natural, unpadded instructions can't fit.** The 2nd and 32nd symbols are the same, but a plain
+  instruction's 2nd letter (thE, iT, bOmb, dIg) never matches its last (inchS, radianS, norTH). Chance
+  would predict about 3 fits; there are 0.
+- **With end padding, the cipher barely narrows the location.** 57 of the 91 whole-number instructions
+  (0-6 radians, 0-12 inches) keep a fitting wording. That is less than one bit about where the point is.
+- **Only one transcription choice matters:** whether the solid triangle (position 11) is the same symbol
+  as the open ones (1 and 31). Merged, 2 of 91 survive. Every image shows it solid, and Z408/Z340 treat
+  solid and open triangles as different symbols, so this variant is unlikely.
+
+**Why the map can't help.** No bomb was found, so the map has no known point to check a landing
+against. Any "meaningful" landing (a school, a station, a crime scene) would be chosen after seeing it.
+For that reason we did not plot the 57 instructions' landing points: doing so invites exactly that
+after-the-fact matching. Other map facts (hobbyist sources, not checked against the original):
+- scale about 6.4 mi/inch, stated without a source;
+- the dial reads 0/3/6/9 clockwise from magnetic north (about 17° E in 1970);
+- Zodiac's copy is a cropped Phillips 66 "San Francisco and Vicinity" inset;
+- the "#" in the PS is read as "#", "+" or a digit in different transcriptions.
+
+**Conclusion.** A two-channel (cipher + map) test of the radians reading is not feasible. Either the
+message is not a plain instruction, or Zodiac padded it, and then the cipher leaves most instructions
+open. Only new information would change this: a primary scan settling the "#" glyph and the triangle,
+or a way to confirm a landing point that was fixed before checking.
+
 ## 2026-11-21 (later): Case-grounded candidate tests
 
 Context-based ideas only help as short, specific candidate lists checked exactly. A fit is meaningful
