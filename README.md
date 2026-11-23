@@ -11,6 +11,9 @@ hypothesis it measures whether the real cipher looks any more like English than 
 When the queue is empty it generates new hypotheses, so it can keep going without anyone
 supervising it.
 
+**Collaborators:** start with [`docs/PRIOR_WORK.md`](docs/PRIOR_WORK.md) (what research and data this
+builds on, and what has already been tested) and [`results/FINDINGS.md`](results/FINDINGS.md).
+
 ## Why "test hypotheses" and not "crack harder"
 
 Z13 and Z32 are at or below the **unicity distance**: so few symbols that many different
