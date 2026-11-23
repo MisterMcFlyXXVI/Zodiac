@@ -1,0 +1,163 @@
+{
+ "lists": {
+  "persona": {
+   "size": 1500,
+   "sha256": "c72ea1ef9d5fa5e66802b9b5997c4ecb9654ce69005c322086d8faf969c7b536"
+  },
+  "taunt": {
+   "size": 2500,
+   "sha256": "b15b55f91b26f0ea76a28d2f41be262effe0ea6fc710b74aed65dc5d6b19251e"
+  },
+  "vocabcombo": {
+   "size": 5000,
+   "sha256": "454134e860612aa4093bc2ac0d8614c42231fd573b480c9918da1fa722625b1d"
+  }
+ },
+ "results": [
+  {
+   "list": "persona",
+   "reading": "canonical",
+   "length": 13,
+   "tested": 1500,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "persona",
+   "reading": "reversed",
+   "length": 13,
+   "tested": 1500,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "persona",
+   "reading": "bracket_is_perp",
+   "length": 13,
+   "tested": 1500,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "persona",
+   "reading": "circles_distinct",
+   "length": 13,
+   "tested": 1500,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": [
+    "I AM YOUR NEW MAN"
+   ]
+  },
+  {
+   "list": "persona",
+   "reading": "crosshair_null",
+   "length": 12,
+   "tested": 0,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "taunt",
+   "reading": "canonical",
+   "length": 13,
+   "tested": 2500,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "taunt",
+   "reading": "reversed",
+   "length": 13,
+   "tested": 2500,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "taunt",
+   "reading": "bracket_is_perp",
+   "length": 13,
+   "tested": 2500,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "taunt",
+   "reading": "circles_distinct",
+   "length": 13,
+   "tested": 2500,
+   "simple": [],
+   "homophonic": [
+    "I CAN KILL A MAIL",
+    "I CAN TELL A MAIL"
+   ],
+   "one_slip_simple": [
+    "I CAN GO THE MAIL"
+   ]
+  },
+  {
+   "list": "taunt",
+   "reading": "crosshair_null",
+   "length": 12,
+   "tested": 0,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "vocabcombo",
+   "reading": "canonical",
+   "length": 13,
+   "tested": 5000,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "vocabcombo",
+   "reading": "reversed",
+   "length": 13,
+   "tested": 5000,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "vocabcombo",
+   "reading": "bracket_is_perp",
+   "length": 13,
+   "tested": 5000,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  },
+  {
+   "list": "vocabcombo",
+   "reading": "circles_distinct",
+   "length": 13,
+   "tested": 5000,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": [
+    "A BOY IN THE ROAD",
+    "A COP IN THE ROAD"
+   ]
+  },
+  {
+   "list": "vocabcombo",
+   "reading": "crosshair_null",
+   "length": 12,
+   "tested": 0,
+   "simple": [],
+   "homophonic": [],
+   "one_slip_simple": []
+  }
+ ]
+}
