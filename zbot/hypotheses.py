@@ -155,9 +155,15 @@ def queued() -> list[dict]:
             spec.setdefault("id", p.stem)
             spec["source"] = str(p.relative_to(ROOT))
             if "invalid" not in spec:
-                problems = schema.check(spec)
+                try:
+                    problems = schema.check(spec)
+                except Exception as e:  # a wrongly typed field must not stop every run
+                    problems = [f"could not be checked ({type(e).__name__}: {e})"]
                 if problems:
                     spec["invalid"] = problems
+            if not isinstance(spec["id"], str):  # the runner uses ids as keys
+                spec["invalid"] = spec.get("invalid", []) + ["id must be a string"]
+                spec["id"] = f"user.{p.stem}"
             out.append(spec)
     return out
 

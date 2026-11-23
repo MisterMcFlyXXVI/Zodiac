@@ -5,3 +5,5 @@ data/corpus/
 data/lm/
 results/run.log
 live-results/
+.venv*/
+.env
