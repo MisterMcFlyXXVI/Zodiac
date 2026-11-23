@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import pathlib
+import re
 import subprocess
 import time
 
@@ -48,20 +49,35 @@ def _content(spec: dict) -> str:
                       sort_keys=True)
 
 
+def _explore_number(spec_id: str) -> int | None:
+    m = re.match(r"explore\.(\d+)\.", spec_id)
+    return int(m.group(1)) if m else None
+
+
+def next_explore(rows: list[dict]) -> dict | None:
+    """First exploration idea that has never run, or None if the next 500 all have.
+
+    Ideas are numbered, and numbers whose idea repeats an earlier test are skipped, so the
+    scan starts after the highest number used. Starting at the number of exploration rows
+    instead falls further behind with every skipped number, until the whole window is old
+    work and the bot wrongly reports that nothing is left."""
+    seen = {_content(r["spec"]) for r in rows if "spec" in r}
+    used = [n for n in (_explore_number(r["id"]) for r in rows) if n is not None]
+    start = max(used) + 1 if used else 0
+    for k in range(start, start + 500):
+        spec = hypotheses.explore(k)
+        if _content(spec) not in seen:
+            return spec
+    return None
+
+
 def next_spec() -> dict | None:
     """Next queued test, else a NEW exploration idea (never one that already ran).
     Returns None when exploration has nothing new left."""
     p = pending()
     if p:
         return p[0]
-    rows = ledger()
-    seen = {_content(r["spec"]) for r in rows if "spec" in r}
-    n = sum(1 for r in rows if r["id"].startswith("explore."))
-    for k in range(n, n + 500):
-        spec = hypotheses.explore(k)
-        if _content(spec) not in seen:
-            return spec
-    return None
+    return next_explore(ledger())
 
 
 PILOT = {"nulls": 9, "controls": 8, "extend_nulls": 0}
@@ -118,15 +134,19 @@ def _commit(msg: str) -> None:
 
 
 def run(hours: float, *, workers: int | None = None, commit: bool = False, only: str | None = None,
-        log=print) -> None:
+        log=print) -> str:
+    """Returns "idle" if it stopped because nothing is left to test, else "ok"."""
     deadline = time.time() + hours * 3600
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
     started_any = False
     while time.time() < deadline:
         spec = next((s for s in pending() if s["id"] == only), None) if only else next_spec()
         if spec is None:
-            log(f"{only}: already done" if only else "nothing new to explore; stopping (queue more work)")
-            return
+            if only:
+                log(f"{only}: already done")
+                return "ok"
+            log("nothing new to explore; stopping (queue more work)")
+            return "idle"
         lang = evaluate.lang_of(spec)
         if not spec["id"].startswith("calib.") and not calibrated(lang):
             cid = calib_id(lang)
@@ -149,7 +169,7 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
             # be first in line next run. (Estimates are rough, hence the 1.5x margin.)
             if est == est and est * 1.5 > left and est * 1.5 < hours * 3600:
                 log(f"{spec['id']} needs ~{est/60:.0f} min, only {left/60:.0f} min left; leaving it for the next run")
-                return
+                return "ok"
         started_any = True
         log(f"[{time.strftime('%H:%M:%S')}] {spec['id']}: {spec['title']}")
         _publish(current=spec)  # lets the dashboard show what is running right now
@@ -169,4 +189,5 @@ def run(hours: float, *, workers: int | None = None, commit: bool = False, only:
         if commit:
             _commit(f"zbot: {spec['id']} -> {res['verdict'].split(':')[0]}")
         if only:
-            return
+            return "ok"
+    return "ok"
