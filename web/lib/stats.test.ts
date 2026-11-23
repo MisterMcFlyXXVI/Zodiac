@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { holm, prepare, isAlert, nextScheduled, verdictKind, estimateSeconds } from "./stats.ts";
+import { holm, prepare, isAlert, powerPooled, nextScheduled, verdictKind, estimateSeconds } from "./stats.ts";
 import { checkSpec, slugify } from "./validate.ts";
 import { readFileSync } from "node:fs";
 import type { Status } from "./types.ts";
@@ -81,4 +81,35 @@ test("every bot suggestion passes the web checks", () => {
 
 test("slugify", () => {
   assert.equal(slugify("Z13 as Vietnamese — circles!"), "z13-as-vietnamese-circles");
+});
+
+test("exploratory rows never enter the confirmatory family and never alert", () => {
+  const base = { spec_hash: "x", spec: { id: "a" }, power: 0.9, verdict: "CANDIDATE SIGNAL: x" };
+  const rows = prepare([
+    ...[0, 1, 2, 3, 4].map((i) => ({ ...base, id: `explore.${i}`, p: 0.0001 })),
+    { ...base, id: "c1", p: 0.5 },
+  ]);
+  assert.equal(rows.find((r) => r.id === "c1")!.p_holm, 0.5);
+  assert.ok(rows.filter((r) => r.id.startsWith("explore.")).every((r) => !isAlert(r)));
+});
+
+test("confirmatory alert fires at p=1/1000 with 12 tests", () => {
+  const base = { spec_hash: "x", spec: { id: "a" }, power: 0.9, verdict: "CANDIDATE SIGNAL: x" };
+  const rows = prepare([
+    ...Array.from({ length: 11 }, (_, i) => ({ ...base, id: `c${i}`, p: 0.5 })),
+    { ...base, id: "hit", p: 0.001, power: 0.6 },
+  ]);
+  assert.deepEqual(rows.filter(isAlert).map((r) => r.id), ["hit"]);
+});
+
+test("powerPooled matches the hand value from the Python test", () => {
+  const nulls = [0, 1, 2, 3];
+  const controls = [2.5, 3.5, 4.5, 5.5];
+  assert.equal(powerPooled(10, nulls, controls), 0);
+  assert.equal(powerPooled(1.5, nulls, controls), 0.75);
+  assert.equal(powerPooled(1.5, nulls, []), null);
+  // nulls-only threshold would give 0.75 where real is the maximum
+  const r = prepare([{ id: "c", p: 0.01, power: 0.9, spec_hash: "x", spec: { id: "c" }, verdict: "NO SIGNAL: x",
+    real_score: 10, null_scores: nulls, control_scores: controls }]);
+  assert.equal(r[0].power, 0);
 });

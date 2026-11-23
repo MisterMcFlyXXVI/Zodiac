@@ -28,16 +28,51 @@ export function holm(ps: number[]): number[] {
   return adj;
 }
 
-/** Latest row per id, with Holm-adjusted p across all non-calibration tests. */
+export type Tier = "calibration" | "exploratory" | "confirmatory";
+
+export function tier(id: string): Tier {
+  if (id.startsWith("calib.")) return "calibration";
+  if (id.startsWith("explore.")) return "exploratory";
+  return "confirmatory";
+}
+
+/** numpy.quantile default (linear interpolation). */
+export function quantile(xs: number[], q: number): number {
+  const s = [...xs].sort((a, b) => a - b);
+  const pos = (s.length - 1) * q;
+  const lo = Math.floor(pos);
+  const hi = Math.min(lo + 1, s.length - 1);
+  return s[lo] + (s[hi] - s[lo]) * (pos - lo);
+}
+
+/** Share of controls above the 95th percentile of {real} + nulls; same as zbot/evaluate.py. */
+export function powerPooled(real: number, nulls: number[], controls: number[]): number | null {
+  if (!controls.length || !nulls.length) return null;
+  const q = quantile([...nulls, real], 0.95);
+  return controls.filter((c) => c > q).length / controls.length;
+}
+
+function effectivePower(r: LedgerRow): number | null {
+  if (r.real_score !== undefined && r.null_scores?.length && r.control_scores?.length) {
+    return powerPooled(r.real_score, r.null_scores, r.control_scores);
+  }
+  return r.power ?? null;
+}
+
+/** Latest row per id; Holm runs separately within each non-calibration tier, on pooled power. */
 export function prepare(rows: LedgerRow[]): Row[] {
   const latest = new Map<string, LedgerRow>();
   for (const r of rows) latest.set(r.id, r);
-  const all = [...latest.values()];
-  const tested = all.filter((r) => r.p !== null && r.p !== undefined && !r.id.startsWith("calib."));
-  // Same family as zbot/report.py: only tests that could see something (power >= 0.2).
-  const family = tested.filter((r) => r.power === null || r.power === undefined || r.power >= MIN_POWER);
-  const adj = holm(family.map((r) => r.p as number));
-  const holmById = new Map(family.map((r, i) => [r.id, adj[i]]));
+  const all = [...latest.values()].map((r) => ({ ...r, power: effectivePower(r) }));
+  const holmById = new Map<string, number>();
+  for (const t of ["exploratory", "confirmatory"] as Tier[]) {
+    // Same family as zbot/report.py: tests of this tier that could see something (power >= 0.2).
+    const family = all.filter(
+      (r) => r.p !== null && r.p !== undefined && tier(r.id) === t && (r.power === null || r.power >= MIN_POWER),
+    );
+    const adj = holm(family.map((r) => r.p as number));
+    family.forEach((r, i) => holmById.set(r.id, adj[i]));
+  }
   return all.map((r) => ({
     ...r,
     p_holm: holmById.get(r.id) ?? null,
@@ -45,9 +80,9 @@ export function prepare(rows: LedgerRow[]): Row[] {
   }));
 }
 
-/** An alert: survives multiple-comparison correction AND the test had power to see it. */
+/** An alert: confirmatory, survives correction within its tier, AND the test had power to see it. */
 export function isAlert(r: Row): boolean {
-  return r.p_holm !== null && r.p_holm < 0.05 && (r.power ?? 0) >= 0.5;
+  return tier(r.id) === "confirmatory" && r.p_holm !== null && r.p_holm < 0.05 && (r.power ?? 0) >= 0.5;
 }
 
 export function cipherLabel(c: Spec["cipher"]): string {

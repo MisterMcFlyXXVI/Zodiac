@@ -31,12 +31,18 @@ every result with:
 | quantity | meaning |
 |---|---|
 | **p** | How often shuffled copies of the cipher's own symbols score as well as the real cipher. The shuffled copy gets the same search: same read-order family, same pins. |
-| **power** | How often real text, enciphered under the same hypothesis, beats the nulls. The control ciphers are built to have *exactly* the real cipher's repeat profile (for Z13: one symbol three times, three symbols twice, four once). **Low power means the hypothesis cannot be tested at this length.** |
+| **power** | How often real text, enciphered under the same hypothesis, beats the 95th percentile of the real score and the nulls pooled together (the pooled cutoff doesn't depend on which score is real, so filtering on power doesn't bias p). The control ciphers are built to have *exactly* the real cipher's repeat profile (for Z13: one symbol three times, three symbols twice, four once). **Low power means the hypothesis cannot be tested at this length.** |
 | **z** | Effect size against the null distribution. |
-| **p (Holm)** | p corrected for *every* hypothesis the bot has ever run, so trying many ideas can't produce a false hit. |
+| **p (Holm)** | p corrected for every hypothesis in the same tier (see below), so trying many ideas can't produce a false hit. |
 
-A hypothesis reaches `results/ALERTS.md` only if it survives the Holm correction *with*
-power ≥ 0.5. Even then it is a lead for a human to check, not a solution.
+Tests come in tiers by id. `explore.*` is screening: it gets its own Holm family and never
+alerts. A low exploratory p means "queue this as a real test". Everything else (not `calib.*`)
+is confirmatory and gets a separate, small Holm family. A confirmatory test that still looks
+significant (p ≤ 0.05) adds nulls in stages (499, then 999), stopping once 5 nulls score as well
+as the real cipher, so the smallest possible p (1/1000) can clear the Holm correction.
+
+A confirmatory hypothesis reaches `results/ALERTS.md` only if it survives its Holm correction
+*with* power ≥ 0.5. Even then it is a lead for a human to check, not a solution.
 
 ## Calibration
 

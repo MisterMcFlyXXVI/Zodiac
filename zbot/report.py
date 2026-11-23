@@ -9,6 +9,8 @@ from __future__ import annotations
 import os
 import pathlib
 
+from .evaluate import power_pooled, tier
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 RESULTS = pathlib.Path(os.environ.get("ZBOT_RESULTS_DIR", ROOT / "results"))
 OUT = RESULTS / "REPORT.md"
@@ -29,23 +31,36 @@ def holm(ps: list[float]) -> list[float]:
     return adj
 
 
+def effective_power(r: dict):
+    """Pooled-threshold power when the row has the raw scores, else the stored power."""
+    if r.get("real_score") is not None and r.get("null_scores") and r.get("control_scores"):
+        return power_pooled(r["real_score"], r["null_scores"], r["control_scores"])
+    return r.get("power")
+
+
 def write(rows: list[dict]) -> None:
     # Latest result per (id) wins.
     latest: dict[str, dict] = {}
     for r in rows:
         latest[r["id"]] = r
     rs = list(latest.values())
-    tested = [r for r in rs if r.get("p") is not None and not r["id"].startswith("calib.")]
-    # Correction family: tests that could see something. A test with power < MIN_POWER can't
-    # yield an alert anyway, and power is measured on genuine-text controls independently of
-    # the real cipher's score, so filtering on it doesn't cherry-pick p-values (independent
-    # filtering). Untestable tests get no corrected p.
-    family = [r for r in tested if r.get("power") is None or r["power"] >= MIN_POWER]
-    adj = holm([r["p"] for r in family])
+    for r in rs:
+        r["power"] = effective_power(r)
+        r["tier"] = tier(r["id"])
+    tested = [r for r in rs if r.get("p") is not None and r["tier"] != "calibration"]
+    # Correction families: Holm runs separately within each tier (exploratory, confirmatory),
+    # so a large screening sweep cannot dilute a targeted test. Within a tier, the family is
+    # tests with power >= MIN_POWER. Power uses a threshold from the pooled {real} + nulls
+    # scores. Under the null the real score is exchangeable with the nulls, so that threshold
+    # does not depend on which score is real, and the filter is independent of p under the
+    # null. Filtering on a nulls-only threshold would not be, since the same nulls set p.
+    # Untestable tests get no corrected p.
     for r in tested:
         r["p_holm"] = None
-    for r, a in zip(family, adj):
-        r["p_holm"] = a
+    for t in ("exploratory", "confirmatory"):
+        family = [r for r in tested if r["tier"] == t and (r["power"] is None or r["power"] >= MIN_POWER)]
+        for r, a in zip(family, holm([r["p"] for r in family])):
+            r["p_holm"] = a
 
     lines = ["# Zodiac bot: results", "",
              "Generated from `results/ledger.jsonl`. Do not edit by hand.", "",
@@ -53,7 +68,9 @@ def write(rows: list[dict]) -> None:
              "How to read this: **p** compares the real cipher with shuffled copies of its own symbols. "
              "**power** is how often genuine English, enciphered the same way, beats the nulls. "
              "If power is low, a low or high p means nothing. "
-             "**p (Holm)** corrects for every hypothesis the bot has tried.", ""]
+             "**p (Holm)** corrects within the row's tier. "
+             "Exploration is screening only and never alerts: a low exploratory p should be re-run as a "
+             "queued (confirmatory) test.", ""]
     cal = [r for r in rs if r["id"].startswith("calib.")]
     if cal:
         lines += ["## Calibration", ""]
@@ -63,12 +80,12 @@ def write(rows: list[dict]) -> None:
                          f"{r.get('calib_accuracy', 0):.1%}, best: `{(r.get('top') or [{}])[0].get('plaintext', '')[:60]}`")
         lines.append("")
     lines += ["## Hypotheses", "",
-              "| id | lang | family | p | p (Holm) | z | power | verdict | best decode |",
-              "|---|---|---|---|---|---|---|---|---|"]
+              "| id | tier | lang | family | p | p (Holm) | z | power | verdict | best decode |",
+              "|---|---|---|---|---|---|---|---|---|---|"]
     for r in sorted(tested, key=lambda r: r["p"]):
         best = (r.get("top") or [{}])[0]
         pw = "n/a" if r.get("power") is None else f"{r['power']:.2f}"
-        lines.append(f"| `{r['id']}` | {r.get('lang', 'en')} | {r.get('family_size', '?')} | {r['p']:.3f} | {"–" if r['p_holm'] is None else f"{r['p_holm']:.3f}"} | {r.get('z') or 0:+.1f} | {pw} | "
+        lines.append(f"| `{r['id']}` | {r['tier']} | {r.get('lang', 'en')} | {r.get('family_size', '?')} | {r['p']:.3f} | {"–" if r['p_holm'] is None else f"{r['p_holm']:.3f}"} | {r.get('z') or 0:+.1f} | {pw} | "
                      f"{r['verdict'].split(':')[0]} | `{best.get('plaintext', '')[:40]}` |")
     errs = [r for r in rs if r.get("verdict") == "ERROR" or r.get("verdict", "").startswith("SKIPPED")]
     if errs:
@@ -76,7 +93,7 @@ def write(rows: list[dict]) -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n".join(lines) + "\n")
 
-    hits = [r for r in tested if r["p_holm"] is not None and r["p_holm"] < 0.05 and (r.get("power") or 0) >= 0.5]
+    hits = [r for r in tested if r["tier"] == "confirmatory" and r["p_holm"] is not None and r["p_holm"] < 0.05 and (r.get("power") or 0) >= 0.5]
     alert = ["# Alerts", ""]
     if not hits:
         alert.append("None. No hypothesis survives correction for multiple comparisons with adequate power.")
