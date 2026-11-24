@@ -1,0 +1,571 @@
+{
+ "seed": 20261123,
+ "n_decoys": 2000,
+ "alpha_family": 0.05,
+ "n_tests": 12,
+ "profiles": {
+  "canonical": [
+   3,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1
+  ],
+  "reversed": [
+   3,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1
+  ],
+  "bracket_is_perp": [
+   3,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1
+  ],
+  "circles_distinct": [
+   2,
+   2,
+   2,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "crosshair_null": [
+   3,
+   2,
+   2,
+   2,
+   1,
+   1,
+   1
+  ]
+ },
+ "naive_notable_count": 4,
+ "priced_notable_count": 0,
+ "pricing": {
+  "persona": {
+   "canonical": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.009,
+     "p99": 0.0,
+     "max": 3,
+     "frac_ge1": 0.007,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.10799999999999998,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "reversed": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.009,
+     "p99": 0.0,
+     "max": 3,
+     "frac_ge1": 0.007,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.10799999999999998,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "bracket_is_perp": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.009,
+     "p99": 0.0,
+     "max": 3,
+     "frac_ge1": 0.007,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.10799999999999998,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "circles_distinct": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0175,
+     "p99": 1.0,
+     "max": 2,
+     "frac_ge1": 0.0135,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.21000000000000002,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 1,
+     "fits": [
+      "I AM YOUR NEW MAN"
+     ],
+     "expected": 1.2335,
+     "p99": 9.0,
+     "max": 24,
+     "frac_ge1": 0.479,
+     "pval": 0.47926036981509246,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 14.802,
+     "notable": false,
+     "naive_notable": true
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.142,
+     "p99": 3.0,
+     "max": 10,
+     "frac_ge1": 0.089,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 1.7039999999999997,
+     "notable": false,
+     "naive_notable": false
+    }
+   }
+  },
+  "taunt": {
+   "canonical": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0315,
+     "p99": 1.0,
+     "max": 7,
+     "frac_ge1": 0.016,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.378,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0015,
+     "p99": 0.0,
+     "max": 2,
+     "frac_ge1": 0.001,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.018000000000000002,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "reversed": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0315,
+     "p99": 1.0,
+     "max": 7,
+     "frac_ge1": 0.016,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.378,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0015,
+     "p99": 0.0,
+     "max": 2,
+     "frac_ge1": 0.001,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.018000000000000002,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "bracket_is_perp": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0315,
+     "p99": 1.0,
+     "max": 7,
+     "frac_ge1": 0.016,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.378,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0015,
+     "p99": 0.0,
+     "max": 2,
+     "frac_ge1": 0.001,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.018000000000000002,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "circles_distinct": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.02,
+     "p99": 0.0,
+     "max": 6,
+     "frac_ge1": 0.0095,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.24,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 1,
+     "fits": [
+      "I CAN GO THE MAIL"
+     ],
+     "expected": 1.429,
+     "p99": 15.009999999999991,
+     "max": 113,
+     "frac_ge1": 0.3505,
+     "pval": 0.35082458770614694,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 17.148,
+     "notable": false,
+     "naive_notable": true
+    },
+    "homophonic": {
+     "observed": 2,
+     "fits": [
+      "I CAN KILL A MAIL",
+      "I CAN TELL A MAIL"
+     ],
+     "expected": 0.4855,
+     "p99": 8.0,
+     "max": 83,
+     "frac_ge1": 0.132,
+     "pval": 0.07446276861569215,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 5.826,
+     "notable": false,
+     "naive_notable": true
+    }
+   }
+  },
+  "vocabcombo": {
+   "canonical": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.037,
+     "p99": 1.0,
+     "max": 9,
+     "frac_ge1": 0.017,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.44399999999999995,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "reversed": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.037,
+     "p99": 1.0,
+     "max": 9,
+     "frac_ge1": 0.017,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.44399999999999995,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "bracket_is_perp": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.037,
+     "p99": 1.0,
+     "max": 9,
+     "frac_ge1": 0.017,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.44399999999999995,
+     "notable": false,
+     "naive_notable": false
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.0,
+     "p99": 0.0,
+     "max": 0,
+     "frac_ge1": 0.0,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.0,
+     "notable": false,
+     "naive_notable": false
+    }
+   },
+   "circles_distinct": {
+    "exact": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.039,
+     "p99": 1.0,
+     "max": 7,
+     "frac_ge1": 0.0195,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 0.46799999999999997,
+     "notable": false,
+     "naive_notable": false
+    },
+    "slip": {
+     "observed": 2,
+     "fits": [
+      "A BOY IN THE ROAD",
+      "A COP IN THE ROAD"
+     ],
+     "expected": 3.9985,
+     "p99": 33.0,
+     "max": 60,
+     "frac_ge1": 0.6125,
+     "pval": 0.4877561219390305,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 47.982,
+     "notable": false,
+     "naive_notable": true
+    },
+    "homophonic": {
+     "observed": 0,
+     "fits": [],
+     "expected": 0.354,
+     "p99": 7.009999999999991,
+     "max": 21,
+     "frac_ge1": 0.123,
+     "pval": 1.0,
+     "alpha_per_test": 0.004166666666666667,
+     "family_expected": 4.247999999999999,
+     "notable": false,
+     "naive_notable": false
+    }
+   }
+  }
+ }
+}
