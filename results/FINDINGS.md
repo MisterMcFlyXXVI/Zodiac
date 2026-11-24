@@ -3,6 +3,32 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-24: Four negative results: one-slip fits, key structure, shared-key power, initials
+
+**One-slip fits are chance.** Allowing one substituted position, the 4 one-slip/homophonic fits of the
+9,000-phrase lists look like hits under "any fit counts". Priced on each reading's own repeat profile
+(2,000 decoys per reading, 12 declared cells, Bonferroni), none is notable: naive 4, priced 0. The loose
+`circles_distinct` profile expects 1-4 one-slip fits by chance (tail 33). `scripts/slip_rule.py` is the rule,
+`scripts/price_one_slip.py` reproduces `results/one_slip_pricing/`.
+
+**No shift or keyword structure in the solved keys.** Among letter-shaped symbols of Z408 and Z340, glyph
+classes taken from descriptions only (hashed before any statistic): a constant shift (T1) and a keyword-mixed
+order for upright (T2) and mirrored/rotated glyphs (T3), 100,000 shuffles each. Six tests, p = 0.33-0.97, none
+near the 0.0083 threshold. Sets are only 12-28 symbols, so only a near-complete rule would show.
+`scripts/key_structure.py`, `results/key_structure/`.
+
+**A shared Z13/Z32 key can't be tested with a 5-gram solver.** On synthetic pairs (40 shared, 40 independent
+key; Z340-like homophone counts), linking the shared symbols and comparing the joint solver score against
+fake links detects the shared key 7.5% of the time at alpha 0.05 (95% CI 2.6-19.9%; 0% at 0.01) with a
+well-calibrated 5% false-positive rate. The test has no power, so it was not run on the real ciphers. A stronger
+plaintext prior would have to show power on this bench first. `scripts/shared_key_power.py` (full run ~40 min),
+`results/shared_key_power/`.
+
+**"Z13 is word initials" is pattern-neutral.** Windows of 13 letters fitting Z13's simple-key repeat pattern:
+2 of 3,107,653 word-initial windows (brown + gutenberg) against 2 of 13,672,048 running-text windows. The
+rates' 95% intervals overlap (Bayes factor 4.4 from two hits each), so the pattern can't favour either.
+`scripts/z13_initials_rate.py`, `results/z13_initials_rate/`.
+
 ## 2026-11-23 (evening): 119,803 pre-registered Z13 phrases, incl. symbols as dashes or blanks: 0 fits
 
 **A single one-slip fit is chance.** Allowing one encoding slip, the loose `circles_distinct` reading
