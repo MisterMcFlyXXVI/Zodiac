@@ -1,1 +1,0 @@
-{"id": "c8", "p": 0.5, "power": 0.9, "spec": {"title": "t"}, "top": [{"plaintext": "x", "order": "o", "score": 1.0}], "verdict": "CANDIDATE SIGNAL: x", "tier": "confirmatory", "p_holm": 1.0, "power_alert": null, "power_ci_now": null}
