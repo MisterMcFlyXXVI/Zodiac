@@ -7,11 +7,14 @@ to get them.
 |---|---|---|---|---|---|---|
 | Primary | `P09_p210.png` | FBI Vault release "The Zodiac Killer", Part 09, p. 210 (FBI lab item Qc46) | Qc46 | 1276x2084 | bilevel, ~150 ppi | 32 |
 | Replication | `P09_p041.png` | same PDF, p. 41 (photocopy of the same letter, labelled "Bus Bomb Letter") | | 1272x1650 | bilevel, ~150 ppi | 31 |
-| Replication (low resolution, not used by the scripts) | `Zodiac-name.gif` | Wikimedia Commons File:Zodiac-name.gif (credited there to zodiackiller.com) | | 640x829 | binarized | ~12 |
+| Replication (low resolution, not used by the scripts) | `Zodiac-name.gif` | Wikimedia Commons File:Zodiac-name.gif (credited there to zodiackiller.com) | | 640x829 | binarized | 19-21 (positions 5, 7, 9) |
 
 Both PDF pages are photocopies of the 20 Apr 1970 letter (page 1, with the SFPD ruler stamp on p. 210). They are
-the sharpest public images of Z13's circles found (about 32 px per circled glyph against about 12 px on the best
-earlier public scan).
+the sharpest public images of Z13's circles found (about 29-32 px per circled glyph against 19-21 px on the best
+earlier public scan, which is also binarized). The public-scan widths were measured with
+`scripts/z13_circles/glyph_widths.py Zodiac-name.gif --band 160 205` on the full 640x829 file (sha256
+`13996b1f1f4c1e0a02c97795458749361e76e08578741c105c1298a2d70ec115`): positions 5, 7, 9 are 21, 20 and 19 px
+wide. An earlier figure of ~12 px, measured on a 500 px thumbnail, was wrong.
 
 For I1b and I1c the Z408 and Z340 look-alike benchmark uses four more pages of the same PDF: pp. 171, 176 and 180
 (the three Z408 parts) and p. 196 (Z340, item Qc32), rendered at 150 ppi as `P09-171.png` etc.

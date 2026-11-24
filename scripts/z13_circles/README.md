@@ -14,6 +14,7 @@ see `results/z13_circles/IMAGES.md` for how to fetch them; the run scripts take 
 | `run_i1c.py` | Metric tournament (`bench`) and its single application to the circles (`circles`) |
 | `robustness.py` | Exploratory robustness checks |
 | `common.py` | Paths, hash check, page arguments |
+| `glyph_widths.py` | Glyph widths on one line of a scan (compares image resolution; see `IMAGES.md`) |
 
 Do not edit `measure.py` or `metrics.py`: their hashes are part of the pre-registration. Note that `metrics.py`
 (byte-identical to the sealed file) inserts an absolute path from the original workspace at the front of

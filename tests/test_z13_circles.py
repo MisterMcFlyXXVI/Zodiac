@@ -327,3 +327,15 @@ def test_auc():
     check(MT.auc([2, 3], [1, 1]) == 1.0, "auc perfect")
     check(MT.auc([1, 1], [1, 1]) == 0.5, "auc ties -> 0.5")
     check(abs(MT.auc([1, 3], [2]) - 0.5) < 1e-12 and abs(MT.auc([1, 2, 3], [2, 4]) - (1.5 / 6)) < 1e-12, "auc known lists")
+
+
+def test_glyph_widths_on_synthetic_line():
+    gw = _load("glyph_widths")
+    img = Image.new("L", (200, 40), 255)
+    d = ImageDraw.Draw(img)
+    d.ellipse([10, 10, 30, 30], outline=0, width=2)     # 21 px wide ring
+    d.rectangle([60, 12, 71, 28], fill=0)               # 12 x 17 block
+    d.ellipse([100, 8, 128, 32], outline=0, width=3)    # 29 px wide ring
+    boxes = gw.glyph_boxes(np.asarray(img) < 128)
+    assert [(b["width"], b["height"]) for b in boxes] == [(21, 21), (12, 17), (29, 25)]
+    assert [b["x0"] for b in boxes] == [10, 60, 100]

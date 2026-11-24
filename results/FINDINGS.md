@@ -7,8 +7,8 @@ and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
 **The question.** Z13's circled glyphs sit at positions 5, 7 and 9. The repeat pattern alone favours three
 distinct symbols (about 100:1 under the near-simple key Z13 most likely used), but if they are one symbol the
-pattern changes completely. Only the glyph shapes can say, and the best public scan (~12 px per circle) was too
-small. The FBI's released file (Vault, "The Zodiac Killer", Part 09) holds photocopies of the 20 Apr 1970 letter
+pattern changes completely. Only the glyph shapes can say, and the best public scan (19-21 px per circle, binarized) was too
+small to settle it. The FBI's released file (Vault, "The Zodiac Killer", Part 09) holds photocopies of the 20 Apr 1970 letter
 (lab item Qc46) at ~150 ppi bilevel: ~32 px per circle on p. 210 and ~31 px on p. 41. Image provenance and how to
 fetch the pages: `results/z13_circles/IMAGES.md`.
 
@@ -166,7 +166,8 @@ Images (update): the Wikimedia Commons scan of the 20 Apr 1970 letter (binarized
 at 7x. All three circled glyphs (positions 5, 7, 9) share one construction: heavy circle, inner small
 top loop over a lower part split in two (circled 8 / Taurus). Differences are tilt, ovalness and size,
 typical of handwriting; no added, missing or differently shaped inner stroke. This supports reading them
-as ONE symbol (the standard transcription), moderately: each circle is ~12 px wide. The hooked
+as ONE symbol (the standard transcription), moderately: each circle is ~12 px wide (corrected 2026-11-24: 19-21 px on the full 640x829 file;
+the ~12 px came from the 500 px thumbnail; `scripts/z13_circles/glyph_widths.py`). The hooked
 upside-down T (position 10) shows its base curling up at the right, as transcribed. The other Commons
 Z13 image ("My Name Is....Zodiac Cipher.jpg") is a modern redrawing made for a suspect theory, not
 evidence. The environment service refused the FBI vault and Zodiac research sites; Wikimedia was allowed.

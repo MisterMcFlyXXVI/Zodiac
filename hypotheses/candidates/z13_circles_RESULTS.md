@@ -6,7 +6,7 @@ sealed before it touched a real image (1f041bc, 01:24Z); boxes and deviations sa
 ## Images (FBI released Zodiac file, Part 09)
 
 - **Primary:** p210, photocopy of the 20 Apr 1970 letter (lab item Qc46), bilevel ~150 ppi, circles 29-32 px wide
-  (best public scan: ~12 px).
+  (best public scan: about 20 px (19-21 px; corrected 2026-11-24, earlier given as ~12 px)).
 - **Replication:** p41, a second photocopy ("Bus Bomb Letter").
 
 ## Shape distance D (1 − best overlap after small rotation/scale; lower = more alike)
