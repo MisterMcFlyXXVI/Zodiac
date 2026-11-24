@@ -3,6 +3,17 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-24: Field survey, Z32 claims audit, corrections
+
+- `results/FIELD_SURVEY.md`: prior work on Z13/Z32 (Z340 solvers, von zur Gathen, Oranchak, winchxyz, nibzard)
+  and where our results stand. The field hit the same wall; winchxyz independently reached most of our conclusions.
+- `results/FRONTIER.md`: untried routes, updated with what has since been tested (shared key: not testable with a
+  5-gram solver; key structure: none).
+- `results/CLAIMS_AUDIT_Z32.md`: Foxon 2023 and Allen 2024 evaluated. Neither has a null model; 20 of 23,040
+  orderings of Allen's own six words fit Z32 by chance (`scripts/audit_z32_word_orders.py`).
+- Corrections below, marked in place: the map scale (the printed 6.4 mi/inch is ~9% long; ~7.0-7.2 is right) and the
+  scope of the "12 of 12" solver result (true for Z32, objective-dependent for 13-letter ciphers).
+
 ## 2026-11-23 (evening): 119,803 pre-registered Z13 phrases, incl. symbols as dashes or blanks: 0 fits
 
 **A single one-slip fit is chance.** Allowing one encoding slip, the loose `circles_distinct` reading
@@ -98,6 +109,9 @@ against. Any "meaningful" landing (a school, a station, a crime scene) would be 
 For that reason we did not plot the 57 instructions' landing points: doing so invites exactly that
 after-the-fact matching. Other map facts (hobbyist sources, not checked against the original):
 - scale about 6.4 mi/inch, stated without a source;
+  (corrected 2026-11-24: the printed scale bar is ~9% long; ~7.0-7.2 ground miles per inch, and true north is
+  ~4.6 deg clockwise of map-up, per a 16 May 2026 forum measurement confirmed by winchxyz 2026; 1970 declination
+  at Mt. Diablo 16 deg 53 min E (IGRF), so magnetic north ~21.5 deg clockwise of map-up);
 - the dial reads 0/3/6/9 clockwise from magnetic north (about 17° E in 1970);
 - Zodiac's copy is a cropped Phillips 66 "San Francisco and Vicinity" inset;
 - the "#" in the PS is read as "#", "+" or a digit in different transcriptions.
@@ -155,6 +169,9 @@ found a reading that scores **higher than the true plaintext in 12 of 12** cases
 letter-pattern and word scoring, typically by 20-40 nats (e.g. truth `BYTHATTIMEBARCOHADDISPOSEDOFITAT`
 at -82, solver's `ITWASAPERSOFTHELANDABOUTTHEYCAMP` at -47). Z13-like ciphers under a one-to-one
 key: 11-12 of 12.
+
+*(Annotation 2026-11-24: holds for Z32, where 0 of 12 were recovered under any objective (winchxyz 2026, section 3.3).
+For 13-letter simple-substitution ciphers it depends on the objective: a 6-gram likelihood recovers 4 of 12.)*
 
 So with a free key, many readings are *more* English than the real message. No scoring tweak or
 extra computation can recover it. **Only constraints on the key** (or new ciphertext) can. This
