@@ -107,6 +107,17 @@ message is not a plain instruction, or Zodiac padded it, and then the cipher lea
 open. Only new information would change this: a primary scan settling the "#" glyph and the triangle,
 or a way to confirm a landing point that was fixed before checking.
 
+## 2026-11-24: The one exploratory "candidate signal" did not replicate
+
+`explore.807.z32.columnar10` (Z32 under 60 random width-10 column orders) gave p = 0.01 against 99
+nulls (z = 3.6), power 0.33 on 6 controls; exploratory Holm p = 1.0 over ~160 testable screens, so
+about one such result was expected by chance. Following the tier rules, the single best order
+(3-6-7-5-9-1-4-8-0-2) was pre-registered as a confirmatory test
+(`hypotheses/queue/confirm-explore807.json`, committed before running) and run with fresh seeds and 50
+genuine-text controls: **p = 0.38, power 0.0**, best reading word salad ("SHESAWTHEMIDSTRENGTHOUTOFTHELAND").
+Not replicated; the screen result was chance, and this test family cannot detect real text at Z32's
+length. The bot's own run of the same spec is the official record.
+
 ## 2026-11-21 (later): Case-grounded candidate tests
 
 Context-based ideas only help as short, specific candidate lists checked exactly. A fit is meaningful
