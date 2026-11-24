@@ -1,0 +1,29 @@
+{
+  "id": "user.confirm.explore807.col10-3-6-7-5-9-1-4-8-0-2",
+  "title": "Replication: Z32 under the single best width-10 column order from explore.807",
+  "motivation": "explore.807.z32.columnar10 (60 random width-10 column orders) gave p=0.01 against 99 nulls (z=3.6), exploratory Holm p=1.0 over ~160 testable screens, so likely chance. This re-tests the single best order (3-6-7-5-9-1-4-8-0-2) as one pre-registered confirmatory test with fresh seeds, staged nulls and 50 genuine-text controls. Decision rule: counts only if it reaches an alert (Holm p<0.05 in the confirmatory family with power>=0.5); otherwise the screen result is recorded as not replicated.",
+  "cipher": "z32",
+  "families": [
+    "identity"
+  ],
+  "explore_columnar": {
+    "width": 10,
+    "perms": [
+      [
+        3,
+        6,
+        7,
+        5,
+        9,
+        1,
+        4,
+        8,
+        0,
+        2
+      ]
+    ]
+  },
+  "restarts": 4,
+  "nulls": 99,
+  "controls": 50
+}
