@@ -24,6 +24,5 @@
     ]
   },
   "restarts": 4,
-  "nulls": 99,
-  "controls": 50
+  "nulls": 99
 }
