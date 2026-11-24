@@ -1,0 +1,153 @@
+{
+ "image": "P09_p041.png (FBI Vault Part 09 p. 41; see IMAGES.md)",
+ "source": "FBI file Part 09 p41 ('Bus Bomb Letter' copy)",
+ "note": "replication: cipher-line glyphs only (no handwriting pairs), boxes from segment.py",
+ "crops": [
+  {
+   "id": "c01",
+   "symbol": "A",
+   "box": [
+    206,
+    415,
+    241,
+    452
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c02",
+   "symbol": "E",
+   "box": [
+    274,
+    421,
+    301,
+    455
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c03",
+   "symbol": "N",
+   "box": [
+    335,
+    424,
+    365,
+    456
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c04",
+   "symbol": "z",
+   "box": [
+    379,
+    416,
+    426,
+    459
+   ],
+   "role": "crosshair"
+  },
+  {
+   "id": "c05",
+   "symbol": "0",
+   "box": [
+    442,
+    427,
+    476,
+    458
+   ],
+   "role": "circle",
+   "position": 5
+  },
+  {
+   "id": "c06",
+   "symbol": "K",
+   "box": [
+    502,
+    429,
+    532,
+    460
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c07",
+   "symbol": "0",
+   "box": [
+    554,
+    434,
+    585,
+    462
+   ],
+   "role": "circle",
+   "position": 7
+  },
+  {
+   "id": "c08",
+   "symbol": "M",
+   "box": [
+    614,
+    434,
+    645,
+    466
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c09",
+   "symbol": "0",
+   "box": [
+    671,
+    438,
+    702,
+    466
+   ],
+   "role": "circle",
+   "position": 9
+  },
+  {
+   "id": "c10",
+   "symbol": "[",
+   "box": [
+    723,
+    438,
+    754,
+    461
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c11",
+   "symbol": "N",
+   "box": [
+    784,
+    438,
+    808,
+    465
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c12",
+   "symbol": "A",
+   "box": [
+    832,
+    437,
+    860,
+    466
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c13",
+   "symbol": "M",
+   "box": [
+    892,
+    439,
+    925,
+    469
+   ],
+   "role": "cipher"
+  }
+ ]
+}

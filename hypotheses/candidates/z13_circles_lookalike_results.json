@@ -1,0 +1,6982 @@
+{
+ "measure_sha256": "7c0b6bbb229a36a135866c88fde959f5de7063de543e3fa2ae95d843ee4e0cd2",
+ "seed": 20261124,
+ "parts_used": [
+  {
+   "page": "P09-176",
+   "cipher": "z408",
+   "rows": 8,
+   "cols": 17,
+   "cells": 136
+  },
+  {
+   "page": "P09-180",
+   "cipher": "z408",
+   "rows": 8,
+   "cols": 17,
+   "cells": 136
+  },
+  {
+   "page": "P09-171",
+   "cipher": "z408",
+   "rows": 8,
+   "cols": 17,
+   "cells": 136
+  },
+  {
+   "page": "P09-196",
+   "cipher": "z340",
+   "rows": 20,
+   "cols": 17,
+   "cells": 340
+  }
+ ],
+ "excluded": [
+  {
+   "page": "P09-180",
+   "row": 1,
+   "col": 16,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 2,
+   "col": 15,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 2,
+   "col": 16,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 3,
+   "col": 16,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 4,
+   "col": 15,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 4,
+   "col": 16,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 5,
+   "col": 15,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 5,
+   "col": 16,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 6,
+   "col": 15,
+   "reason": "thumbprint smudge"
+  },
+  {
+   "page": "P09-180",
+   "row": 6,
+   "col": 16,
+   "reason": "thumbprint smudge"
+  }
+ ],
+ "n_cells_used": 738,
+ "n_same": 242,
+ "n_look": 439,
+ "same_D": {
+  "mean": 0.3605790740674802,
+  "median": 0.34380422129392707
+ },
+ "look_D": {
+  "mean": 0.46286353399794683,
+  "median": 0.4200171086398631
+ },
+ "auc": 0.7584950770910597,
+ "q_039": 0.30751708428246016,
+ "q_031": 0.0387243735763098,
+ "per_family": {
+  "triangle": {
+   "n_same": 38,
+   "n_look": 60,
+   "mean_same": 0.35287978883810406,
+   "mean_look": 0.39572274691570014
+  },
+  "square": {
+   "n_same": 64,
+   "n_look": 132,
+   "mean_same": 0.3983603372530878,
+   "mean_look": 0.4502202117227929
+  },
+  "circle": {
+   "n_same": 57,
+   "n_look": 151,
+   "mean_same": 0.34235367500069885,
+   "mean_look": 0.3984768231879811
+  },
+  "crossed_circle": {
+   "n_same": 49,
+   "n_look": 60,
+   "mean_same": 0.3535625402066716,
+   "mean_look": 0.6076181599960634
+  },
+  "serifI": {
+   "n_same": 34,
+   "n_look": 36,
+   "mean_same": 0.33873289467993806,
+   "mean_look": 0.6499324655999728
+  }
+ },
+ "realistic_p210": {
+  "circle_D": [
+   0.3072393488049878,
+   0.2538015930485156,
+   0.2831995058678196
+  ],
+  "log10_lr": [
+   -0.4501442420365942,
+   -0.758048303628718,
+   -0.6201277211483676
+  ],
+  "sum": -1.8283202668136798
+ },
+ "realistic_p041": {
+  "circle_D": [
+   0.38808600634473034,
+   0.3274709813577207,
+   0.33321194464675896
+  ],
+  "log10_lr": [
+   0.08293290117462318,
+   -0.28992488002264055,
+   -0.24536094655885105
+  ],
+  "sum": -0.45235292540686844
+ },
+ "realistic_log10_lr_sum": -1.8283202668136798,
+ "verdict": "weak: realistic LR reported, metric only partly separates look-alikes",
+ "pairs": [
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "7",
+   "id_a": "P09-176:2:7",
+   "id_b": "P09-180:7:9",
+   "D": 0.4207699194270367
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "7",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-171:4:12",
+   "D": 0.4206484641638225
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "7",
+   "id_a": "P09-176:2:7",
+   "id_b": "P09-171:4:12",
+   "D": 0.345636126791142
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-176:4:15",
+   "id_b": "P09-180:5:7",
+   "D": 0.3396880415944541
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-176:4:15",
+   "id_b": "P09-171:1:9",
+   "D": 0.5280739161336176
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-180:5:7",
+   "id_b": "P09-171:1:9",
+   "D": 0.5312046444121916
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-176:4:15",
+   "id_b": "P09-176:5:12",
+   "D": 0.42026462395543174
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-176:5:12",
+   "id_b": "P09-171:1:9",
+   "D": 0.44480073293632616
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-176:6:8",
+   "id_b": "P09-180:5:7",
+   "D": 0.3367132867132867
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-176:6:8",
+   "id_b": "P09-171:1:9",
+   "D": 0.46171874999999996
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-171:1:9",
+   "id_b": "P09-171:6:7",
+   "D": 0.6157274753263292
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-180:0:10",
+   "id_b": "P09-180:5:7",
+   "D": 0.3718037318590186
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-180:5:7",
+   "id_b": "P09-171:6:7",
+   "D": 0.37393021724818964
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-176:3:3",
+   "id_b": "P09-171:7:4",
+   "D": 0.2636436597110754
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-180:0:15",
+   "id_b": "P09-171:3:11",
+   "D": 0.24989758295780418
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-171:1:13",
+   "id_b": "P09-171:7:4",
+   "D": 0.2755059892606361
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-176:3:3",
+   "id_b": "P09-171:1:15",
+   "D": 0.24979253112033195
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-176:0:0",
+   "id_b": "P09-176:3:3",
+   "D": 0.293124742692466
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-180:5:6",
+   "id_b": "P09-171:1:15",
+   "D": 0.2937473772555602
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-180:0:15",
+   "id_b": "P09-171:1:13",
+   "D": 0.23217391304347823
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-176:5:5",
+   "id_b": "P09-180:6:5",
+   "D": 0.31758326878388843
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-171:0:7",
+   "id_b": "P09-171:4:5",
+   "D": 0.30542340627973363
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-176:5:5",
+   "id_b": "P09-171:0:7",
+   "D": 0.352112676056338
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-176:2:7",
+   "id_b": "P09-180:0:10",
+   "D": 0.3429571303587051
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-176:5:12",
+   "D": 0.4469413233458177
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-180:5:7",
+   "D": 0.44163039176889596
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-176:4:15",
+   "D": 0.47366148531951646
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-176:2:7",
+   "id_b": "P09-176:5:12",
+   "D": 0.40930633347694956
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-180:0:10",
+   "D": 0.3552894211576846
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-171:6:7",
+   "D": 0.3845193508114857
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-176:6:8",
+   "D": 0.4200171086398631
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-171:1:9",
+   "D": 0.5325542570951586
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-171:1:9",
+   "D": 0.49834201800094746
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-171:1:15",
+   "D": 0.32431482782853127
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-171:7:4",
+   "D": 0.2608074312254377
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-176:2:7",
+   "id_b": "P09-171:1:15",
+   "D": 0.3452586206896552
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-180:0:15",
+   "D": 0.33211009174311923
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-176:3:3",
+   "D": 0.3754480286738351
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-171:4:12",
+   "id_b": "P09-171:4:5",
+   "D": 0.3522650439486139
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-176:2:7",
+   "id_b": "P09-171:3:11",
+   "D": 0.34279176201372996
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-180:3:1",
+   "D": 0.4124444444444444
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-176:0:0",
+   "D": 0.3863849765258216
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-180:7:9",
+   "id_b": "P09-180:6:5",
+   "D": 0.35793194874060985
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-171:6:7",
+   "id_b": "P09-176:5:5",
+   "D": 0.4032616753150482
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-176:4:15",
+   "id_b": "P09-171:0:7",
+   "D": 0.4083567415730337
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-176:6:8",
+   "id_b": "P09-176:3:3",
+   "D": 0.3610133708655876
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-176:4:15",
+   "id_b": "P09-176:3:3",
+   "D": 0.34137686302342085
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-171:1:9",
+   "id_b": "P09-180:5:6",
+   "D": 0.5054151624548737
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-176:4:15",
+   "id_b": "P09-180:5:6",
+   "D": 0.3789511494252874
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-180:5:7",
+   "id_b": "P09-171:0:7",
+   "D": 0.40792216817234195
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-180:5:7",
+   "id_b": "P09-171:7:4",
+   "D": 0.3515901060070671
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-180:0:10",
+   "id_b": "P09-180:5:6",
+   "D": 0.3214960332451833
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-171:1:9",
+   "id_b": "P09-176:0:0",
+   "D": 0.5616387337057729
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-176:3:4",
+   "id_b": "P09-180:6:6",
+   "D": 0.3334177856599949
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-180:6:6",
+   "id_b": "P09-171:5:3",
+   "D": 0.5590361445783132
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-180:6:6",
+   "id_b": "P09-171:0:14",
+   "D": 0.5818395533352925
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-176:7:4",
+   "id_b": "P09-171:5:4",
+   "D": 0.5701298701298702
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-176:7:4",
+   "id_b": "P09-180:0:16",
+   "D": 0.5189326556543837
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-176:6:15",
+   "id_b": "P09-180:0:16",
+   "D": 0.5476424361493124
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-176:6:15",
+   "id_b": "P09-171:5:3",
+   "D": 0.5482666666666667
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-180:0:16",
+   "id_b": "P09-180:6:6",
+   "D": 0.4941022280471822
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-171:0:14",
+   "id_b": "P09-171:5:3",
+   "D": 0.603298070939639
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-176:3:4",
+   "id_b": "P09-171:0:14",
+   "D": 0.5685449957947855
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-180:4:7",
+   "id_b": "P09-171:0:8",
+   "D": 0.4891764120427967
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-176:3:11",
+   "id_b": "P09-171:3:12",
+   "D": 0.44690265486725667
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-176:0:1",
+   "id_b": "P09-171:0:8",
+   "D": 0.38923690205011385
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-176:0:8",
+   "id_b": "P09-180:7:14",
+   "D": 0.45198432141107303
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-171:0:9",
+   "id_b": "P09-171:5:14",
+   "D": 0.5242375601926164
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-176:0:8",
+   "id_b": "P09-171:3:12",
+   "D": 0.4265356265356265
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-180:7:14",
+   "id_b": "P09-171:5:14",
+   "D": 0.5016420361247947
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-180:7:13",
+   "id_b": "P09-180:7:14",
+   "D": 0.4145285935085008
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-171:0:9",
+   "id_b": "P09-171:2:0",
+   "D": 0.42199930819785536
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-176:0:1",
+   "id_b": "P09-171:2:0",
+   "D": 0.41540577716643745
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-180:3:12",
+   "id_b": "P09-171:1:12",
+   "D": 0.2646769432600853
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:7:6",
+   "id_b": "P09-171:6:1",
+   "D": 0.31557223264540335
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:1:11",
+   "id_b": "P09-180:3:12",
+   "D": 0.3057124921531701
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:5:0",
+   "id_b": "P09-171:1:12",
+   "D": 0.3565543071161049
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:5:0",
+   "id_b": "P09-171:6:1",
+   "D": 0.40049663001064206
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:7:6",
+   "id_b": "P09-180:3:12",
+   "D": 0.3023952095808383
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:7:6",
+   "id_b": "P09-171:1:12",
+   "D": 0.3483636363636363
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:1:11",
+   "id_b": "P09-176:5:0",
+   "D": 0.40478841870824056
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:1:11",
+   "id_b": "P09-171:1:12",
+   "D": 0.3076443057722309
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "@",
+   "id_a": "P09-176:1:11",
+   "id_b": "P09-176:7:6",
+   "D": 0.3794326241134752
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-180:3:4",
+   "id_b": "P09-171:5:0",
+   "D": 0.2774656679151061
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-171:3:7",
+   "id_b": "P09-171:3:16",
+   "D": 0.3716044911264035
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-171:1:6",
+   "id_b": "P09-171:5:0",
+   "D": 0.24516722921141454
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-171:1:6",
+   "id_b": "P09-171:2:8",
+   "D": 0.3374797187669011
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-180:3:4",
+   "id_b": "P09-171:3:7",
+   "D": 0.4763586956521739
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-171:2:8",
+   "id_b": "P09-171:2:12",
+   "D": 0.3092336853506634
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-180:3:4",
+   "id_b": "P09-171:3:16",
+   "D": 0.3157894736842105
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-171:2:8",
+   "id_b": "P09-171:5:0",
+   "D": 0.35511787526111604
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-171:1:6",
+   "id_b": "P09-171:2:12",
+   "D": 0.3812842210054753
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-171:1:6",
+   "id_b": "P09-171:3:16",
+   "D": 0.3019563368301673
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-171:3:13",
+   "id_b": "P09-176:0:8",
+   "D": 0.528322440087146
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-171:3:13",
+   "id_b": "P09-171:0:9",
+   "D": 0.4391596148234608
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-180:6:6",
+   "id_b": "P09-171:2:0",
+   "D": 0.4649754972614586
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-176:3:4",
+   "id_b": "P09-176:3:11",
+   "D": 0.3593475533249686
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-171:3:13",
+   "id_b": "P09-171:2:0",
+   "D": 0.45769230769230773
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-171:1:8",
+   "id_b": "P09-171:0:9",
+   "D": 0.539400988659494
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-176:6:15",
+   "id_b": "P09-176:3:11",
+   "D": 0.4060221124441308
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-180:6:6",
+   "id_b": "P09-171:3:12",
+   "D": 0.41307371349095967
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-176:6:15",
+   "id_b": "P09-176:0:8",
+   "D": 0.41873350923482855
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-171:5:4",
+   "id_b": "P09-176:0:1",
+   "D": 0.5699379582628313
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-176:3:4",
+   "id_b": "P09-176:1:11",
+   "D": 0.480546792849632
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-171:5:3",
+   "id_b": "P09-176:1:11",
+   "D": 0.5287713841368584
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-180:0:16",
+   "id_b": "P09-171:6:1",
+   "D": 0.5966756294304572
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-180:6:6",
+   "id_b": "P09-176:1:11",
+   "D": 0.5092671799258626
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-176:6:15",
+   "id_b": "P09-176:7:6",
+   "D": 0.47508719481813655
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-180:6:6",
+   "id_b": "P09-171:1:12",
+   "D": 0.5268319259057477
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-171:1:8",
+   "id_b": "P09-171:6:1",
+   "D": 0.46985761890336264
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-171:3:13",
+   "id_b": "P09-176:7:6",
+   "D": 0.46117450598385745
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-176:3:4",
+   "id_b": "P09-171:6:1",
+   "D": 0.452597750401714
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-171:0:14",
+   "id_b": "P09-176:5:0",
+   "D": 0.5142045454545454
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-171:5:4",
+   "id_b": "P09-171:2:8",
+   "D": 0.5427621637957087
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-176:3:4",
+   "id_b": "P09-171:5:0",
+   "D": 0.5126296197819729
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-171:5:4",
+   "id_b": "P09-171:5:0",
+   "D": 0.5183957573748756
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-171:3:13",
+   "id_b": "P09-171:2:8",
+   "D": 0.4995751911639762
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-171:5:4",
+   "id_b": "P09-171:3:7",
+   "D": 0.5678661616161615
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-176:6:15",
+   "id_b": "P09-171:5:0",
+   "D": 0.5219017094017093
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-171:0:14",
+   "id_b": "P09-180:3:4",
+   "D": 0.5464936669755946
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-180:6:6",
+   "id_b": "P09-180:3:4",
+   "D": 0.5222189084402028
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-176:3:4",
+   "id_b": "P09-171:6:6",
+   "D": 0.44279384936148036
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-171:5:4",
+   "id_b": "P09-171:2:12",
+   "D": 0.5090484530064214
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-176:0:1",
+   "id_b": "P09-171:1:12",
+   "D": 0.5140707718027306
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-171:0:8",
+   "id_b": "P09-176:7:6",
+   "D": 0.3914812805208898
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-171:3:12",
+   "id_b": "P09-176:1:11",
+   "D": 0.5116942384483743
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-171:3:12",
+   "id_b": "P09-171:6:1",
+   "D": 0.48697916666666663
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-176:0:1",
+   "id_b": "P09-180:3:12",
+   "D": 0.4814073226544623
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-180:7:13",
+   "id_b": "P09-180:3:12",
+   "D": 0.5541909732883021
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-171:0:9",
+   "id_b": "P09-176:1:11",
+   "D": 0.4926916221033868
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-176:0:1",
+   "id_b": "P09-176:5:0",
+   "D": 0.3928368391131325
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-176:0:1",
+   "id_b": "P09-176:1:11",
+   "D": 0.5264729839804507
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-176:0:8",
+   "id_b": "P09-171:6:1",
+   "D": 0.5407018381475293
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-171:0:8",
+   "id_b": "P09-171:2:12",
+   "D": 0.4054738976178408
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-171:2:0",
+   "id_b": "P09-171:2:12",
+   "D": 0.4740200546946217
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-180:4:7",
+   "id_b": "P09-180:3:4",
+   "D": 0.488755230125523
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-171:0:8",
+   "id_b": "P09-171:2:8",
+   "D": 0.41653375863902176
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-171:2:0",
+   "id_b": "P09-171:1:6",
+   "D": 0.5282831624214357
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-176:3:11",
+   "id_b": "P09-171:3:16",
+   "D": 0.4116800920598389
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-171:2:0",
+   "id_b": "P09-171:5:0",
+   "D": 0.5162479061976549
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-180:4:7",
+   "id_b": "P09-171:5:0",
+   "D": 0.4901053713698278
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-171:5:14",
+   "id_b": "P09-171:3:16",
+   "D": 0.42164383561643837
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-176:0:8",
+   "id_b": "P09-171:5:0",
+   "D": 0.466683951257454
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-176:7:6",
+   "id_b": "P09-171:5:0",
+   "D": 0.3127121840814787
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-176:5:0",
+   "id_b": "P09-171:3:16",
+   "D": 0.31456094849944427
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-176:5:0",
+   "id_b": "P09-180:3:4",
+   "D": 0.38612422811478386
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-180:3:12",
+   "id_b": "P09-171:5:0",
+   "D": 0.3356867779204108
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-171:1:12",
+   "id_b": "P09-171:5:0",
+   "D": 0.36483516483516487
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-171:1:12",
+   "id_b": "P09-171:3:7",
+   "D": 0.5391923990498813
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-176:5:0",
+   "id_b": "P09-171:1:6",
+   "D": 0.3400686237133054
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-180:3:12",
+   "id_b": "P09-171:3:7",
+   "D": 0.4896907216494846
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-176:7:6",
+   "id_b": "P09-171:3:16",
+   "D": 0.29566787003610107
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-176:5:0",
+   "id_b": "P09-171:2:12",
+   "D": 0.43139757498404596
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-176:2:15",
+   "id_b": "P09-171:5:7",
+   "D": 0.49421255699754474
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-180:4:1",
+   "id_b": "P09-171:2:3",
+   "D": 0.4552143314139475
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-180:4:1",
+   "id_b": "P09-180:5:5",
+   "D": 0.29230325742288843
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-180:0:11",
+   "id_b": "P09-171:2:3",
+   "D": 0.4367311072056239
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-176:2:15",
+   "id_b": "P09-180:0:11",
+   "D": 0.27628120893561103
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-171:2:3",
+   "id_b": "P09-171:5:7",
+   "D": 0.5283505154639175
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-176:2:15",
+   "id_b": "P09-171:2:3",
+   "D": 0.48168624740843125
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-176:5:13",
+   "id_b": "P09-171:2:3",
+   "D": 0.5283858998144713
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-176:5:13",
+   "id_b": "P09-180:4:1",
+   "D": 0.3198146002317497
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-176:2:15",
+   "id_b": "P09-180:2:7",
+   "D": 0.33419023136246784
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-180:1:7",
+   "id_b": "P09-171:7:7",
+   "D": 0.3274990276157137
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-176:5:9",
+   "id_b": "P09-171:5:5",
+   "D": 0.2776036224312086
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-180:1:7",
+   "id_b": "P09-171:6:16",
+   "D": 0.35460992907801414
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-176:5:9",
+   "id_b": "P09-180:1:7",
+   "D": 0.35431472081218274
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-171:5:5",
+   "id_b": "P09-171:6:16",
+   "D": 0.27598684210526314
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-180:7:8",
+   "id_b": "P09-171:7:7",
+   "D": 0.245358572988715
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-171:5:5",
+   "id_b": "P09-171:7:7",
+   "D": 0.2720802329343255
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-176:1:7",
+   "id_b": "P09-176:5:9",
+   "D": 0.3318385650224215
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-176:5:9",
+   "id_b": "P09-180:7:8",
+   "D": 0.29574541681079214
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-180:1:7",
+   "id_b": "P09-180:7:8",
+   "D": 0.27662957074721783
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-171:2:3",
+   "id_b": "P09-180:1:7",
+   "D": 0.5212585034013606
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-180:4:1",
+   "id_b": "P09-176:5:9",
+   "D": 0.39476813317479187
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-180:2:7",
+   "id_b": "P09-180:7:8",
+   "D": 0.40808823529411764
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-180:5:5",
+   "id_b": "P09-171:7:7",
+   "D": 0.39386022207707383
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-171:2:3",
+   "id_b": "P09-180:7:8",
+   "D": 0.47671075330649804
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-180:0:11",
+   "id_b": "P09-171:6:16",
+   "D": 0.38433257918552033
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-180:5:5",
+   "id_b": "P09-171:5:5",
+   "D": 0.3815274151436031
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-180:0:11",
+   "id_b": "P09-176:5:9",
+   "D": 0.3905409232512036
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-180:4:1",
+   "id_b": "P09-176:1:7",
+   "D": 0.4227642276422764
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-176:2:15",
+   "id_b": "P09-176:5:9",
+   "D": 0.40224413464807884
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-176:5:16",
+   "id_b": "P09-180:1:10",
+   "D": 0.2684458398744113
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-180:1:10",
+   "D": 0.306930693069307
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-176:5:16",
+   "D": 0.3302583025830258
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-180:0:6",
+   "id_b": "P09-180:5:13",
+   "D": 0.3012135922330097
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-180:0:6",
+   "id_b": "P09-171:7:12",
+   "D": 0.2729585347239888
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-180:0:6",
+   "id_b": "P09-171:0:2",
+   "D": 0.33831821524883554
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-176:5:8",
+   "id_b": "P09-171:0:2",
+   "D": 0.3244656662119145
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-171:0:2",
+   "id_b": "P09-171:7:12",
+   "D": 0.2994652406417112
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-180:4:9",
+   "id_b": "P09-171:0:2",
+   "D": 0.31241002015548514
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-176:2:16",
+   "id_b": "P09-180:4:9",
+   "D": 0.3299922898997687
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-180:4:9",
+   "id_b": "P09-180:5:13",
+   "D": 0.31163708086785014
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-180:5:13",
+   "id_b": "P09-171:7:12",
+   "D": 0.28114440189231804
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-176:5:8",
+   "id_b": "P09-180:5:13",
+   "D": 0.30187416331994643
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-176:5:14",
+   "id_b": "P09-171:4:6",
+   "D": 0.3869321082184788
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-180:7:11",
+   "id_b": "P09-171:4:6",
+   "D": 0.38238341968911915
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-176:5:14",
+   "id_b": "P09-180:7:11",
+   "D": 0.27800407331975563
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-176:5:14",
+   "id_b": "P09-180:6:0",
+   "D": 0.3061740890688259
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-180:6:0",
+   "id_b": "P09-171:4:6",
+   "D": 0.397887323943662
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-180:6:0",
+   "id_b": "P09-180:7:11",
+   "D": 0.2897460018814676
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-180:1:10",
+   "id_b": "P09-180:2:11",
+   "D": 0.7818237454100367
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-180:1:10",
+   "id_b": "P09-176:5:8",
+   "D": 0.715627095908786
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-180:4:9",
+   "D": 0.6597938144329897
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-176:5:16",
+   "id_b": "P09-180:4:9",
+   "D": 0.7223773434383726
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-180:1:10",
+   "id_b": "P09-180:4:9",
+   "D": 0.7090180360721443
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-171:0:2",
+   "D": 0.6576439191765154
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-176:5:16",
+   "id_b": "P09-176:5:8",
+   "D": 0.74465284633103
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-176:2:16",
+   "D": 0.6022566995768688
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-180:1:10",
+   "id_b": "P09-171:7:12",
+   "D": 0.7157178660938059
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-176:5:16",
+   "id_b": "P09-180:5:13",
+   "D": 0.7667800804206619
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-176:5:16",
+   "id_b": "P09-176:5:14",
+   "D": 0.43920265780730894
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-180:1:10",
+   "id_b": "P09-180:6:0",
+   "D": 0.3777027027027027
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-176:5:16",
+   "id_b": "P09-171:4:6",
+   "D": 0.4784452296819788
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-180:1:10",
+   "id_b": "P09-176:5:14",
+   "D": 0.40306122448979587
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-180:6:0",
+   "D": 0.37789058093626626
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-171:4:6",
+   "D": 0.4303253529772867
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-180:7:11",
+   "D": 0.401883830455259
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-176:3:1",
+   "id_b": "P09-176:5:14",
+   "D": 0.4127611518915867
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-180:1:10",
+   "id_b": "P09-180:7:11",
+   "D": 0.39103362391033625
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-176:5:16",
+   "id_b": "P09-180:7:11",
+   "D": 0.38266919671094246
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-171:0:2",
+   "id_b": "P09-176:5:14",
+   "D": 0.5638766519823788
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-180:2:11",
+   "id_b": "P09-176:5:14",
+   "D": 0.6646877748460862
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-180:2:11",
+   "id_b": "P09-180:7:11",
+   "D": 0.6522682873887562
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-180:2:11",
+   "id_b": "P09-171:4:6",
+   "D": 0.7498317253758133
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-180:5:13",
+   "id_b": "P09-180:6:0",
+   "D": 0.6046931407942238
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-180:0:6",
+   "id_b": "P09-180:7:11",
+   "D": 0.5842364532019704
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-176:5:8",
+   "id_b": "P09-180:6:0",
+   "D": 0.5758157389635317
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-176:2:16",
+   "id_b": "P09-171:4:6",
+   "D": 0.615684237860296
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-180:5:13",
+   "id_b": "P09-180:7:11",
+   "D": 0.6134341637010676
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-180:5:13",
+   "id_b": "P09-171:4:6",
+   "D": 0.7301731996353692
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-176:1:13",
+   "id_b": "P09-180:0:9",
+   "D": 0.436710909679508
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-176:1:13",
+   "id_b": "P09-176:6:3",
+   "D": 0.4111640571817563
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-180:5:2",
+   "id_b": "P09-171:4:1",
+   "D": 0.3938473224458793
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-176:6:3",
+   "id_b": "P09-180:5:2",
+   "D": 0.3315171835708298
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-176:1:13",
+   "id_b": "P09-171:4:1",
+   "D": 0.41526563550773365
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-176:1:13",
+   "id_b": "P09-180:5:2",
+   "D": 0.427860696517413
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-180:0:9",
+   "id_b": "P09-171:4:1",
+   "D": 0.3362255965292842
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-180:5:2",
+   "id_b": "P09-171:4:14",
+   "D": 0.48435852372583477
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-176:6:3",
+   "id_b": "P09-171:4:14",
+   "D": 0.31051817478731636
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "!",
+   "id_a": "P09-176:6:3",
+   "id_b": "P09-171:4:1",
+   "D": 0.26290125965054856
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-180:3:0",
+   "id_b": "P09-171:6:9",
+   "D": 0.24822274881516593
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-176:2:5",
+   "id_b": "P09-171:6:9",
+   "D": 0.30098684210526316
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-180:2:6",
+   "id_b": "P09-171:6:9",
+   "D": 0.3181526619627967
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-180:3:0",
+   "id_b": "P09-180:5:1",
+   "D": 0.27088167053364265
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-180:3:0",
+   "id_b": "P09-171:7:6",
+   "D": 0.39791122715404703
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-180:0:5",
+   "id_b": "P09-180:5:1",
+   "D": 0.3044692737430168
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-176:2:5",
+   "id_b": "P09-180:2:6",
+   "D": 0.40144852560786337
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-176:5:7",
+   "id_b": "P09-180:5:1",
+   "D": 0.296420581655481
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-180:2:6",
+   "id_b": "P09-171:7:6",
+   "D": 0.37688442211055273
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "I",
+   "sym_b": "I",
+   "id_a": "P09-171:6:9",
+   "id_b": "P09-171:7:6",
+   "D": 0.3331576172904587
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-180:5:2",
+   "id_b": "P09-171:7:6",
+   "D": 0.5273004963726613
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-180:0:9",
+   "id_b": "P09-171:7:15",
+   "D": 0.4355593364525734
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-176:1:13",
+   "id_b": "P09-180:7:15",
+   "D": 0.6123557365919892
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-176:1:13",
+   "id_b": "P09-171:6:9",
+   "D": 0.6257861635220126
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-180:5:2",
+   "id_b": "P09-176:5:7",
+   "D": 0.36202531645569624
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-176:6:3",
+   "id_b": "P09-180:2:6",
+   "D": 0.5017809439002672
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-171:4:1",
+   "id_b": "P09-171:6:9",
+   "D": 0.4475789473684211
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-171:4:1",
+   "id_b": "P09-180:3:0",
+   "D": 0.4723874256584537
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-180:5:2",
+   "id_b": "P09-180:2:6",
+   "D": 0.5644122383252819
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z408",
+   "family": "serifI",
+   "sym_a": "!",
+   "sym_b": "I",
+   "id_a": "P09-171:4:1",
+   "id_b": "P09-176:5:7",
+   "D": 0.41666666666666663
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "7",
+   "id_a": "P09-196:3:3",
+   "id_b": "P09-196:9:11",
+   "D": 0.34321258690084155
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "7",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:18:6",
+   "D": 0.31015553522415373
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "7",
+   "id_a": "P09-196:3:3",
+   "id_b": "P09-196:18:6",
+   "D": 0.39441117764471056
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-196:5:1",
+   "id_b": "P09-196:12:15",
+   "D": 0.29117647058823526
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-196:12:15",
+   "id_b": "P09-196:19:11",
+   "D": 0.338272650296359
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-196:3:6",
+   "id_b": "P09-196:19:11",
+   "D": 0.35664939550949915
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-196:5:1",
+   "id_b": "P09-196:19:11",
+   "D": 0.30142919012559555
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-196:3:6",
+   "id_b": "P09-196:5:1",
+   "D": 0.29450261780104714
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "8",
+   "id_a": "P09-196:3:6",
+   "id_b": "P09-196:12:15",
+   "D": 0.29289428076256496
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-196:4:1",
+   "id_b": "P09-196:12:2",
+   "D": 0.272984441301273
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-196:7:16",
+   "id_b": "P09-196:12:2",
+   "D": 0.30195599022004893
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-196:4:1",
+   "id_b": "P09-196:14:7",
+   "D": 0.4056122448979592
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-196:12:2",
+   "id_b": "P09-196:14:7",
+   "D": 0.39037675896504764
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-196:7:16",
+   "id_b": "P09-196:14:7",
+   "D": 0.35431799838579503
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "9",
+   "sym_b": "9",
+   "id_a": "P09-196:4:1",
+   "id_b": "P09-196:7:16",
+   "D": 0.3174955595026643
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:5:1",
+   "D": 0.4
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:12:15",
+   "D": 0.42003297609233303
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:3:6",
+   "D": 0.4002900652646846
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:12:15",
+   "D": 0.4070958302852963
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:19:11",
+   "D": 0.38881987577639754
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:3:3",
+   "id_b": "P09-196:3:6",
+   "D": 0.3890330953926022
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:19:11",
+   "D": 0.3695906432748538
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:3:3",
+   "id_b": "P09-196:19:11",
+   "D": 0.41959157626037014
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:3:6",
+   "D": 0.4498601677986416
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "8",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:5:1",
+   "D": 0.43439440993788825
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:14:7",
+   "D": 0.3743243243243243
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:4:1",
+   "D": 0.4294167371090448
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:12:2",
+   "D": 0.3555555555555555
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:7:16",
+   "D": 0.39947437582128775
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:3:3",
+   "id_b": "P09-196:7:16",
+   "D": 0.2857142857142857
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:18:6",
+   "id_b": "P09-196:12:2",
+   "D": 0.4445426425099426
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:3:3",
+   "id_b": "P09-196:14:7",
+   "D": 0.43311160384331115
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:7:16",
+   "D": 0.33108108108108103
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:9:11",
+   "id_b": "P09-196:4:1",
+   "D": 0.34798685291700904
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "7",
+   "sym_b": "9",
+   "id_a": "P09-196:3:3",
+   "id_b": "P09-196:12:2",
+   "D": 0.39844903988183156
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:12:15",
+   "id_b": "P09-196:14:7",
+   "D": 0.39973787680209694
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:19:11",
+   "id_b": "P09-196:12:2",
+   "D": 0.4412126177795985
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:3:6",
+   "id_b": "P09-196:4:1",
+   "D": 0.431213351375733
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:12:15",
+   "id_b": "P09-196:7:16",
+   "D": 0.36749116607773846
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:12:15",
+   "id_b": "P09-196:12:2",
+   "D": 0.4285714285714286
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:5:1",
+   "id_b": "P09-196:12:2",
+   "D": 0.4262432093606352
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:3:6",
+   "id_b": "P09-196:7:16",
+   "D": 0.3575492341356674
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:5:1",
+   "id_b": "P09-196:7:16",
+   "D": 0.373215785054576
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:5:1",
+   "id_b": "P09-196:14:7",
+   "D": 0.3791208791208791
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "triangle",
+   "sym_a": "8",
+   "sym_b": "9",
+   "id_a": "P09-196:5:1",
+   "id_b": "P09-196:4:1",
+   "D": 0.42464612822647796
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:12:5",
+   "D": 0.43448667044809985
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:7:6",
+   "D": 0.350112215453671
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:12:5",
+   "D": 0.5402035623409669
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:6:0",
+   "D": 0.18921095008051525
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:2:13",
+   "D": 0.36258393146561707
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:12:5",
+   "D": 0.5616693248272195
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:7:6",
+   "D": 0.36967271014834
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:6:0",
+   "D": 0.3438421410750737
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:12:5",
+   "D": 0.3755127800568002
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "#",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:7:6",
+   "D": 0.3229625550660793
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "%",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:6:5",
+   "D": 0.2923894795747062
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:5:8",
+   "id_b": "P09-196:14:4",
+   "D": 0.40047206923682144
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:5:8",
+   "id_b": "P09-196:11:7",
+   "D": 0.3679782903663501
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:11:7",
+   "id_b": "P09-196:18:13",
+   "D": 0.33109677419354844
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:1:13",
+   "id_b": "P09-196:3:7",
+   "D": 0.27188552188552184
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:1:13",
+   "id_b": "P09-196:18:13",
+   "D": 0.3437663015127804
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:11:7",
+   "id_b": "P09-196:14:4",
+   "D": 0.3368813198509846
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:3:7",
+   "id_b": "P09-196:5:8",
+   "D": 0.3720588235294118
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:3:7",
+   "id_b": "P09-196:14:4",
+   "D": 0.32090856144437974
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:5:8",
+   "id_b": "P09-196:18:13",
+   "D": 0.37128840691970044
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "*",
+   "id_a": "P09-196:1:13",
+   "id_b": "P09-196:14:4",
+   "D": 0.33405581143321594
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-196:4:0",
+   "id_b": "P09-196:7:9",
+   "D": 0.41246684350132623
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-196:4:0",
+   "id_b": "P09-196:18:9",
+   "D": 0.5377201728148886
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "_",
+   "sym_b": "_",
+   "id_a": "P09-196:7:9",
+   "id_b": "P09-196:18:9",
+   "D": 0.38788257339163024
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:1:7",
+   "D": 0.33201189296333
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:1:7",
+   "D": 0.4105154105154105
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:12:5",
+   "id_b": "P09-196:6:5",
+   "D": 0.5617556992174209
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:1:7",
+   "D": 0.4210910862152947
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:1:7",
+   "D": 0.31117397454031115
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:6:5",
+   "D": 0.2428281657490582
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:6:5",
+   "D": 0.3568997119664834
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:6:5",
+   "D": 0.2816091954022989
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:12:5",
+   "id_b": "P09-196:1:7",
+   "D": 0.5905626134301271
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "%",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:6:5",
+   "D": 0.43446139180171595
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:14:4",
+   "D": 0.41451187335092343
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:11:7",
+   "D": 0.3452958292919496
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:14:4",
+   "D": 0.43516121440338906
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:18:13",
+   "D": 0.40825217837006667
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:12:5",
+   "id_b": "P09-196:3:7",
+   "D": 0.5301857585139319
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:3:7",
+   "D": 0.39968110550093006
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:18:13",
+   "D": 0.4227212681638045
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:1:13",
+   "D": 0.3567302137492778
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:1:13",
+   "D": 0.40614709110867175
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "*",
+   "id_a": "P09-196:12:5",
+   "id_b": "P09-196:5:8",
+   "D": 0.597293343087052
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:7:14",
+   "D": 0.40546762589928054
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-196:12:5",
+   "id_b": "P09-196:7:14",
+   "D": 0.6709631220909417
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:7:14",
+   "D": 0.42898550724637685
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:7:14",
+   "D": 0.5244565217391304
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "@",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:7:14",
+   "D": 0.4636570130607609
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:7:9",
+   "D": 0.38465941614195764
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:7:9",
+   "D": 0.519740009629273
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:4:0",
+   "D": 0.4943098920338489
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:18:9",
+   "D": 0.4740717029449424
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:18:9",
+   "D": 0.6045454545454545
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:4:0",
+   "D": 0.535997357992074
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:1:5",
+   "id_b": "P09-196:4:0",
+   "D": 0.5540104296001986
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:2:13",
+   "id_b": "P09-196:18:9",
+   "D": 0.4757393051966695
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:6:0",
+   "id_b": "P09-196:7:9",
+   "D": 0.41956664478003936
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "#",
+   "sym_b": "_",
+   "id_a": "P09-196:7:6",
+   "id_b": "P09-196:18:9",
+   "D": 0.5849673202614378
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:5:8",
+   "D": 0.41515474919957307
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:18:13",
+   "D": 0.3429123400144892
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:3:7",
+   "D": 0.3520118489261911
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:11:7",
+   "D": 0.38265712012728714
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:5:8",
+   "D": 0.35513103110458
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:1:13",
+   "D": 0.38160861939363566
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:1:13",
+   "D": 0.3967851099830795
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:11:7",
+   "D": 0.3771908170822019
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:18:13",
+   "D": 0.38230605738575985
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "*",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:14:4",
+   "D": 0.4069861900893582
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:7:14",
+   "D": 0.36218200891686336
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "@",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:7:14",
+   "D": 0.4037626628075254
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:4:0",
+   "D": 0.4682978163641147
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:18:9",
+   "D": 0.5154054054054054
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:7:9",
+   "D": 0.40483553556367724
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:18:9",
+   "D": 0.4819888381532217
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-196:6:5",
+   "id_b": "P09-196:7:9",
+   "D": 0.3673521198273674
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "%",
+   "sym_b": "_",
+   "id_a": "P09-196:1:7",
+   "id_b": "P09-196:4:0",
+   "D": 0.5045255474452555
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "@",
+   "id_a": "P09-196:14:4",
+   "id_b": "P09-196:7:14",
+   "D": 0.40041679071152125
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "@",
+   "id_a": "P09-196:3:7",
+   "id_b": "P09-196:7:14",
+   "D": 0.40473372781065087
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "@",
+   "id_a": "P09-196:5:8",
+   "id_b": "P09-196:7:14",
+   "D": 0.45485714285714285
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "@",
+   "id_a": "P09-196:1:13",
+   "id_b": "P09-196:7:14",
+   "D": 0.3840293453724605
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "@",
+   "id_a": "P09-196:18:13",
+   "id_b": "P09-196:7:14",
+   "D": 0.3940070130698119
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "@",
+   "id_a": "P09-196:11:7",
+   "id_b": "P09-196:7:14",
+   "D": 0.41840324763193504
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:18:13",
+   "id_b": "P09-196:4:0",
+   "D": 0.5196850393700787
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:5:8",
+   "id_b": "P09-196:4:0",
+   "D": 0.4595172624503514
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:11:7",
+   "id_b": "P09-196:4:0",
+   "D": 0.4784555120313374
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:1:13",
+   "id_b": "P09-196:18:9",
+   "D": 0.485999445522595
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:1:13",
+   "id_b": "P09-196:7:9",
+   "D": 0.380556352165185
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:14:4",
+   "id_b": "P09-196:18:9",
+   "D": 0.47728563316297556
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:1:13",
+   "id_b": "P09-196:4:0",
+   "D": 0.46236247828604515
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:18:13",
+   "id_b": "P09-196:7:9",
+   "D": 0.4021317829457365
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:11:7",
+   "id_b": "P09-196:7:9",
+   "D": 0.41648351648351645
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "*",
+   "sym_b": "_",
+   "id_a": "P09-196:3:7",
+   "id_b": "P09-196:4:0",
+   "D": 0.4639208173690932
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-196:7:14",
+   "id_b": "P09-196:18:9",
+   "D": 0.4506085479762242
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-196:7:14",
+   "id_b": "P09-196:4:0",
+   "D": 0.44949954504094636
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "square",
+   "sym_a": "@",
+   "sym_b": "_",
+   "id_a": "P09-196:7:14",
+   "id_b": "P09-196:7:9",
+   "D": 0.30773809523809526
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "1",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:16:5",
+   "D": 0.3973548016101207
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "1",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:14:3",
+   "D": 0.3548846482483623
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "1",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:16:5",
+   "D": 0.4074505238649593
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:8:8",
+   "D": 0.3092979127134725
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:8:8",
+   "id_b": "P09-196:13:7",
+   "D": 0.34881422924901184
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:3:16",
+   "id_b": "P09-196:6:7",
+   "D": 0.2176909821941413
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:8:8",
+   "D": 0.2785888077858881
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:15:16",
+   "D": 0.26642335766423353
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:7:2",
+   "D": 0.277856535299121
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:13:7",
+   "D": 0.26103968697596425
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:11:0",
+   "D": 0.3043842502094387
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:3:16",
+   "id_b": "P09-196:13:7",
+   "D": 0.2923466516601013
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "2",
+   "id_a": "P09-196:5:14",
+   "id_b": "P09-196:13:7",
+   "D": 0.25515008828722774
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "3",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:15:3",
+   "D": 0.3121019108280255
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:13:8",
+   "id_b": "P09-196:14:6",
+   "D": 0.3540575916230366
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:11:10",
+   "id_b": "P09-196:13:8",
+   "D": 0.2956363636363636
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:8:15",
+   "id_b": "P09-196:11:10",
+   "D": 0.25191858525191857
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:13:8",
+   "id_b": "P09-196:13:13",
+   "D": 0.35817465528562054
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:4:14",
+   "id_b": "P09-196:14:6",
+   "D": 0.33016968651136036
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:4:14",
+   "id_b": "P09-196:11:10",
+   "D": 0.29484029484029484
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:13:13",
+   "id_b": "P09-196:14:6",
+   "D": 0.30534918276374445
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:11:10",
+   "id_b": "P09-196:14:6",
+   "D": 0.2718782428225528
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:8:15",
+   "id_b": "P09-196:13:13",
+   "D": 0.2785154919986381
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "4",
+   "id_a": "P09-196:8:15",
+   "id_b": "P09-196:13:8",
+   "D": 0.3631994507380707
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:6:1",
+   "id_b": "P09-196:14:14",
+   "D": 0.22704309063893013
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:10:4",
+   "id_b": "P09-196:13:6",
+   "D": 0.554670528602462
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:10:4",
+   "id_b": "P09-196:11:8",
+   "D": 0.21302998965873832
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:12:9",
+   "id_b": "P09-196:14:14",
+   "D": 0.29254799869834036
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:10:4",
+   "id_b": "P09-196:12:9",
+   "D": 0.25190575190575193
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:12:9",
+   "id_b": "P09-196:13:6",
+   "D": 0.5981079187105817
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:4:9",
+   "id_b": "P09-196:14:14",
+   "D": 0.2693150684931507
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:13:6",
+   "id_b": "P09-196:14:14",
+   "D": 0.6651868294487606
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:4:9",
+   "id_b": "P09-196:10:4",
+   "D": 0.23448469531030613
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "5",
+   "id_a": "P09-196:4:9",
+   "id_b": "P09-196:13:6",
+   "D": 0.6594268476621418
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-196:12:1",
+   "id_b": "P09-196:16:6",
+   "D": 0.314030131826742
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-196:8:14",
+   "id_b": "P09-196:16:6",
+   "D": 0.341445955619184
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "6",
+   "sym_b": "6",
+   "id_a": "P09-196:8:14",
+   "id_b": "P09-196:12:1",
+   "D": 0.34700427960057056
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:13:7",
+   "D": 0.41980624327233584
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:6:7",
+   "D": 0.35722080756638774
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:8:8",
+   "D": 0.44631520839083627
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:11:0",
+   "D": 0.38867635807192047
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:13:7",
+   "D": 0.41087278106508873
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:15:16",
+   "D": 0.3501451378809869
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:15:16",
+   "D": 0.405375953505267
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:0:15",
+   "D": 0.44498910675381265
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:15:16",
+   "D": 0.4200420831141505
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "2",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:3:16",
+   "D": 0.39639897113460987
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "3",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:15:3",
+   "D": 0.3957434570031636
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "3",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:15:3",
+   "D": 0.35177413201068297
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "3",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:3:9",
+   "D": 0.3638877913868036
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "3",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:3:9",
+   "D": 0.367513611615245
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "3",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:15:3",
+   "D": 0.4512239678480088
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "3",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:3:9",
+   "D": 0.42372262773722624
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:11:10",
+   "D": 0.3562186427251123
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:14:6",
+   "D": 0.3436044428520244
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:13:13",
+   "D": 0.37663680220537565
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:13:8",
+   "D": 0.3730941704035874
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:11:10",
+   "D": 0.292604501607717
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:13:13",
+   "D": 0.36497144411204785
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:4:14",
+   "D": 0.41006152732537093
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:14:6",
+   "D": 0.4196964348746911
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:13:13",
+   "D": 0.27953783078643313
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "4",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:13:8",
+   "D": 0.4156648451730419
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:13:6",
+   "D": 0.7362190159082501
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:12:9",
+   "D": 0.3381294964028777
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:10:4",
+   "D": 0.3794337780670355
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:11:8",
+   "D": 0.36118455843469066
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:12:9",
+   "D": 0.40954415954415957
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:6:1",
+   "D": 0.3672297297297298
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:4:9",
+   "D": 0.4013961605584643
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:13:6",
+   "D": 0.7031201729996911
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:12:9",
+   "D": 0.3687045515755454
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "5",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:6:1",
+   "D": 0.32236309684380904
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:12:1",
+   "D": 0.38687872763419484
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:16:6",
+   "D": 0.43267365153279
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:8:14",
+   "D": 0.440335493709493
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:12:1",
+   "D": 0.4526923076923077
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:12:1",
+   "D": 0.460041285756414
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:16:5",
+   "id_b": "P09-196:16:6",
+   "D": 0.37095469255663427
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:8:14",
+   "D": 0.47287983218459695
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:0:11",
+   "id_b": "P09-196:16:6",
+   "D": 0.4784434490481523
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "1",
+   "sym_b": "6",
+   "id_a": "P09-196:14:3",
+   "id_b": "P09-196:8:14",
+   "D": 0.4240654205607477
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:15:16",
+   "id_b": "P09-196:3:9",
+   "D": 0.375
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:15:3",
+   "D": 0.32977038796516234
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:15:16",
+   "id_b": "P09-196:15:3",
+   "D": 0.36633663366336633
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:11:0",
+   "id_b": "P09-196:15:3",
+   "D": 0.3539136302294197
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:3:16",
+   "id_b": "P09-196:15:3",
+   "D": 0.38225073509756746
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:5:14",
+   "id_b": "P09-196:3:9",
+   "D": 0.375886524822695
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:15:3",
+   "D": 0.32756756756756755
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:8:8",
+   "id_b": "P09-196:3:9",
+   "D": 0.4049423393739704
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:13:7",
+   "id_b": "P09-196:15:3",
+   "D": 0.37044714243411314
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "3",
+   "id_a": "P09-196:13:7",
+   "id_b": "P09-196:3:9",
+   "D": 0.3980084490042245
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:4:14",
+   "D": 0.35326228229789447
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:13:13",
+   "D": 0.3179824561403509
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:13:8",
+   "D": 0.40007806401249024
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:13:7",
+   "id_b": "P09-196:8:15",
+   "D": 0.4015330188679245
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:0:15",
+   "id_b": "P09-196:11:10",
+   "D": 0.32891043633579997
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:11:0",
+   "id_b": "P09-196:4:14",
+   "D": 0.41536995871705307
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:13:7",
+   "id_b": "P09-196:13:13",
+   "D": 0.3182204590535562
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:8:8",
+   "id_b": "P09-196:8:15",
+   "D": 0.38607388035305656
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:13:8",
+   "D": 0.4175650801998422
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "4",
+   "id_a": "P09-196:13:7",
+   "id_b": "P09-196:11:10",
+   "D": 0.31621465666474324
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:8:8",
+   "id_b": "P09-196:6:1",
+   "D": 0.29108124618204034
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:11:0",
+   "id_b": "P09-196:11:8",
+   "D": 0.3755076538581693
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:15:16",
+   "id_b": "P09-196:6:1",
+   "D": 0.27646085997794934
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:0:15",
+   "id_b": "P09-196:14:14",
+   "D": 0.27142491685853154
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:15:16",
+   "id_b": "P09-196:11:8",
+   "D": 0.33687447581772434
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:13:6",
+   "D": 0.7039793873461209
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:13:7",
+   "id_b": "P09-196:6:1",
+   "D": 0.2947397717784581
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:8:8",
+   "id_b": "P09-196:12:9",
+   "D": 0.3796122576610381
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:13:6",
+   "D": 0.5530179445350734
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "5",
+   "id_a": "P09-196:13:7",
+   "id_b": "P09-196:10:4",
+   "D": 0.314625850340136
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:8:14",
+   "D": 0.42233209723939025
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:0:15",
+   "id_b": "P09-196:12:1",
+   "D": 0.44419517666853614
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:7:2",
+   "id_b": "P09-196:16:6",
+   "D": 0.37049047426023507
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:5:14",
+   "id_b": "P09-196:12:1",
+   "D": 0.407694516221648
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:15:16",
+   "id_b": "P09-196:8:14",
+   "D": 0.36711281070745694
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:3:16",
+   "id_b": "P09-196:8:14",
+   "D": 0.34681042228212045
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:6:7",
+   "id_b": "P09-196:12:1",
+   "D": 0.4292185730464326
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:0:15",
+   "id_b": "P09-196:8:14",
+   "D": 0.3919726729291204
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:3:16",
+   "id_b": "P09-196:16:6",
+   "D": 0.39751552795031053
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "2",
+   "sym_b": "6",
+   "id_a": "P09-196:11:0",
+   "id_b": "P09-196:16:6",
+   "D": 0.411231252179979
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:13:8",
+   "D": 0.42616033755274263
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:11:10",
+   "D": 0.363849765258216
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:4:14",
+   "D": 0.4298109699411218
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:14:6",
+   "D": 0.40809391411801055
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:13:13",
+   "D": 0.3993477616365253
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:4:14",
+   "D": 0.37977326968973746
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:13:8",
+   "D": 0.41515802393372203
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:8:15",
+   "D": 0.4063658838071693
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:11:10",
+   "D": 0.3826488985586075
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "4",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:14:6",
+   "D": 0.39708879184861723
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:13:6",
+   "D": 0.7655215884021431
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:10:4",
+   "D": 0.3477637614678899
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:11:8",
+   "D": 0.3758573388203018
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:13:6",
+   "D": 0.7074646940147948
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:11:8",
+   "D": 0.3651586368977673
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:12:9",
+   "D": 0.3860144245845093
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:12:9",
+   "D": 0.4103528050896472
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:6:1",
+   "D": 0.3340807174887892
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:4:9",
+   "D": 0.3569872393401805
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "5",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:6:1",
+   "D": 0.32175226586102723
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "6",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:8:14",
+   "D": 0.45738451528952506
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "6",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:16:6",
+   "D": 0.4245506951508986
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "6",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:8:14",
+   "D": 0.4202423845397969
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "6",
+   "id_a": "P09-196:15:3",
+   "id_b": "P09-196:12:1",
+   "D": 0.39498018494055487
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "6",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:16:6",
+   "D": 0.4312916534433513
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "3",
+   "sym_b": "6",
+   "id_a": "P09-196:3:9",
+   "id_b": "P09-196:12:1",
+   "D": 0.41436818473380377
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:14:6",
+   "id_b": "P09-196:6:1",
+   "D": 0.23895705521472388
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:11:10",
+   "id_b": "P09-196:4:9",
+   "D": 0.25627794977640184
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:4:14",
+   "id_b": "P09-196:12:9",
+   "D": 0.3359150889271372
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:4:14",
+   "id_b": "P09-196:6:1",
+   "D": 0.28575349986275045
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:13:13",
+   "id_b": "P09-196:6:1",
+   "D": 0.22608695652173916
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:14:6",
+   "id_b": "P09-196:12:9",
+   "D": 0.3512677798392084
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:13:13",
+   "id_b": "P09-196:10:4",
+   "D": 0.26384364820846906
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:13:8",
+   "id_b": "P09-196:4:9",
+   "D": 0.37002863506204264
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:13:8",
+   "id_b": "P09-196:11:8",
+   "D": 0.3677869372225745
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "5",
+   "id_a": "P09-196:8:15",
+   "id_b": "P09-196:12:9",
+   "D": 0.3378112712975099
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:13:8",
+   "id_b": "P09-196:16:6",
+   "D": 0.4417962003454231
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:13:8",
+   "id_b": "P09-196:8:14",
+   "D": 0.47052704576976423
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:13:13",
+   "id_b": "P09-196:8:14",
+   "D": 0.3907914764079148
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:14:6",
+   "id_b": "P09-196:16:6",
+   "D": 0.4077125906394199
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:4:14",
+   "id_b": "P09-196:16:6",
+   "D": 0.4395541583309517
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:11:10",
+   "id_b": "P09-196:16:6",
+   "D": 0.3505830903790087
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:8:15",
+   "id_b": "P09-196:8:14",
+   "D": 0.39411342426417806
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:14:6",
+   "id_b": "P09-196:12:1",
+   "D": 0.3758842443729904
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:14:6",
+   "id_b": "P09-196:8:14",
+   "D": 0.37889688249400477
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "4",
+   "sym_b": "6",
+   "id_a": "P09-196:4:14",
+   "id_b": "P09-196:12:1",
+   "D": 0.4390243902439024
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:13:6",
+   "id_b": "P09-196:8:14",
+   "D": 0.825354609929078
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:4:9",
+   "id_b": "P09-196:12:1",
+   "D": 0.40257460503218256
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:10:4",
+   "id_b": "P09-196:16:6",
+   "D": 0.38647512263489836
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:11:8",
+   "id_b": "P09-196:12:1",
+   "D": 0.4084507042253521
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:14:14",
+   "id_b": "P09-196:8:14",
+   "D": 0.4150548876110821
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:10:4",
+   "id_b": "P09-196:8:14",
+   "D": 0.42862165963431786
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:4:9",
+   "id_b": "P09-196:16:6",
+   "D": 0.42630972941853773
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:6:1",
+   "id_b": "P09-196:12:1",
+   "D": 0.37080745341614907
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:12:9",
+   "id_b": "P09-196:8:14",
+   "D": 0.4642490591857681
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "circle",
+   "sym_a": "5",
+   "sym_b": "6",
+   "id_a": "P09-196:6:1",
+   "id_b": "P09-196:16:6",
+   "D": 0.3640062597809076
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:2:10",
+   "id_b": "P09-196:17:14",
+   "D": 0.3781725888324873
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:5:16",
+   "id_b": "P09-196:17:14",
+   "D": 0.3791887125220459
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:2:10",
+   "id_b": "P09-196:5:16",
+   "D": 0.33419023136246784
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:1:4",
+   "id_b": "P09-196:15:7",
+   "D": 0.3727351164797239
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:5:16",
+   "id_b": "P09-196:15:7",
+   "D": 0.3969072164948454
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:1:4",
+   "id_b": "P09-196:5:16",
+   "D": 0.38052299368800724
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:15:7",
+   "id_b": "P09-196:17:14",
+   "D": 0.34702861335289803
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:1:4",
+   "id_b": "P09-196:17:14",
+   "D": 0.4355555555555556
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:7:0",
+   "id_b": "P09-196:12:13",
+   "D": 0.3688955672426747
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "(",
+   "id_a": "P09-196:2:10",
+   "id_b": "P09-196:12:13",
+   "D": 0.2931760741364785
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:2:11",
+   "id_b": "P09-196:17:15",
+   "D": 0.31508771929824564
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:1:16",
+   "id_b": "P09-196:16:15",
+   "D": 0.4053247076387161
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:1:16",
+   "id_b": "P09-196:2:11",
+   "D": 0.36436950146627567
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:2:11",
+   "id_b": "P09-196:17:2",
+   "D": 0.36433566433566433
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:1:16",
+   "id_b": "P09-196:17:15",
+   "D": 0.4200483091787439
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:1:16",
+   "id_b": "P09-196:17:2",
+   "D": 0.3949987241643277
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:16:15",
+   "id_b": "P09-196:17:2",
+   "D": 0.3884711779448622
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:2:11",
+   "id_b": "P09-196:16:15",
+   "D": 0.27217694994179276
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:17:2",
+   "id_b": "P09-196:17:15",
+   "D": 0.40061240112273544
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": ")",
+   "id_a": "P09-196:16:15",
+   "id_b": "P09-196:17:15",
+   "D": 0.23604806408544732
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:6:14",
+   "id_b": "P09-196:17:5",
+   "D": 0.409297052154195
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:12:0",
+   "id_b": "P09-196:15:4",
+   "D": 0.4244016345592527
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:7:12",
+   "id_b": "P09-196:19:8",
+   "D": 0.3667695473251029
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:9:1",
+   "id_b": "P09-196:17:5",
+   "D": 0.39506820566631684
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:4:4",
+   "id_b": "P09-196:6:14",
+   "D": 0.3636981645139361
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:17:5",
+   "id_b": "P09-196:19:8",
+   "D": 0.4137092853670393
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:4:4",
+   "id_b": "P09-196:12:0",
+   "D": 0.4288762446657184
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:4:4",
+   "id_b": "P09-196:9:1",
+   "D": 0.38820301783264743
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:2:14",
+   "id_b": "P09-196:6:14",
+   "D": 0.44626786659608253
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "z",
+   "sym_b": "z",
+   "id_a": "P09-196:15:4",
+   "id_b": "P09-196:17:5",
+   "D": 0.4201865057597367
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:7:0",
+   "id_b": "P09-196:16:15",
+   "D": 0.7416666666666667
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:7:0",
+   "id_b": "P09-196:2:11",
+   "D": 0.7707985299031073
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:2:10",
+   "id_b": "P09-196:16:15",
+   "D": 0.745928338762215
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:17:14",
+   "id_b": "P09-196:17:2",
+   "D": 0.7844402277039848
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:1:4",
+   "id_b": "P09-196:2:11",
+   "D": 0.8040383978814962
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:12:13",
+   "id_b": "P09-196:2:11",
+   "D": 0.7097833223900196
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:12:13",
+   "id_b": "P09-196:17:2",
+   "D": 0.7105165366034931
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:12:13",
+   "id_b": "P09-196:1:16",
+   "D": 0.7593525179856115
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:1:4",
+   "id_b": "P09-196:17:2",
+   "D": 0.8121942039894618
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": ")",
+   "id_a": "P09-196:2:10",
+   "id_b": "P09-196:17:15",
+   "D": 0.6866606982990152
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:17:14",
+   "id_b": "P09-196:9:1",
+   "D": 0.49723076923076925
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:17:14",
+   "id_b": "P09-196:12:0",
+   "D": 0.459005376344086
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:1:4",
+   "id_b": "P09-196:4:4",
+   "D": 0.537712895377129
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:15:7",
+   "id_b": "P09-196:17:5",
+   "D": 0.39622641509433965
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:12:13",
+   "id_b": "P09-196:17:5",
+   "D": 0.4197674418604651
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:2:10",
+   "id_b": "P09-196:19:8",
+   "D": 0.5190409026798308
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:5:16",
+   "id_b": "P09-196:15:4",
+   "D": 0.5137195121951219
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:15:7",
+   "id_b": "P09-196:6:14",
+   "D": 0.5144539614561028
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:2:10",
+   "id_b": "P09-196:15:4",
+   "D": 0.4800280308339173
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": "(",
+   "sym_b": "z",
+   "id_a": "P09-196:5:16",
+   "id_b": "P09-196:4:4",
+   "D": 0.5207687538747675
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:16:15",
+   "id_b": "P09-196:4:4",
+   "D": 0.6912188728702491
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:2:11",
+   "id_b": "P09-196:15:4",
+   "D": 0.6681818181818182
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:1:16",
+   "id_b": "P09-196:4:4",
+   "D": 0.754533152909337
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:17:15",
+   "id_b": "P09-196:17:5",
+   "D": 0.5014084507042254
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:17:2",
+   "id_b": "P09-196:9:1",
+   "D": 0.6271953166577967
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:1:16",
+   "id_b": "P09-196:2:14",
+   "D": 0.7529785544082606
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:17:2",
+   "id_b": "P09-196:15:4",
+   "D": 0.6608837083220385
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:17:15",
+   "id_b": "P09-196:12:0",
+   "D": 0.5903276131045242
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:16:15",
+   "id_b": "P09-196:7:12",
+   "D": 0.5709908069458631
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "crossed_circle",
+   "sym_a": ")",
+   "sym_b": "z",
+   "id_a": "P09-196:1:16",
+   "id_b": "P09-196:12:0",
+   "D": 0.730669434353918
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": ":",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:14:5",
+   "D": 0.47648686030428766
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": ";",
+   "id_a": "P09-196:6:6",
+   "id_b": "P09-196:19:15",
+   "D": 0.4867042707493956
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": ";",
+   "id_a": "P09-196:6:6",
+   "id_b": "P09-196:12:14",
+   "D": 0.6758832565284179
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": ";",
+   "id_a": "P09-196:12:14",
+   "id_b": "P09-196:19:15",
+   "D": 0.6884306987399771
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:12:8",
+   "id_b": "P09-196:16:14",
+   "D": 0.20851528384279472
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:0:10",
+   "id_b": "P09-196:10:7",
+   "D": 0.21563682219419922
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:16:14",
+   "id_b": "P09-196:18:0",
+   "D": 0.27617951668584584
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:4:8",
+   "id_b": "P09-196:18:0",
+   "D": 0.23930635838150294
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:6:16",
+   "id_b": "P09-196:19:13",
+   "D": 0.11764705882352944
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:0:10",
+   "id_b": "P09-196:6:16",
+   "D": 0.16332378223495703
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:12:8",
+   "id_b": "P09-196:18:0",
+   "D": 0.2875264270613108
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:6:16",
+   "id_b": "P09-196:16:14",
+   "D": 0.18902439024390238
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:18:0",
+   "id_b": "P09-196:19:13",
+   "D": 0.23650793650793656
+  },
+  {
+   "kind": "SAME",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": "|",
+   "sym_b": "|",
+   "id_a": "P09-196:10:7",
+   "id_b": "P09-196:12:8",
+   "D": 0.19684082624544352
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": ";",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:6:6",
+   "D": 0.5260300223570744
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": ";",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:19:15",
+   "D": 0.5444854448544485
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": ";",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:12:14",
+   "D": 0.7116759332803813
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": ";",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:6:6",
+   "D": 0.5544883635020318
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": ";",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:12:14",
+   "D": 0.6137566137566137
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": ";",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:19:15",
+   "D": 0.5891369543485505
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:6:16",
+   "D": 0.7453387903592542
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:19:13",
+   "D": 0.7435897435897436
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:4:8",
+   "D": 0.760778859527121
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:12:8",
+   "D": 0.728
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:11:6",
+   "D": 0.7365648050579557
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:4:8",
+   "D": 0.7627595916930658
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:18:0",
+   "D": 0.784212467724087
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:6:16",
+   "D": 0.7617678763923823
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:2:2",
+   "id_b": "P09-196:10:7",
+   "D": 0.7357271095152603
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ":",
+   "sym_b": "|",
+   "id_a": "P09-196:14:5",
+   "id_b": "P09-196:10:7",
+   "D": 0.7450199203187251
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:12:14",
+   "id_b": "P09-196:15:0",
+   "D": 0.727206946454414
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:6:6",
+   "id_b": "P09-196:6:16",
+   "D": 0.7774566473988439
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:6:6",
+   "id_b": "P09-196:16:14",
+   "D": 0.7615475720489538
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:6:6",
+   "id_b": "P09-196:19:13",
+   "D": 0.7807199007033513
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:19:15",
+   "id_b": "P09-196:0:10",
+   "D": 0.6757311441765008
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:6:6",
+   "id_b": "P09-196:11:6",
+   "D": 0.7342543681430314
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:12:14",
+   "id_b": "P09-196:0:10",
+   "D": 0.7299546142208775
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:19:15",
+   "id_b": "P09-196:6:16",
+   "D": 0.6944008372579802
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:6:6",
+   "id_b": "P09-196:15:0",
+   "D": 0.7782479898434194
+  },
+  {
+   "kind": "LOOK",
+   "cipher": "z340",
+   "family": "serifI",
+   "sym_a": ";",
+   "sym_b": "|",
+   "id_a": "P09-196:12:14",
+   "id_b": "P09-196:4:8",
+   "D": 0.7288629737609329
+  }
+ ]
+}
