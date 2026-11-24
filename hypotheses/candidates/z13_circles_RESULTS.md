@@ -50,3 +50,24 @@ pairs, but the method is not sharp enough at 150 ppi to make that decisive, and 
 The repeat pattern itself leans the other way (three distinct symbols favoured by 10^2 to 10^4.5, depending on the
 key model; winchxyz 2026). Net: **still open**. Original photographs of item Qc46 (requested in the FBI FOIA draft)
 are what can settle it.
+
+## I1c: metric tournament (pre-registered, fork 59d9924; metrics sealed 0591b39)
+
+Benchmark: Zodiac's ringed symbols from the FBI photocopies of Z408/Z340 (106 same-symbol, 451 look-alike pairs).
+Winner by training AUC: **M7** (all measures combined), held-out AUC 0.979 on the sealed split (test symbols 1, 2, z).
+Other held-out AUCs: whole shape 0.88, interior only 0.88, angular profile 0.84, ring geometry 0.80, topology 0.61,
+Zernike 0.58. Applied once to the circles: **pre-registered verdict "one symbol" on p210 (Σ log10 LR −5.3) and p41 (−3.8).**
+
+### Exploratory robustness (cannot change the verdict)
+- 50 grouped splits: M7 wins all 50; held-out AUC median 0.92 (p10-p90 0.74-0.98): the sealed split was lucky.
+- Circles, Σ log10 LR median −3.0 (p210) and −2.6 (p41); every split ≤ −1.37; **no split favours three**.
+  Strict rule: "one symbol" in 76% / 70% of splits, else "weak" (20-26%) or "unresolved" (4%).
+- Hardest look-alikes (plain-circle family, the Z13 case): AUC 0.76 (M7), 0.80 (whole shape). Leave-one-symbol-out:
+  one symbol (`5`) separates poorly (0.67).
+
+## Where the circles stand now
+Every image analysis points the same way: **one symbol**, never three. Its strength is moderate, not decisive: the
+method separates the most relevant look-alikes only moderately, and the summed ratios are upper bounds. Before today the
+repeat pattern alone favoured three distinct symbols (~100:1 under the near-simple key Z13 most likely used); the
+image evidence now roughly offsets that. Working reading: **one symbol, leaning**. Decisive: the FBI's original
+photographs of item Qc46 (FOIA draft names it).
