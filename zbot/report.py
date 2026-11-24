@@ -6,8 +6,10 @@ correction is applied across all of them, so a long-running bot cannot
 """
 from __future__ import annotations
 
+import json
 import os
 import pathlib
+import re
 
 from .evaluate import power_at, power_ci, power_pooled, tier, wilson
 
@@ -15,6 +17,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 RESULTS = pathlib.Path(os.environ.get("ZBOT_RESULTS_DIR", ROOT / "results"))
 OUT = RESULTS / "REPORT.md"
 ALERTS = RESULTS / "ALERTS.md"
+SLIM = RESULTS / "ledger_slim.jsonl"   # one compact line per test, for the dashboard's lists
+ROWS = RESULTS / "rows"                # one full row per test, for the dashboard's detail pages
+
+# Bulky per-test arrays the list pages don't need (the detail page reads rows/<id>.json).
+_HEAVY = ("null_scores", "control_scores", "null_dominance", "control_dominance")
 
 
 MIN_POWER = 0.2
@@ -122,3 +129,35 @@ def write(rows: list[dict]) -> None:
                   "more nulls, check it under other transcription variants, and ask whether the "
                   "plaintext is meaningful *and* predicted in advance.", ""]
     ALERTS.write_text("\n".join(alert) + "\n")
+    write_site_files(rs)
+
+
+def row_file(row_id: str) -> str:
+    return re.sub(r"[^A-Za-z0-9._-]", "_", row_id) + ".json"
+
+
+def write_site_files(rs: list[dict]) -> None:
+    """Small files for the dashboard. The full ledger grows by MBs a day, and the hosting
+    caches no single file over 2 MB, so the site reads these instead."""
+    ROWS.mkdir(parents=True, exist_ok=True)
+    keep = set()
+    with SLIM.open("w") as f:
+        for r in rs:
+            slim = {k: v for k, v in r.items() if k not in _HEAVY}
+            slim["top"] = (r.get("top") or [])[:1]
+            spec = dict(r.get("spec") or {})
+            ec = spec.pop("explore_columnar", None)
+            if ec:  # 60 column orders per exploration test; the list pages only need the width
+                spec["explore_columnar"] = {"width": ec.get("width"), "keys": len(ec.get("perms") or [])}
+            if "pin_family" in spec:
+                spec["pin_family_size"] = len(spec.pop("pin_family"))
+            slim["spec"] = spec
+            slim["n_nulls"] = len(r.get("null_scores") or [])
+            slim["n_controls"] = len(r.get("control_scores") or [])
+            f.write(json.dumps(slim) + "\n")
+            name = row_file(r["id"])
+            keep.add(name)
+            (ROWS / name).write_text(json.dumps(r))
+    for old in ROWS.glob("*.json"):
+        if old.name not in keep:
+            old.unlink()

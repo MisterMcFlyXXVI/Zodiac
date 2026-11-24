@@ -250,3 +250,18 @@ def test_run_reports_idle_and_cli_exits_3(tmp_path, monkeypatch):
     with pytest.raises(SystemExit) as e:
         cli.main(["run", "--hours", "0.01"])
     assert e.value.code == cli.IDLE_EXIT == 3
+
+
+def test_site_files_are_compact(tmp_path, monkeypatch):
+    from zbot import report
+    monkeypatch.setattr(report, "SLIM", tmp_path / "ledger_slim.jsonl")
+    monkeypatch.setattr(report, "ROWS", tmp_path / "rows")
+    rows = [{"id": "explore.1.z32.columnar10", "p": 0.5, "power": 0.3, "verdict": "NO SIGNAL",
+             "null_scores": [1.0] * 999, "control_scores": [2.0] * 50, "top": [{"plaintext": "A"}] * 10,
+             "spec": {"id": "explore.1.z32.columnar10", "explore_columnar": {"width": 10, "perms": [list(range(10))] * 60}}}]
+    report.write_site_files(rows)
+    slim = json.loads((tmp_path / "ledger_slim.jsonl").read_text())
+    assert "null_scores" not in slim and len(slim["top"]) == 1
+    assert slim["spec"]["explore_columnar"] == {"width": 10, "keys": 60} and slim["n_nulls"] == 999
+    full = json.loads((tmp_path / "rows" / "explore.1.z32.columnar10.json").read_text())
+    assert len(full["null_scores"]) == 999

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { loadAll } from "@/lib/data";
 import { isAdmin } from "@/lib/auth";
-import { canWrite } from "@/lib/github";
+import { canWrite, getRow } from "@/lib/github";
 import { cipherLabel, fmtDuration, fmtP, isAlert, relTime } from "@/lib/stats";
 import Verdict, { VERDICT_HELP } from "@/components/Verdict";
 import ScoreChart from "@/components/ScoreChart";
@@ -15,9 +15,12 @@ const LANGS: Record<string, string> = { en: "English", es: "Spanish", fr: "Frenc
 
 export default async function Hypothesis({ params }: { params: Promise<{ id: string }> }) {
   const id = decodeURIComponent((await params).id);
-  const { rows, status } = await loadAll();
-  const r = rows.find((x) => x.id === id);
-  if (!r) notFound();
+  const [{ rows, status }, full] = await Promise.all([loadAll(), getRow(id)]);
+  const listed = rows.find((x) => x.id === id);
+  if (!listed) notFound();
+  // List data carries the corrected p and verdict; the full row adds the score arrays for the chart.
+  const r = { ...(full ?? {}), ...listed, null_scores: full?.null_scores, control_scores: full?.control_scores,
+              spec: full?.spec ?? listed.spec, top: full?.top ?? listed.top };
   const admin = await isAdmin();
   const slug = id.replace(/^user\./, "");
   const related = (status?.suggestions ?? []).filter((s) => s.spec.id.includes(slug));

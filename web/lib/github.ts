@@ -39,22 +39,38 @@ async function api<T>(url: string, init?: RequestInit & { revalidate?: number })
 }
 
 export async function defaultBranch(): Promise<string> {
-  const r = await api<{ default_branch: string }>(`/repos/${REPO}`, { revalidate: 3600 });
-  return r?.default_branch ?? "main";
+  // A failed lookup (rate limit, bad token) must not take the results down with it.
+  try {
+    const r = await api<{ default_branch: string }>(`/repos/${REPO}`, { revalidate: 3600 });
+    if (r?.default_branch) return r.default_branch;
+  } catch {
+    /* fall through */
+  }
+  return process.env.GITHUB_DEFAULT_BRANCH || "main";
 }
+
+// Results files are fetched WITHOUT Next's data cache: it refuses entries over 2 MB, and when a
+// refresh can't be stored the site keeps serving the last copy that fit, so results looked frozen
+// once the ledger outgrew 2 MB. Instead each server instance keeps its own copy for REVALIDATE s.
+const memo = new Map<string, { at: number; text: string | null }>();
 
 async function raw(branch: string, file: string): Promise<string | null> {
   const local = process.env.LOCAL_RESULTS_DIR;
   if (local) {
     try {
-      return await fs.readFile(path.join(local, path.basename(file)), "utf8");
+      // Keep sub-folders (rows/<id>.json) under the local results folder.
+      return await fs.readFile(path.join(local, file.replace(/^results\//, "")), "utf8");
     } catch {
       return null;
     }
   }
   const url = `https://raw.githubusercontent.com/${REPO}/${encodeURIComponent(branch).replaceAll("%2F", "/")}/${file}`;
-  const res = await fetch(url, { next: { revalidate: REVALIDATE } });
-  return res.ok ? res.text() : null;
+  const hit = memo.get(url);
+  if (hit && Date.now() - hit.at < REVALIDATE * 1000) return hit.text;
+  const res = await fetch(url, { cache: "no-store" });
+  const text = res.ok ? await res.text() : null;
+  if (res.ok || res.status === 404) memo.set(url, { at: Date.now(), text });
+  return text;
 }
 
 /** Results branch first (written by the workflow), default branch as fallback. */
@@ -65,13 +81,28 @@ async function resultsFile(file: string): Promise<{ text: string | null; branch:
   return { text: await raw(def, `results/${file}`), branch: def };
 }
 
+/** Compact rows for the list pages (no per-test score arrays); full ledger if the bot hasn't
+ *  published the compact file yet. */
 export async function getLedger(): Promise<LedgerRow[]> {
-  const { text } = await resultsFile("ledger.jsonl");
+  let { text } = await resultsFile("ledger_slim.jsonl");
+  if (!text) text = (await resultsFile("ledger.jsonl")).text;
   if (!text) return [];
   return text
     .split("\n")
     .filter((l) => l.trim())
     .map((l) => JSON.parse(l) as LedgerRow);
+}
+
+/** One test's full row (score arrays included), for its detail page. Mirrors report.row_file. */
+export async function getRow(id: string): Promise<LedgerRow | null> {
+  const name = id.replace(/[^A-Za-z0-9._-]/g, "_") + ".json";
+  const { text } = await resultsFile(`rows/${name}`);
+  if (text) return JSON.parse(text) as LedgerRow;
+  const full = (await resultsFile("ledger.jsonl")).text; // before the bot publishes rows/
+  if (!full) return null;
+  let found: LedgerRow | null = null;
+  for (const l of full.split("\n")) if (l.includes(`"id": "${id}"`)) found = JSON.parse(l) as LedgerRow;
+  return found;
 }
 
 export async function getStatus(): Promise<Status | null> {
