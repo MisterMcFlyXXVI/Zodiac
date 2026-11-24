@@ -1,0 +1,474 @@
+{
+ "z340": {
+  "#": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "%": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "&": {
+   "glyph_letter": "P",
+   "transform": "normal"
+  },
+  "(": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  ")": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "*": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "+": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "-": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  ".": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "/": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "1": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "2": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "3": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "4": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "5": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "6": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "7": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "8": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "9": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  ":": {
+   "glyph_letter": "I",
+   "transform": "normal"
+  },
+  ";": {
+   "glyph_letter": "I",
+   "transform": "normal"
+  },
+  "<": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  ">": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "@": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "A": {
+   "glyph_letter": "A",
+   "transform": "normal"
+  },
+  "B": {
+   "glyph_letter": "B",
+   "transform": "normal"
+  },
+  "C": {
+   "glyph_letter": "C",
+   "transform": "normal"
+  },
+  "D": {
+   "glyph_letter": "D",
+   "transform": "normal"
+  },
+  "E": {
+   "glyph_letter": "E",
+   "transform": "normal"
+  },
+  "F": {
+   "glyph_letter": "F",
+   "transform": "normal"
+  },
+  "G": {
+   "glyph_letter": "G",
+   "transform": "normal"
+  },
+  "H": {
+   "glyph_letter": "H",
+   "transform": "normal"
+  },
+  "J": {
+   "glyph_letter": "J",
+   "transform": "normal"
+  },
+  "K": {
+   "glyph_letter": "K",
+   "transform": "normal"
+  },
+  "L": {
+   "glyph_letter": "L",
+   "transform": "normal"
+  },
+  "M": {
+   "glyph_letter": "M",
+   "transform": "normal"
+  },
+  "N": {
+   "glyph_letter": "N",
+   "transform": "normal"
+  },
+  "O": {
+   "glyph_letter": "O",
+   "transform": "normal"
+  },
+  "P": {
+   "glyph_letter": "P",
+   "transform": "normal"
+  },
+  "R": {
+   "glyph_letter": "R",
+   "transform": "normal"
+  },
+  "S": {
+   "glyph_letter": "S",
+   "transform": "normal"
+  },
+  "T": {
+   "glyph_letter": "T",
+   "transform": "normal"
+  },
+  "U": {
+   "glyph_letter": "U",
+   "transform": "normal"
+  },
+  "V": {
+   "glyph_letter": "V",
+   "transform": "normal"
+  },
+  "W": {
+   "glyph_letter": "W",
+   "transform": "normal"
+  },
+  "X": {
+   "glyph_letter": "X",
+   "transform": "normal"
+  },
+  "Y": {
+   "glyph_letter": "Y",
+   "transform": "normal"
+  },
+  "Z": {
+   "glyph_letter": "Z",
+   "transform": "normal"
+  },
+  "^": {
+   "glyph_letter": "V",
+   "transform": "rotated/upside-down"
+  },
+  "_": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "b": {
+   "glyph_letter": "B",
+   "transform": "reversed"
+  },
+  "c": {
+   "glyph_letter": "C",
+   "transform": "reversed"
+  },
+  "d": {
+   "glyph_letter": "D",
+   "transform": "reversed"
+  },
+  "f": {
+   "glyph_letter": "F",
+   "transform": "reversed"
+  },
+  "j": {
+   "glyph_letter": "J",
+   "transform": "reversed"
+  },
+  "k": {
+   "glyph_letter": "K",
+   "transform": "reversed"
+  },
+  "l": {
+   "glyph_letter": "L",
+   "transform": "reversed"
+  },
+  "p": {
+   "glyph_letter": "P",
+   "transform": "reversed"
+  },
+  "q": {
+   "glyph_letter": "Q",
+   "transform": "reversed"
+  },
+  "t": {
+   "glyph_letter": "T",
+   "transform": "rotated/upside-down"
+  },
+  "y": {
+   "glyph_letter": "Y",
+   "transform": "reversed"
+  },
+  "z": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "|": {
+   "glyph_letter": "I",
+   "transform": "normal"
+  }
+ },
+ "z408": {
+  "!": {
+   "glyph_letter": "I",
+   "transform": "normal"
+  },
+  "#": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "%": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "(": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  ")": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "+": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "/": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "5": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "6": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "7": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "8": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "9": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "=": {
+   "glyph_letter": "K",
+   "transform": "rotated/upside-down"
+  },
+  "@": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "A": {
+   "glyph_letter": "A",
+   "transform": "normal"
+  },
+  "B": {
+   "glyph_letter": "B",
+   "transform": "normal"
+  },
+  "D": {
+   "glyph_letter": "D",
+   "transform": "normal"
+  },
+  "E": {
+   "glyph_letter": "E",
+   "transform": "normal"
+  },
+  "F": {
+   "glyph_letter": "F",
+   "transform": "normal"
+  },
+  "G": {
+   "glyph_letter": "G",
+   "transform": "normal"
+  },
+  "H": {
+   "glyph_letter": "H",
+   "transform": "normal"
+  },
+  "I": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "J": {
+   "glyph_letter": "J",
+   "transform": "normal"
+  },
+  "K": {
+   "glyph_letter": "K",
+   "transform": "normal"
+  },
+  "L": {
+   "glyph_letter": "L",
+   "transform": "normal"
+  },
+  "M": {
+   "glyph_letter": "M",
+   "transform": "normal"
+  },
+  "N": {
+   "glyph_letter": "N",
+   "transform": "normal"
+  },
+  "O": {
+   "glyph_letter": "O",
+   "transform": "normal"
+  },
+  "P": {
+   "glyph_letter": "P",
+   "transform": "normal"
+  },
+  "Q": {
+   "glyph_letter": "Q",
+   "transform": "normal"
+  },
+  "R": {
+   "glyph_letter": "R",
+   "transform": "normal"
+  },
+  "S": {
+   "glyph_letter": "S",
+   "transform": "normal"
+  },
+  "T": {
+   "glyph_letter": "T",
+   "transform": "normal"
+  },
+  "U": {
+   "glyph_letter": "U",
+   "transform": "normal"
+  },
+  "V": {
+   "glyph_letter": "V",
+   "transform": "normal"
+  },
+  "W": {
+   "glyph_letter": "W",
+   "transform": "normal"
+  },
+  "X": {
+   "glyph_letter": "X",
+   "transform": "normal"
+  },
+  "Y": {
+   "glyph_letter": "Y",
+   "transform": "normal"
+  },
+  "Z": {
+   "glyph_letter": "Z",
+   "transform": "normal"
+  },
+  "\\": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "^": {
+   "glyph_letter": "V",
+   "transform": "rotated/upside-down"
+  },
+  "_": {
+   "glyph_letter": null,
+   "transform": "other"
+  },
+  "c": {
+   "glyph_letter": "C",
+   "transform": "reversed"
+  },
+  "d": {
+   "glyph_letter": "D",
+   "transform": "reversed"
+  },
+  "e": {
+   "glyph_letter": "E",
+   "transform": "reversed"
+  },
+  "f": {
+   "glyph_letter": "F",
+   "transform": "reversed"
+  },
+  "j": {
+   "glyph_letter": "J",
+   "transform": "reversed"
+  },
+  "k": {
+   "glyph_letter": "K",
+   "transform": "reversed"
+  },
+  "l": {
+   "glyph_letter": "L",
+   "transform": "reversed"
+  },
+  "p": {
+   "glyph_letter": "P",
+   "transform": "reversed"
+  },
+  "q": {
+   "glyph_letter": "Q",
+   "transform": "reversed"
+  },
+  "r": {
+   "glyph_letter": "R",
+   "transform": "reversed"
+  },
+  "t": {
+   "glyph_letter": "T",
+   "transform": "rotated/upside-down"
+  },
+  "z": {
+   "glyph_letter": null,
+   "transform": "other"
+  }
+ }
+}
