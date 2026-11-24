@@ -3,6 +3,19 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-24: The released FBI file has photocopies of both cipher letters, no FBI transcription
+
+**The FBI file does not contain a better image of Z13, and no code-breaker's transcription of Z13 or Z32.**
+All 1,945 pages of the released file (Commons parts 1-5 and Vault parts 07-11) were indexed (`results/FBI_FILE/`,
+`scripts/fbi_file_index.py`); 282 are cipher pages.
+- Photocopies of both letters are there: Z13 on Part 09 p210 (Qc46) and p41, Z32 on Part 09 p215 (Qc51). The best Z13
+  copy is about 32 px per circle, no better than what we had, so it cannot resolve the three circles.
+- 78 lab item numbers (Q, Qc, Kc) are mapped to pages. The FBI's lab pages on Qc45-47 say only that no decryption could be
+  effected for Qc46. No FBI analyst transcription of either cipher exists in the release; four third-party typed renderings of
+  Z13 write the three circles as one symbol, which says nothing about the original.
+- The original photographs of Qc45-47 and Qc51 (originals are held as evidence) are what to request.
+- OCR and thumbnails were used to find pages, so a photocopy on a text-heavy page could have been missed.
+
 ## 2026-11-23 (evening): 119,803 pre-registered Z13 phrases, incl. symbols as dashes or blanks: 0 fits
 
 **A single one-slip fit is chance.** Allowing one encoding slip, the loose `circles_distinct` reading
