@@ -3,6 +3,43 @@
 Methods work on the bot itself: what was tried to make Z13/Z32 testable, what was measured,
 and what was concluded. Written by hand, unlike REPORT.md. Newest first.
 
+## 2026-11-24: Z13's three circles on FBI photocopies: one symbol, leaning, not decisive
+
+**The question.** Z13's circled glyphs sit at positions 5, 7 and 9. The repeat pattern alone favours three
+distinct symbols (about 100:1 under the near-simple key Z13 most likely used), but if they are one symbol the
+pattern changes completely. Only the glyph shapes can say, and the best public scan (~12 px per circle) was too
+small. The FBI's released file (Vault, "The Zodiac Killer", Part 09) holds photocopies of the 20 Apr 1970 letter
+(lab item Qc46) at ~150 ppi bilevel: ~32 px per circle on p. 210 and ~31 px on p. 41. Image provenance and how to
+fetch the pages: `results/z13_circles/IMAGES.md`.
+
+**Sealed before looking.** Each step was pushed to the fork before the data it concerns existed or was touched:
+- `8aed1c8`: the measurement protocol, before any new image arrived.
+- `1f041bc`: the measurement code (hash fixed), before it touched a real image.
+- `b50fae8`: the look-alike power check, before any look-alike glyph was measured.
+- `59d9924`: the metric tournament (pick a metric on Zodiac's solved-cipher symbols, apply it once to Z13).
+- `0591b39`: the tournament metrics (hash fixed), before they touched real data.
+
+**Results** (`results/z13_circles/RESULTS.md`; everything reproduces with `scripts/z13_circles/`):
+- **I1, protocol as written: one symbol.** The three circles differ from each other no more than Zodiac's repeats of
+  a single letter on the same page, and far less than any two different symbols. Σ log10 LR -15.1 on p. 210, -8.7 on
+  p. 41. But the "different symbols" reference there is dissimilar letters, so this overstates the case.
+- **I1b, can the metric tell Zodiac's look-alike symbols apart: weakly.** On 242 same-symbol and 439 look-alike
+  pairs from the FBI copies of Z408 and Z340, AUC 0.76 (pre-registered label "weak"). The p. 210 circles are more
+  alike than 96% of his distinct look-alike pairs; the realistic Σ log10 LR is -1.83 (p. 210), -0.45 (p. 41).
+- **I1c, metric tournament: winner M7, verdict one symbol.** M7 combines whole shape, interior, angular profile,
+  topology, Zernike and ring geometry. Held-out AUC 0.979 on the sealed split; applied once to the circles it gives
+  one symbol on both pages (Σ log10 LR -5.3 and -3.8).
+- **Robustness (exploratory, cannot change the verdict).** The sealed split was lucky: over 50 other grouped splits M7
+  wins every time but held-out AUC has median 0.92 (p10-p90 0.74-0.98). **0 of 50 splits favour three symbols**
+  and the circles' Σ log10 LR is at or below -1.37 in all of them, median -3.0 (p. 210). The strict rule still says
+  "one symbol" in only 76% (p. 210) and 70% (p. 41) of splits, otherwise "weak" or "unresolved". On the case that
+  matters, plain-circle look-alikes (`5 6 1 2 3 4`), AUC is only 0.76-0.80.
+
+**Bottom line: one symbol, leaning, not decisive.** Every image analysis points the same way and none points to
+three, but the method separates the most relevant look-alikes only moderately, and the summed ratios are upper
+bounds (pairs are not independent). The image evidence now roughly offsets the repeat-pattern evidence for three
+symbols. Original photographs of Qc46 are needed to settle it.
+
 ## 2026-11-23 (evening): 119,803 pre-registered Z13 phrases, incl. symbols as dashes or blanks: 0 fits
 
 **A single one-slip fit is chance.** Allowing one encoding slip, the loose `circles_distinct` reading

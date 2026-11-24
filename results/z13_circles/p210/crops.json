@@ -1,0 +1,262 @@
+{
+ "image": "P09_p210.png (FBI Vault Part 09 p. 210; see IMAGES.md)",
+ "source": "FBI file Part 09 p210 (Qc46)",
+ "crops": [
+  {
+   "id": "c01",
+   "symbol": "A",
+   "box": [
+    235,
+    659,
+    270,
+    696
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c02",
+   "symbol": "E",
+   "box": [
+    301,
+    664,
+    326,
+    697
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c03",
+   "symbol": "N",
+   "box": [
+    361,
+    666,
+    389,
+    698
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c04",
+   "symbol": "z",
+   "box": [
+    403,
+    657,
+    447,
+    699
+   ],
+   "role": "crosshair"
+  },
+  {
+   "id": "c05",
+   "symbol": "0",
+   "box": [
+    463,
+    666,
+    495,
+    698
+   ],
+   "role": "circle",
+   "position": 5
+  },
+  {
+   "id": "c06",
+   "symbol": "K",
+   "box": [
+    521,
+    667,
+    550,
+    698
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c07",
+   "symbol": "0",
+   "box": [
+    572,
+    672,
+    603,
+    699
+   ],
+   "role": "circle",
+   "position": 7
+  },
+  {
+   "id": "c08",
+   "symbol": "M",
+   "box": [
+    631,
+    671,
+    661,
+    701
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c09",
+   "symbol": "0",
+   "box": [
+    687,
+    674,
+    716,
+    701
+   ],
+   "role": "circle",
+   "position": 9
+  },
+  {
+   "id": "c10",
+   "symbol": "[",
+   "box": [
+    737,
+    674,
+    767,
+    696
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c11",
+   "symbol": "N",
+   "box": [
+    796,
+    672,
+    820,
+    698
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c12",
+   "symbol": "A",
+   "box": [
+    843,
+    670,
+    871,
+    699
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "c13",
+   "symbol": "M",
+   "box": [
+    902,
+    671,
+    935,
+    701
+   ],
+   "role": "cipher"
+  },
+  {
+   "id": "h01",
+   "symbol": "h",
+   "role": "hand",
+   "box": [
+    262,
+    407,
+    284,
+    437
+   ]
+  },
+  {
+   "id": "h02",
+   "symbol": "i",
+   "role": "hand",
+   "box": [
+    289,
+    408,
+    299,
+    433
+   ]
+  },
+  {
+   "id": "h03",
+   "symbol": "s",
+   "role": "hand",
+   "box": [
+    303,
+    415,
+    315,
+    434
+   ]
+  },
+  {
+   "id": "h04",
+   "symbol": "i",
+   "role": "hand",
+   "box": [
+    378,
+    405,
+    384,
+    435
+   ]
+  },
+  {
+   "id": "h05",
+   "symbol": "s",
+   "role": "hand",
+   "box": [
+    391,
+    413,
+    406,
+    434
+   ]
+  },
+  {
+   "id": "h06",
+   "symbol": "h",
+   "role": "hand",
+   "box": [
+    485,
+    400,
+    504,
+    434
+   ]
+  },
+  {
+   "id": "h07",
+   "symbol": "e",
+   "role": "hand",
+   "box": [
+    512,
+    420,
+    529,
+    435
+   ]
+  },
+  {
+   "id": "h08",
+   "symbol": "a",
+   "role": "hand",
+   "box": [
+    714,
+    411,
+    735,
+    437
+   ]
+  },
+  {
+   "id": "h09",
+   "symbol": "e",
+   "role": "hand",
+   "box": [
+    899,
+    416,
+    920,
+    440
+   ]
+  },
+  {
+   "id": "h10",
+   "symbol": "a",
+   "role": "hand",
+   "box": [
+    920,
+    416,
+    953,
+    442
+   ]
+  }
+ ]
+}
